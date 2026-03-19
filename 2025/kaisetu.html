@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>東大2025 前期 理系数学 全問解説</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <style>
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.9;
+      color: #1a1a1a;
+      background: #fafafa;
+    }
+
+    h1 {
+      text-align: center;
+      border-bottom: 3px solid #2c3e50;
+      padding-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 5px solid #3498db;
+      padding-left: 12px;
+      margin-top: 50px;
+    }
+
+    h3 {
+      color: #2980b9;
+      margin-top: 30px;
+    }
+
+    h4 {
+      color: #27ae60;
+    }
+
+    .mondai {
+      background: #eaf2f8;
+      border: 1px solid #aed6f1;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .houshin {
+      background: #fef9e7;
+      border: 1px solid #f9e79f;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .houshin h3 {
+      color: #d4ac0d;
+      margin-top: 0;
+    }
+
+    .kaitou {
+      background: #f0faf0;
+      border: 1px solid #a9dfbf;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .joseki {
+      background: #fdedec;
+      border: 1px solid #f5b7b1;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 15px 0;
+      font-size: 0.95em;
+    }
+
+    .joseki::before {
+      content: "📖 教材の定石：";
+      font-weight: bold;
+      color: #c0392b;
+    }
+
+    .matome {
+      background: #f4ecf7;
+      border: 2px solid #bb8fce;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 25px 0;
+    }
+
+    .matome h3 {
+      color: #8e44ad;
+      margin-top: 0;
+    }
+
+    .answer-box {
+      background: #fff;
+      border: 2px solid #e74c3c;
+      border-radius: 6px;
+      padding: 12px 18px;
+      margin: 15px 0;
+      text-align: center;
+      font-size: 1.1em;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #bbb;
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    th {
+      background: #2c3e50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+
+    .intro {
+      background: #ebedef;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>東大2025 前期 理系数学 全問解説</h1>
+  <p style="text-align:center; color:#666;">～ 初見からどう方針を立てるか、教材の定石を軸に ～</p>
+
+  <div class="intro">
+    <h2 style="border:none; margin-top:0;">教材の核心的な考え方（解説の前提）</h2>
+    <p><strong>教材「状況理解とは」の核心：</strong><br>
+      「<strong>どれが自由に決まり、それにより他がどう一意に定まるのか</strong>」を把握すること。つまり<strong>自由度を見極める</strong>ことが、方針立ての出発点になる。</p>
+    <p><strong>定石集の核心：</strong><br>
+      初見の問題でも、<strong>状況理解 → 定石の照合 → 方針決定</strong> という流れで解法選択ができるようになること。</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 1 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>座標平面上の点 $A(0,0)$, $B(0,1)$, $C(1,1)$, $D(1,0)$ を考える。実数 $0 < t < 1$ に対して、 線分 $AB$, $BC$, $CD$ を $t:(1-t)$
+        に内分する点をそれぞれ $P_t$, $Q_t$, $R_t$ とし、 線分 $P_tQ_t$, $Q_tR_t$ を $t:(1-t)$ に内分する点をそれぞれ $S_t$, $T_t$ とする。さらに、 線分
+        $S_tT_t$ を $t:(1-t)$ に内分する点を $U_t$ とする。また、点 $A$ を $U_0$、点 $D$ を $U_1$ とする。</p>
+        <p><strong>(1)</strong> 点 $U_t$ の座標を求めよ。</p>
+        <p><strong>(2)</strong> $t$ が $0 \le t \le 1$ の範囲を動くときに点 $U_t$ が描く曲線と、線分 $AD$ で囲まれた部分の面積を求めよ。</p>
+        <p><strong>(3)</strong> $a$ を $0 < a < 1$ を満たす実数とする。$t$ が $0 \le t \le a$ の範囲を動くときに点 $U_t$ が描く曲線の長さを、$a$
+            の多項式の形で求めよ。</p>
+  </div>
+
+  <h3>初見での方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>状況理解</h4>
+    <p>内分を3段階繰り返す操作。各段階で $t:(1-t)$ に内分する → <strong>ド・カステリョのアルゴリズム（ベジェ曲線の構成法）</strong>と同じ構造。
+      自由度は1（パラメータ $t$ のみ）。</p>
+
+    <p>まず座標を愚直に計算する：</p>
+    <ul>
+      <li>$P_t = (1-t)A + tB = (0, t)$</li>
+      <li>$Q_t = (1-t)B + tC = (t, 1)$</li>
+      <li>$R_t = (1-t)C + tD = (1, 1-t)$</li>
+    </ul>
+    <p>次の段階：</p>
+    <ul>
+      <li>$S_t = (1-t)P_t + tQ_t = (t^2,\; t + (1-t)t) = (t^2,\; 2t - t^2)$</li>
+      <li>$T_t = (1-t)Q_t + tR_t = (t+(1-t)t,\; (1-t)+t(1-t)) = (2t - t^2,\; 1 - t^2)$</li>
+    </ul>
+    <p>最後：</p>
+    <p>$U_t = (1-t)S_t + tT_t$。この計算で座標が $t$ の多項式（3次）で出る見込み。</p>
+
+    <div class="joseki">
+      「複数設問 → すべて誘導だと思え」（定石集FGver「誘導利用」より）
+    </div>
+    <p>(1) で座標を求め、(2) で面積、(3) で弧長。典型的な積分計算への誘導。</p>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>$U_t = (1-t)S_t + tT_t$ を計算する。</p>
+    <p><em>$x$ 座標：</em></p>
+    $$(1-t) \cdot t^2 + t \cdot (2t - t^2) = t^2 - t^3 + 2t^2 - t^3 = 3t^2 - 2t^3$$
+    <p><em>$y$ 座標：</em></p>
+    $$(1-t)(2t - t^2) + t(1 - t^2) = 2t - t^2 - 2t^2 + t^3 + t - t^3 = 3t - 3t^2$$
+    <p>（$t^3$ の項が打ち消し合うことを確認。）</p>
+
+    <div class="answer-box">
+      $$U_t = (3t^2 - 2t^3,\; 3t - 3t^2)$$
+    </div>
+
+    <p><strong>検算：</strong> $U_0 = (0,0) = A$ ✓、$U_1 = (3-2, 3-3) = (1, 0) = D$ ✓</p>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p>$x = 3t^2 - 2t^3$, $y = 3t - 3t^2 = 3t(1-t)$ なので、$y \ge 0$（$0 \le t \le 1$）。
+      曲線は $A(0,0)$ から $D(1,0)$ まで $x$ 軸の上側を通る。</p>
+
+    <p>線分 $AD$ は $x$ 軸上の区間 $[0,1]$。面積はパラメータ積分で求まる：</p>
+    $$S = \int_0^1 y\,dx = \int_0^1 y(t) \cdot x'(t)\,dt$$
+    <p>$x'(t) = 6t - 6t^2 = 6t(1-t)$ より：</p>
+    $$S = \int_0^1 3t(1-t) \cdot 6t(1-t)\,dt = 18\int_0^1 t^2(1-t)^2\,dt$$
+    $$= 18\int_0^1 (t^2 - 2t^3 + t^4)\,dt = 18\left[\frac{t^3}{3} - \frac{t^4}{2} + \frac{t^5}{5}\right]_0^1$$
+    $$= 18\left(\frac{1}{3} - \frac{1}{2} + \frac{1}{5}\right) = 18 \cdot \frac{10 - 15 + 6}{30} = 18 \cdot \frac{1}{30}
+    = \frac{3}{5}$$
+
+    <div class="answer-box">
+      $$S = \frac{3}{5}$$
+    </div>
+  </div>
+
+  <h3>(3) の解法</h3>
+  <div class="kaitou">
+    <p>弧長公式 $L = \displaystyle\int_0^a \sqrt{x'(t)^2 + y'(t)^2}\,dt$ を用いる。</p>
+    <p>$x'(t) = 6t(1-t)$, $y'(t) = 3 - 6t$ より：</p>
+    $$x'(t)^2 = 36t^2(1-t)^2$$
+    $$y'(t)^2 = (3-6t)^2 = 9(1-2t)^2$$
+    $$x'^2 + y'^2 = 36t^2(1-t)^2 + 9(1-2t)^2$$
+    <p>$36t^2(1-t)^2 = 36t^2 - 72t^3 + 36t^4$ と $9(1-2t)^2 = 9 - 36t + 36t^2$ を足すと：</p>
+    $$= 36t^4 - 72t^3 + 72t^2 - 36t + 9 = 9(4t^4 - 8t^3 + 8t^2 - 4t + 1)$$
+    <p>$4t^4 - 8t^3 + 8t^2 - 4t + 1 = (2t^2 - 2t + 1)^2$ と因数分解できる（展開して確認可能）。</p>
+    <p>$2t^2 - 2t + 1 = 2(t - \frac{1}{2})^2 + \frac{1}{2} > 0$ なので：</p>
+    $$\sqrt{x'^2 + y'^2} = 3(2t^2 - 2t + 1)$$
+
+    $$L = 3\int_0^a (2t^2 - 2t + 1)\,dt = 3\left[\frac{2t^3}{3} - t^2 + t\right]_0^a = 3\left(\frac{2a^3}{3} - a^2 +
+    a\right)$$
+
+    <div class="answer-box">
+      $$L = 2a^3 - 3a^2 + 3a$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第1問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>内分を3段階繰り返す操作で、$U_t$ の座標は $t$ の3次多項式になる。</li>
+      <li>$U_0 = A$, $U_1 = D$ なので曲線は $A$ から $D$ へ向かう。$y$ 座標が $3t(1-t) \ge 0$ なので $x$ 軸の上側を通る。</li>
+      <li>(2) は曲線と $x$ 軸で囲まれた面積 → パラメータ積分。(3) は弧長 → $\sqrt{x'^2 + y'^2}$ の積分。</li>
+      <li>(3) の $\sqrt{}$ の中身が完全平方式になる（<strong>多項式の形で求めよ</strong>、というヒント）。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「複数設問 → すべて誘導だと思え」（定石集FGverより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 2 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p><strong>(1)</strong> $x > 0$ のとき、不等式 $\log x \le x - 1$ を示せ。</p>
+    <p><strong>(2)</strong> 次の極限を求めよ。</p>
+    $$\lim_{n \to \infty} n \int_1^2 \log\!\left(\frac{1 + x^{1/n}}{2}\right)dx$$
+  </div>
+
+  <h3>初見での方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>状況理解</h4>
+    <p>(1) は $\log x \le x - 1$ の証明。$g(x) = x - 1 - \log x$ の最小値が0であることを示す典型問題。</p>
+    <p>(2) は $n \to \infty$ の極限。$x^{1/n} \to 1$ なので $\log\!\left(\frac{1+x^{1/n}}{2}\right) \to \log 1 = 0$。
+      つまり「$0$ に近づく量」$\times$ $n$ の形 → <strong>$n$ 倍して極限をとる</strong>典型。</p>
+
+    <div class="joseki">
+      「複数設問 → すべて誘導だと思え」（定石集FGver「誘導利用」より）
+    </div>
+    <div class="joseki">
+      「定積分の評価方法」→ 結論から予想、上下からはさむ（定石集FGverより）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>$g(x) = x - 1 - \log x$（$x > 0$）とおく。$g'(x) = 1 - \frac{1}{x}$。</p>
+    <ul>
+      <li>$0 < x < 1$：$g'(x) < 0$（単調減少）</li>
+      <li>$x > 1$：$g'(x) > 0$（単調増加）</li>
+    </ul>
+    <p>$g(1) = 0$ が最小値。よってすべての $x > 0$ で $g(x) \ge 0$、すなわち：</p>
+    <div class="answer-box">
+      $$\log x \le x - 1 \qquad (x > 0) \qquad \square$$
+    </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+
+    <p><strong>【見通し：何をすればゴールに近づくか】</strong></p>
+    <p>$n \to \infty$ のとき被積分関数 $\log\!\left(\frac{1+x^{1/n}}{2}\right) \to 0$ なので、
+      $n$ 倍の極限は「$0 \cdot \infty$」型。<strong>はさみうちで上下から評価する</strong>のが定石。</p>
+
+    <div class="joseki">
+      「定積分の評価方法」→ 上下からはさんで極限をとる（定石集FGverより）
+    </div>
+
+    <p>では $\log\!\left(\frac{1+x^{1/n}}{2}\right)$ を何ではさめばよいか？
+      (1) の不等式 $\log X \le X - 1$ が誘導で与えられているので、これを使う。</p>
+
+    <div class="joseki">
+      「複数設問 → すべて誘導だと思え」「適用条件がヒントになる」（定石集FGver「誘導利用」より）
+    </div>
+
+    <p><strong>【Step 1. 上からの評価（知識：$\log X \le X-1$ をそのまま使う）】</strong></p>
+    <p>(1) の $\log X \le X - 1$ に $X = \frac{1+x^{1/n}}{2}$ を代入する（$x \ge 1$ より $X \ge 1$ で適用可能）：</p>
+    $$\log\!\left(\frac{1+x^{1/n}}{2}\right) \le \frac{1+x^{1/n}}{2} - 1 = \frac{x^{1/n} - 1}{2}$$
+    <p>これで上からの評価は完了。$\log(\cdots)$ が $\frac{x^{1/n}-1}{2}$ 以下だと分かった。</p>
+
+    <p><strong>【Step 2. 下からの評価】</strong></p>
+    <p>はさみうちには下からの評価も必要。(1) は $\log X \le X - 1$ なので、そのままでは上からの評価しか出ない。</p>
+
+    <div class="joseki">
+      「誘導利用」→ $x$ に $1/x$ を入れる工夫（定石集FGverより）
+    </div>
+
+    <p>$\log X \le X - 1$ に $X \mapsto 1/X$（$X > 0$）を代入すると：</p>
+    $$\log\frac{1}{X} \le \frac{1}{X} - 1 \quad \Longleftrightarrow \quad -\log X \le \frac{1-X}{X}$$
+    $$\therefore\quad \log X \ge \frac{X-1}{X} \quad \cdots (\text{下からの評価})$$
+
+    <p>（$\log X$ の上下の評価 $\frac{X-1}{X} \le \log X \le X-1$ はセットで覚えておくと強い。）</p>
+
+    <p>この下からの評価 $\log X \ge \frac{X-1}{X}$ に $X = \frac{1+x^{1/n}}{2}$ を代入する：</p>
+    $$\log\!\left(\frac{1+x^{1/n}}{2}\right) \ge \frac{\frac{1+x^{1/n}}{2} - 1}{\frac{1+x^{1/n}}{2}} = \frac{x^{1/n} -
+    1}{1 + x^{1/n}}$$
+
+    <p>以上をまとめると：</p>
+    $$\frac{x^{1/n} - 1}{1 + x^{1/n}} \;\le\; \log\!\left(\frac{1+x^{1/n}}{2}\right) \;\le\; \frac{x^{1/n} - 1}{2}$$
+
+    <p><strong>【Step 3. $n$ 倍して積分し、はさみうち】</strong></p>
+    <p>3辺に $n$ を掛けて $[1,2]$ で積分する（ここからは標準的な計算）：</p>
+    $$n\int_1^2 \frac{x^{1/n} - 1}{1 + x^{1/n}}\,dx \;\le\; n\int_1^2 \log\!\left(\frac{1+x^{1/n}}{2}\right)dx \;\le\;
+    \frac{n}{2}\int_1^2 (x^{1/n} - 1)\,dx$$
+
+    <p><strong>【Step 4. 右辺の極限（$x^{1/n}$ の積分）】</strong></p>
+    $$\int_1^2 (x^{1/n} - 1)\,dx = \left[\frac{n}{n+1}x^{(n+1)/n} - x\right]_1^2 = \frac{n}{n+1}\bigl(2^{(n+1)/n} -
+    1\bigr) - 1$$
+    <p>$2^{(n+1)/n} = 2 \cdot 2^{1/n}$ で、$n \to \infty$ のとき $2^{1/n} \to 1$。
+      正確には $2^{1/n} = 1 + \frac{\log 2}{n} + O(1/n^2)$（※補足：$a^h = 1 + h\log a + O(h^2)$ は $h \to 0$ での近似）より：</p>
+    $$\frac{n}{n+1}\bigl(2 + \frac{2\log 2}{n} + O(1/n^2) - 1\bigr) - 1 = \frac{n}{n+1}\bigl(1 + \frac{2\log 2}{n}\bigr)
+    - 1$$
+    $$= \frac{n + 2\log 2}{n+1} - 1 = \frac{2\log 2 - 1}{n+1}$$
+    <p>よって：</p>
+    $$\frac{n}{2}\int_1^2 (x^{1/n}-1)\,dx = \frac{n(2\log 2 - 1)}{2(n+1)} \to \frac{2\log 2 - 1}{2}$$
+
+    <p><strong>【Step 5. 左辺の極限】</strong></p>
+    <p>左辺の被積分関数 $\frac{x^{1/n}-1}{1+x^{1/n}}$ は分母に $x$ を含んでおり、そのままでは積分しにくい。</p>
+
+    <div class="joseki">
+      「定積分の評価方法」→ 分母を定数化する（定石集FGverより）
+    </div>
+
+    <p>$1 \le x \le 2$ のとき $2 \le 1 + x^{1/n} \le 1 + 2^{1/n}$ なので、分母を定数に置き換えて：</p>
+    $$\frac{n}{1 + 2^{1/n}}\int_1^2 (x^{1/n}-1)\,dx \;\le\; n\int_1^2 \frac{x^{1/n}-1}{1+x^{1/n}}\,dx \;\le\;
+    \frac{n}{2}\int_1^2 (x^{1/n}-1)\,dx$$
+    <p>$n \to \infty$ で $1 + 2^{1/n} \to 2$ なので、左辺 → $\frac{2\log 2 - 1}{2}$、右辺 → $\frac{2\log 2 - 1}{2}$。</p>
+    <p>はさみうちにより：</p>
+
+    <div class="answer-box">
+      $$\lim_{n \to \infty} n\int_1^2 \log\!\left(\frac{1+x^{1/n}}{2}\right)dx = \frac{2\log 2 - 1}{2} = \log 2 -
+      \frac{1}{2}$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第2問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>(1)：$\log x \le x - 1$ は $g(x) = x - 1 - \log x$ が $x = 1$ で最小値0をとることから従う。</li>
+      <li>(2)：$n \to \infty$ で $x^{1/n} \to 1$ → 被積分関数が $0$ に近づく量を $n$ 倍する形。
+        $x^{1/n} \approx 1 + \frac{\log x}{n}$ より答えは $\frac{1}{2}\int_1^2 \log x\,dx = \log 2 - \frac{1}{2}$ と予想できる。
+      </li>
+      <li>(1) の不等式は (2) のはさみうちに使う誘導。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「複数設問 → すべて誘導だと思え」（定石集FGver「誘導利用」より）</li>
+      <li>「誘導利用」→ $f(x)$ に $1/x$ を入れるなど、変数変換で別の結論を引き出す（定石集FGverより）</li>
+      <li>「定積分の評価方法」→ 上下からはさんで極限をとる（定石集FGverより）</li>
+      <li>「定積分の評価方法」→ 分母を定数化（定石集FGverより）</li>
+      <li>「不等式の証明」→ $g(x)$ の最小値を調べる（定石集FGverより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 3 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>平行四辺形 $ABCD$ において、$\angle ABC = \dfrac{\pi}{6}$, $AB = a$, $BC = b$, $a \le b$ とする。
+      次の条件を満たす長方形 $EFGH$ を考え、その面積を $S$ とする。</p>
+    <p><strong>条件：</strong>点 $A$, $B$, $C$, $D$ はそれぞれ辺 $EF$, $FG$, $GH$, $HE$ 上にある。</p>
+    <p>ただし、辺はその両端の点も含むものとする。</p>
+    <p><strong>(1)</strong> $\angle BCG = \theta$ とするとき、$S$ を $a, b, \theta$ を用いて表せ。</p>
+    <p><strong>(2)</strong> $S$ のとりうる値の最大値を $a, b$ を用いて表せ。</p>
+  </div>
+
+  <h3>初見での方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>状況理解</h4>
+    <p>平行四辺形 $ABCD$ を長方形 $EFGH$ の中に入れる問題。$\angle ABC = \pi/6$。</p>
+    <p>$B$ は辺 $FG$ 上にあるので、$\angle BCG = \theta$ とおくと長方形の各辺の長さが $a, b, \theta$ で表せる。</p>
+    <p>自由度は1（$\theta$ のみ。$a, b$ は定数）。</p>
+
+    <div class="joseki">
+      「図形問題の土俵選択」→ ①座標（定石集FGverより）
+    </div>
+    <p>長方形の辺に沿って座標軸を設定すれば、各頂点の座標が三角比で表せる。</p>
+
+    <div class="joseki">
+      「1変数関数の最大最小 → 順像法（微分して増減表）」（定石集FGverより）
+    </div>
+    <p>(1) で $S(\theta)$ を求めてから (2) で最大化する流れ。</p>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+
+    <!-- 図 -->
+    <svg viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg"
+      style="max-width:440px; margin:10px auto; display:block; background:#fff; border:1px solid #ddd; border-radius:8px;">
+      <!-- 長方形 EFGH -->
+      <rect x="40" y="30" width="400" height="250" fill="none" stroke="#333" stroke-width="2" />
+      <!-- 頂点ラベル -->
+      <text x="440" y="25" font-size="14" fill="#333" font-weight="bold">E</text>
+      <text x="25" y="25" font-size="14" fill="#333" font-weight="bold">F</text>
+      <text x="25" y="295" font-size="14" fill="#333" font-weight="bold">G</text>
+      <text x="440" y="295" font-size="14" fill="#333" font-weight="bold">H</text>
+      <!-- 平行四辺形 ABCD -->
+      <polygon points="160,30 40,130 280,280 440,180" fill="rgba(52,152,219,0.1)" stroke="#2980b9" stroke-width="2" />
+      <circle cx="160" cy="30" r="4" fill="#e74c3c" />
+      <text x="155" y="18" font-size="14" fill="#e74c3c" font-weight="bold">A</text>
+      <circle cx="40" cy="130" r="4" fill="#e74c3c" />
+      <text x="15" y="128" font-size="14" fill="#e74c3c" font-weight="bold">B</text>
+      <circle cx="280" cy="280" r="4" fill="#e74c3c" />
+      <text x="275" y="305" font-size="14" fill="#e74c3c" font-weight="bold">C</text>
+      <circle cx="440" cy="180" r="4" fill="#e74c3c" />
+      <text x="448" y="178" font-size="14" fill="#e74c3c" font-weight="bold">D</text>
+      <!-- 角度θ (BCG) -->
+      <path d="M 80,280 A 40,40 0 0,0 68,258" fill="none" stroke="#27ae60" stroke-width="1.5" />
+      <text x="82" y="265" font-size="13" fill="#27ae60">$\theta$</text>
+      <!-- 辺ラベル -->
+      <text x="130" y="90" font-size="13" fill="#2980b9">$a$</text>
+      <text x="140" y="220" font-size="13" fill="#2980b9">$b$</text>
+      <!-- BG, CG の長さ -->
+      <text x="8" y="215" font-size="12" fill="#888">$b\sin\theta$</text>
+      <text x="140" y="298" font-size="12" fill="#888">$b\cos\theta$</text>
+    </svg>
+
+    <p><strong>座標設定：</strong>$G$ を原点、$GH$ 方向を $x$ 軸、$GF$ 方向を $y$ 軸とする。</p>
+    <ul>
+      <li>$B$ は辺 $FG$（$y$ 軸）上、$C$ は辺 $GH$（$x$ 軸）上。$\angle BCG = \theta$, $BC = b$ より：</li>
+    </ul>
+    $$B = (0,\; b\sin\theta), \quad C = (b\cos\theta,\; 0)$$
+
+    <p>$\vec{BC}$ の方向角は $-\theta$（$x$ 軸から時計回りに $\theta$）。
+      $\angle ABC = \pi/6$ なので $\vec{BA}$ の方向角は $-\theta + \pi/6$。$|BA| = a$ より：</p>
+    $$A = B + a\bigl(\cos(\tfrac{\pi}{6}-\theta),\; \sin(\tfrac{\pi}{6}-\theta)\bigr) =
+    \bigl(a\cos(\tfrac{\pi}{6}-\theta),\; b\sin\theta + a\sin(\tfrac{\pi}{6}-\theta)\bigr)$$
+
+    <p>$A$ は辺 $EF$（$y = H$）上なので：$H = a\sin(\frac{\pi}{6}-\theta) + b\sin\theta$</p>
+
+    <p>平行四辺形より $D = C + \vec{BA} = \bigl(a\cos(\frac{\pi}{6}-\theta) + b\cos\theta,\;\;
+      a\sin(\frac{\pi}{6}-\theta)\bigr)$。
+      $D$ は辺 $HE$（$x = W$）上なので：$W = a\cos(\frac{\pi}{6}-\theta) + b\cos\theta$</p>
+
+    <div class="answer-box">
+      $$S = WH = \bigl(a\cos(\tfrac{\pi}{6}-\theta) + b\cos\theta\bigr)\bigl(a\sin(\tfrac{\pi}{6}-\theta) +
+      b\sin\theta\bigr)$$
+    </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <div class="joseki">
+      「三角関数の2次の同次式 → 2倍角で $\sin 2\theta$, $\cos 2\theta$ の1次式に直して合成」（定石集FGver「§三角関数の扱い」②より）
+    </div>
+
+    <p>(1) の $S = WH$ を展開する。：</p>
+    $$S = \underbrace{a^2
+    \cos(\tfrac{\pi}{6}\!-\!\theta)\sin(\tfrac{\pi}{6}\!-\!\theta)}_{\frac{a^2}{2}\sin(\frac{\pi}{3}-2\theta)}
+    + ab\underbrace{\bigl[\cos(\tfrac{\pi}{6}\!-\!\theta)\sin\theta +
+    \sin(\tfrac{\pi}{6}\!-\!\theta)\cos\theta\bigr]}_{\sin(\frac{\pi}{6}-\theta+\theta)\,=\,\sin\frac{\pi}{6}\,=\,\frac{1}{2}}
+    + \underbrace{b^2 \cos\theta\sin\theta}_{\frac{b^2}{2}\sin 2\theta}$$
+
+    <p>よって：</p>
+    $$S = \frac{a^2}{2}\sin(\tfrac{\pi}{3}-2\theta) + \frac{b^2}{2}\sin 2\theta + \frac{ab}{2}$$
+
+    <p>$\sin(\frac{\pi}{3}-2\theta) = \frac{\sqrt{3}}{2}\cos 2\theta - \frac{1}{2}\sin 2\theta$ を代入して整理すると：</p>
+    $$S = \frac{\sqrt{3}\,a^2}{4}\cos 2\theta + \frac{2b^2 - a^2}{4}\sin 2\theta + \frac{ab}{2}$$
+
+    <p>$P\cos 2\theta + Q\sin 2\theta$ の最大値は $\sqrt{P^2+Q^2}$（三角関数の合成）なので：</p>
+    $$S_{\max} = \frac{1}{4}\sqrt{3a^4 + (2b^2-a^2)^2} + \frac{ab}{2}$$
+    <p>$\sqrt{}$ の中身：$3a^4 + 4b^4 - 4a^2b^2 + a^4 = 4(a^4 - a^2b^2 + b^4)$</p>
+
+    <div class="answer-box">
+      $$S_{\max} = \frac{ab + \sqrt{a^4 - a^2 b^2 + b^4}}{2}$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第3問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>平行四辺形 $ABCD$ を長方形 $EFGH$ の各辺上に1点ずつ乗せる配置。</li>
+      <li>$\angle BCG = \theta$ を決めれば長方形のサイズが一意に定まる → 自由度1。</li>
+      <li>(1) で $S$ を $\theta$ の関数として求め、(2) で三角関数の合成による最大化。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「図形問題の土俵選択」→ ①座標（定石集FGverより）</li>
+      <li>「1変数関数の最大最小 → 順像法」（定石集FGverより）</li>
+      <li>「三角関数の2次の同次式 → 2倍角で1次式に直して合成」（定石集FGver「§三角関数」②より）</li>
+      <li>「複数設問 → すべて誘導だと思え」（定石集FGver「誘導利用」より）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 4 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>この問いでは、$0$ 以上の整数の $2$ 乗になる数を平方数と呼ぶ。$a$ を正の整数とし、$f_a(x) = x^2 + x - a$ とおく。</p>
+    <p><strong>(1)</strong> $n$ を正の整数とする。$f_a(n)$ が平方数ならば、$n \le a$ であることを示せ。</p>
+    <p><strong>(2)</strong> $f_a(n)$ が平方数となる正の整数 $n$ の個数を $N_a$ とおく。次の条件 (i), (ii) が同値であることを示せ。</p>
+    <p style="padding-left:2em;">(i) $N_a = 1$ である。</p>
+    <p style="padding-left:2em;">(ii) $4a + 1$ は素数である。</p>
+  </div>
+
+  <h3>初見での方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>状況理解</h4>
+    <p>$f_a(n) = n^2 + n - a$。これが平方数 $m^2$ に等しいとする。</p>
+
+    <div class="joseki">
+      「因数分解で積の形に」「特に $2$ 乗の差が頻出」（IA定石リストより）
+    </div>
+
+    <p><strong>【式変形の動機】</strong></p>
+    <p>整数問題の定石に従い、<strong>因数分解して積の形にする</strong>ことを目指す。
+      $n^2 + n - a = m^2$ を移項すると $n^2 - m^2 + n - a = 0$。
+      $n^2 - m^2$ は $2$ 乗の差で因数分解できるが、$+n - a$ が余って積の形にならない。</p>
+    <p>そこで $n^2 + n$ ごと<strong>平方完成</strong>すれば全体が $2$ 乗の差になる：
+      $n^2 + n = (n+\frac{1}{2})^2 - \frac{1}{4}$。分数を消すために $4$ 倍すると：</p>
+    $$4m^2 = 4(n^2 + n - a) = (2n+1)^2 - (4a+1)$$
+    $$(2n+1)^2 - (2m)^2 = 4a+1$$
+
+    <p>これで $2$ 乗の差が完成。因数分解できる：</p>
+    $$(2n+1-2m)(2n+1+2m) = 4a+1$$
+    <p>$4a+1$ を2つの正の整数の積に分解する問題に帰着。$4a+1$ は奇数なので両因子とも奇数。</p>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <div class="joseki">
+      「平方数にならないことの証明」→ ①隣り合う平方数で挟む（定石集FGverより）
+    </div>
+
+    <p>$f_a(n) = n^2 + n - a = m^2$（$m \ge 0$）とする。$n \ge a + 1$ と仮定して矛盾を導く。</p>
+    <p><strong>下からの評価：</strong>$n \ge a+1$ より $a \le n-1$ なので：</p>
+    $$m^2 = n^2 + n - a \ge n^2 + n - (n-1) = n^2 + 1 > n^2$$
+    <p><strong>上からの評価：</strong>$a \ge 1$ より：</p>
+    $$m^2 = n^2 + n - a \le n^2 + n - 1 < n^2 + 2n + 1=(n+1)^2$$ <p>以上より $n^2 < m^2 < (n+1)^2$ だが、<strong>隣り合う平方数 $n^2$
+        と $(n+1)^2$ の間に平方数は存在しない</strong>。矛盾。</p>
+
+        <div class="answer-box">
+          $n \ge a+1$ は矛盾。よって $n \le a$。$\qquad \square$
+        </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+
+    <p><strong>【Step 1. まず実験する】</strong></p>
+    <p>$a = 5$ のとき $4a+1 = 21$ で試す。状況理解の因数分解 $(2n+1-2m)(2n+1+2m) = 21$ より、
+      $21$ を2つの正の奇数の積に分解すると：</p>
+    <ul>
+      <li>$21 = 1 \times 21$：$2n+1-2m = 1$, $2n+1+2m = 21$ → $n = 5$, $m = 5$。$f_5(5) = 25$ ✓</li>
+      <li>$21 = 3 \times 7$：$2n+1-2m = 3$, $2n+1+2m = 7$ → $n = 2$, $m = 1$。$f_5(2) = 4+2-5 = 1 = 1^2$ ✓</li>
+    </ul>
+    <p>$21$ の分解が2通り → 解が2つ → $N_5 = 2$。実際 $21 = 3 \times 7$ は合成数。</p>
+
+    <p>$a = 1$ のとき $4a+1 = 5$（素数）。分解は $5 = 1 \times 5$ の1通りのみ → $N_1 = 1$。</p>
+
+    <p>この実験から<strong>「$4a+1$ の因数分解の個数」と「$N_a$」が対応している</strong>と予想できる。</p>
+
+    <p><strong>【Step 2. 対応を一般的に確認する】</strong></p>
+    <p>状況理解で得た $(2n+1-2m)(2n+1+2m) = 4a+1$ において、$p = 2n+1-2m$, $q = 2n+1+2m$ とおく。</p>
+
+    <p><em>$(n, m)$ → $(p, q)$ の方向：</em></p>
+    <p>$n \ge 1$, $m \ge 0$ より $q > p \ge 1$。$p$, $q$ はともに奇数（$2n+1$ は奇数、$2m$ は偶数なので和差とも奇数）。$pq = 4a+1$。</p>
+
+    <p><em>$(p, q)$ → $(n, m)$ の方向：</em></p>
+    <p>$p$, $q$ が奇数で $1 \le p \le q$, $pq = 4a+1$ のとき、連立方程式を解くと：</p>
+    $$n = \frac{p+q-2}{4}, \qquad m = \frac{q-p}{4}$$
+    <p>$p$, $q$ がともに奇数なので $p + q$ は偶数、$q - p$ も偶数。
+      さらに $p + q \equiv 2 \pmod{4}$（奇数+奇数）なので $\frac{p+q-2}{4}$ は整数。
+      $q - p \equiv 0 \pmod{4}$（$p \equiv q \pmod{2}$ かつ同じ mod 4 の偶奇）なので $\frac{q-p}{4}$ も非負整数。
+      $a \ge 1$ より $pq = 4a+1 \ge 5$ なので $p + q \ge 6$、ゆえに $n \ge 1$。</p>
+
+    <p>以上より <strong>$(n, m)$ の組と $(p, q)$ の組は一対一に対応</strong>する。</p>
+
+    <p><em>特に $(p, q) = (1,\, 4a+1)$ のとき：</em>$n = a$, $m = a$（$f_a(a) = a^2$ で常に解）。</p>
+
+    <p>結論：<strong>$N_a$ = 「$4a+1 = pq$（$1 \le p \le q$, $p$, $q$ 奇数）なる組の個数」</strong>。</p>
+
+    <p><strong>【Step 3. (ii) $\Rightarrow$ (i)：$4a+1$ が素数なら $N_a = 1$】</strong></p>
+    <p>$4a+1$ が素数のとき、$4a+1 = pq$（$1 \le p \le q$）の分解は $(1,\, 4a+1)$ のみ。
+      対応する解は $n = a$ の1つだけ。$N_a = 1$。</p>
+
+    <p><strong>【Step 4. (i) $\Rightarrow$ (ii)：$N_a = 1$ なら $4a+1$ が素数】</strong></p>
+    <p>対偶「$4a+1$ が合成数 → $N_a \ge 2$」を示す。</p>
+    <p>$4a+1$ が合成数とすると、$4a+1$ は奇数なので $4a+1 = pq$ なる奇数 $p$, $q$（$1 < p \le q$）が存在する。 $(1,\, 4a+1)$ と $(p,\, q)$
+        は異なる組なので、少なくとも2つの解が存在。$N_a \ge 2$。</p>
+
+        <div class="answer-box">
+          $N_a = 1 \;\Longleftrightarrow\; 4a+1$ は素数 $\qquad \square$
+        </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第4問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$n^2 + n$ は完全平方でない → 平方完成して $4$ 倍すると $(2n+1)^2 - (2m)^2 = 4a+1$ となり、$2$ 乗の差に因数分解できる。</li>
+      <li>$4a+1$ の約数の組 $(p, q)$ と解 $n$ が一対一対応する。</li>
+      <li>$n = a$ は常に解（$f_a(a) = a^2$）。$N_a = 1$ は「他に解がない」= 「$4a+1$ に非自明な因数分解がない」= 素数。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「整数は実験からスタート」（IA定石リストより）</li>
+      <li>「因数分解で積の形に → 平方完成…平方の差を作る」「$2$ 乗の差が頻出」（IA定石リストより）</li>
+      <li>「平方数にならないことの証明 → ①隣り合う平方数で挟む」（定石集FGverより）…(1)で使用</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 5 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>$n$ を $2$ 以上の整数とする。$1$ から $n$ までの数字が書かれた札が各 $1$ 枚ずつ合計 $n$ 枚あり、横一列におかれている。
+      $1$ 以上 $(n-1)$ 以下の整数 $i$ に対して、次の操作 $(T_i)$ を考える。</p>
+    <p><strong>$(T_i)$：</strong> 左から $i$ 番目の札の数字が、左から $(i+1)$ 番目の札の数字よりも大きければ、
+      これら $2$ 枚の札の位置を入れかえる。そうでなければ、札の位置をかえない。</p>
+    <p>最初の状態において札の数字は左から $A_1, A_2, \ldots, A_n$ であったとする。この状態から
+      $(n-1)$ 回の操作 $(T_1), (T_2), \ldots, (T_{n-1})$ を順に行った後、続けて $(n-1)$ 回の操作
+      $(T_{n-1}), \ldots, (T_2), (T_1)$ を順に行ったところ、札の数字が左から $1, 2, \ldots, n$ と小さい順に並んだ。以下の問いに答えよ。</p>
+    <p><strong>(1)</strong> $A_1$ と $A_2$ のうち少なくとも一方は $2$ 以下であることを示せ。</p>
+    <p><strong>(2)</strong> 最初の状態としてありうる札の数字の並び方 $A_1, A_2, \ldots, A_n$ の総数を $c_n$ とする。
+      $n$ が $4$ 以上の整数であるとき、$c_n$ を $c_{n-1}$ と $c_{n-2}$ を用いて表せ。</p>
+  </div>
+
+  <h3>初見での方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>状況理解</h4>
+
+    <div class="joseki">
+      「場合の数の問題はどんな時も書き出しなどの実験からスタートする」（定石集FGverより）
+    </div>
+
+    <p>バブルソートの変種。右方向パス $(T_1, \ldots, T_{n-1})$ → 左方向パス $(T_{n-1}, \ldots, T_1)$ の合計2パスでソート完了する初期配列を数える。</p>
+
+    <p style="background:#fff3cd; border:1px solid #ffc107; border-radius:6px; padding:10px 14px;">
+      <strong>実験の注意：</strong>$n = 2$ や $n = 3$ では全配列が2パスで整列してしまい（$c_2 = 2$, $c_3 = 6 = 3!$）、
+      何が「失敗する条件」なのか見えない。<strong>$n$ がある程度大きい値で実験することが大事。</strong>
+    </p>
+
+    <p><strong>$n = 4$ で実験する（全24通りのうち代表例）：</strong></p>
+    <table style="border-collapse:collapse; margin:10px 0; font-size:0.95em;">
+      <tr style="border-bottom:2px solid #333;">
+        <th style="padding:4px 10px;">初期</th>
+        <th style="padding:4px 10px;">右パス後</th>
+        <th style="padding:4px 10px;">左パス後</th>
+        <th style="padding:4px 10px;">成否</th>
+      </tr>
+      <tr>
+        <td>$(2,3,4,1)$</td>
+        <td>$(2,3,1,4)$</td>
+        <td>$(1,2,3,4)$</td>
+        <td>✓</td>
+      </tr>
+      <tr>
+        <td>$(4,2,3,1)$</td>
+        <td>$(2,3,1,4)$</td>
+        <td>$(1,2,3,4)$</td>
+        <td>✓</td>
+      </tr>
+      <tr>
+        <td>$(2,4,3,1)$</td>
+        <td>$(2,3,1,4)$</td>
+        <td>$(1,2,3,4)$</td>
+        <td>✓</td>
+      </tr>
+      <tr style="background:#fee;">
+        <td>$(3,4,1,2)$</td>
+        <td>$(3,1,2,4)$</td>
+        <td>$(1,3,2,4)$</td>
+        <td style="color:red;">✗</td>
+      </tr>
+      <tr style="background:#fee;">
+        <td>$(3,4,2,1)$</td>
+        <td>$(3,2,1,4)$</td>
+        <td>$(1,3,2,4)$</td>
+        <td style="color:red;">✗</td>
+      </tr>
+      <tr style="background:#fee;">
+        <td>$(4,3,1,2)$</td>
+        <td>$(3,1,2,4)$</td>
+        <td>$(1,3,2,4)$</td>
+        <td style="color:red;">✗</td>
+      </tr>
+      <tr style="background:#fee;">
+        <td>$(4,3,2,1)$</td>
+        <td>$(3,2,1,4)$</td>
+        <td>$(1,3,2,4)$</td>
+        <td style="color:red;">✗</td>
+      </tr>
+    </table>
+    <p>全24通りを調べると $c_4 = 20$。<strong>失敗する4つは全て $A_1 \ge 3$ かつ $A_2 \ge 3$</strong> のもの。</p>
+
+    <p><strong>実験から気づくこと：</strong></p>
+    <ul>
+      <li>右パスでは<strong>最大値 $n$ が必ず右端に到達</strong>する（大きい泡が右に流れる）。</li>
+      <li>右パス後、<strong>位置1には $\min(A_1, A_2)$ が残る</strong>（$T_1$ で1回だけ比較されて以降触れられない）。</li>
+      <li>失敗例では右パス後の位置1が $3$ になり、左パスだけでは $1$, $2$ を正しい位置に戻しきれていない。</li>
+      <li>→ <strong>$A_1$ と $A_2$ のうち少なくとも一方が $\le 2$ でないと失敗する</strong>（これが (1) の主張）。</li>
+    </ul>
+
+    <div class="joseki">
+      「複数設問 → すべて誘導だと思え」（定石集FGver「誘導利用」より）
+    </div>
+
+    <p>(1) は (2) の<strong>場合分けの土台</strong>になる。$A_1$ や $A_2$ の値で場合分けすれば、
+      各場合がより小さい $n$ の問題に帰着でき、漸化式が立つ。</p>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>右方向パス $(T_1, \ldots, T_{n-1})$ について考える。</p>
+    <p>$T_1$ で $A_1 > A_2$ なら入れ替わる。その後 $T_2, T_3, \ldots$ で、先頭から「大きい方」が泡のように右に送られていく。</p>
+
+    <p><strong>右方向パスの性質：</strong>最大の要素 $n$ が必ず右端に到達する。</p>
+
+    <p>右方向パス後の状態を $B_1, B_2, \ldots, B_n$ とすると $B_n = n$。</p>
+    <p>左方向パス $(T_{n-1}, \ldots, T_1)$ でソートが完了するには、左方向パスだけで $B_1, \ldots, B_{n-1}$ が整列する必要がある。</p>
+
+    <p><strong>左方向パスの性質：</strong>1回の左方向パスでは、各要素は最大で1つ左に移動できる。ただし最小の要素は左端まで一気に移動できる。</p>
+
+    <p>ここで $A_1 \ge 3$ かつ $A_2 \ge 3$ と仮定して矛盾を導く。</p>
+    <p>右方向パスの最初のステップ $T_1$ で $A_1$ と $A_2$ を比較する。どちらが先頭に残るにせよ、
+      1番目と2番目はともに $\ge 3$ のまま（$1$ と $2$ はどちらも3番目以降にいる）。</p>
+    <p>右方向パスでは「通過していく最大値」が各位置を1回だけ通るが、$1$ と $2$ は初期位置より左には動けない。</p>
+    <p>よって右方向パス後、$1$ は3番目以降の位置にいる。左方向パスで $1$ が最終的に1番目に来るには、$1$ は位置3以降から位置1まで移動する必要がある。</p>
+    <p>しかし左方向パスでは $1$ は1回の比較ごとに1つ左に動ける（常に左隣より小さいので）から、位置 $k$ から位置 $1$ に移動可能。</p>
+    <p>問題は $2$ の動き。$2$ も位置3以降から位置2に移動する必要がある。左方向パスの$T_{n-1}, \ldots, T_1$ で $2$ は最大で1つ左に移動できるが… </p>
+    <p>実は左方向パス $(T_{n-1}, T_{n-2}, \ldots, T_1)$ では操作が右から左へ進むので、$1$ が先に左に動いてから $2$ を動かすことになり、
+      $2$ は自分より左に $1$ が来てしまうと追い越せない。</p>
+
+    <p>もっと簡潔に：右方向パスでは位置1にある要素は $T_1$ でしか比較されない。$A_1 \ge 3$, $A_2 \ge 3$ のとき、
+      $\min(A_1, A_2) \ge 3$ が位置1に残る。右方向パス後の $B_1 = \min(A_1, A_2) \ge 3$。</p>
+    <p>左方向パスの最後の操作が $T_1$（$B_1$ と $B_2$ を比較して必要なら入れ替え）。最終結果の位置1が $1$ であるためには、
+      $T_1$ の直前で位置1に $1$ があるか、位置2に $1$ があって入れ替わる必要がある。</p>
+    <p>$T_1$ の直前で位置2に $1$ があるのは $T_2$ が実行された直後。$T_2$ で位置2に $1$ が来るには位置3から来るか、もとから位置2にあるか。</p>
+    <p>このように追跡すると、左方向パスで $1$ は位置 $k$ から位置 $1$ に（$k-1$ 回の比較で）移動できる。
+      しかし $2$ は位置 $j$ から位置 $2$ に移動するために、$T_1$ より前に位置2に到達する必要がある。
+      $2$ が左方向パスで左に1つ動くには、$T_i$（$2$ が位置 $i+1$ にいるとき）で左隣の位置 $i$ の要素より小さい必要がある。
+      $B_1 \ge 3$ なので $2$ が位置2に来たとき、位置1には $B_1 \ge 3$ がいる。$T_1$ で $3$ と $2$ を比較 → 入れ替えて位置1に $2$、位置2に $3$。しかし最終結果の位置1は
+      $1$ でなければならない。矛盾。</p>
+
+    <p>つまり、$1$ と $2$ がともに位置1を必要とするが、左方向パスの $T_1$ は1回しか実行されないので、
+      $1$ か $2$ のどちらかしか位置1には送れない。$A_1 \ge 3$ かつ $A_2 \ge 3$ だと、$1$ と $2$ がともに位置3以降から出発することになり、
+      両方を位置1, 2に収められない。</p>
+
+    <div class="answer-box">
+      $A_1 \ge 3$ かつ $A_2 \ge 3$ は2パスでのソート完了と矛盾。<br>
+      よって $A_1 \le 2$ または $A_2 \le 2$。$\qquad \square$
+    </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p>(1) より $A_1 \le 2$ または $A_2 \le 2$。これで場合分けして漸化式を立てる。</p>
+
+    <p><strong>【Case A：$A_1 = 1$ または $A_2 = 1$ の場合】</strong></p>
+
+    <p><em>Case A-1：$A_1 = 1$ のとき。</em></p>
+    <p>$T_1$ で $1 < A_2$ なので入れ替わらない。位置1に $1$ が固定され、以降の操作は位置 $2, \ldots, n$ だけに影響する。 位置 $2, \ldots, n$ の値 $(A_2, \ldots,
+        A_n)$ は $\{2, \ldots, n\}$ の並び替えで、 これが2パスでソートされる条件は（$1$ を引いて $\{1, \ldots, n-1\}$ に読み替えれば）$c_{n-1}$ 通り。</p>
+
+        <p><em>Case A-2：$A_2 = 1$, $A_1 \neq 1$ のとき。</em></p>
+        <p>$T_1$ で $A_1 > 1$ なので入れ替わり、位置1に $1$ が来る。
+          その後は Case A-1 と全く同じ状況。位置 $2, \ldots, n$ には $(A_1, A_3, \ldots, A_n)$（$\{2, \ldots, n\}$ の並び替え）が入り、
+          これが2パスでソートされる条件で $c_{n-1}$ 通り。</p>
+
+        <p><strong>Case A の合計：$2c_{n-1}$ 通り</strong>（$A_1 = 1$ と $A_2 = 1$ は重複しない）。</p>
+
+        <p><strong>【Case B：$A_1, A_2$ のどちらかが $2$ で、もう一方が $\ge 3$ の場合】</strong></p>
+        <p>（Case A で $1$ が含まれる場合を処理済みなので、ここでは $A_1 \neq 1$ かつ $A_2 \neq 1$。
+          (1) より $A_1 \le 2$ or $A_2 \le 2$ なので、残るのはどちらかが $2$ の場合。）</p>
+
+        <p>$T_1$ の後、位置1には $\min(A_1, A_2) = 2$ が来る（$A_1 = 2$ なら入れ替わらず、$A_2 = 2$ なら入れ替わる）。
+          位置 $2, \ldots, n$ には $\{\max(A_1, A_2),\, A_3, \ldots, A_n\}$ が入り、
+          これは $\{1, 3, 4, \ldots, n\}$ の並び替え（$2$ が位置1に行ったので）。</p>
+
+        <p>$T_1$ 以降の右パス $T_2, \ldots, T_{n-1}$ と左パス $T_{n-1}, \ldots, T_2$ は位置 $2, \ldots, n$ だけに影響する。
+          最終的に位置 $2, \ldots, n$ が $(1, 3, 4, \ldots, n)$（昇順）になっていれば、
+          最後の $T_1$ で $2$ と $1$ が入れ替わり $(1, 2, 3, \ldots, n)$ が完成する。</p>
+
+        <p>位置 $2, \ldots, n$ の $n-1$ 個の値 $\{1, 3, 4, \ldots, n\}$ を $\{1, 2, 3, \ldots, n-1\}$ に読み替えると、
+          2パスでソートされる条件は $c_{n-1}$ 通り。
+          ただし初項（$= \max(A_1, A_2) \ge 3$）は読み替え後 $\ge 2$、つまり初項 $\neq 1$。
+          初項 $= 1$（読み替え前は $\max(A_1,A_2) = 1$）は起こらないので制約として効く：
+          有効なのは $c_{n-1}$ から「初項 $= 1$ で成功するもの $= c_{n-2}$」を引いた $c_{n-1} - c_{n-2}$ 通り。</p>
+
+        <p>さらに、同じ位置 $2, \ldots, n$ の配列に対して $(A_1, A_2) = (2, \max)$ と $(\max, 2)$ の2通りの元配列が対応する。</p>
+
+        <p><strong>Case B の合計：$2(c_{n-1} - c_{n-2})$ 通り。</strong></p>
+
+        <p><strong>【合計】</strong></p>
+        $$c_n = 2c_{n-1} + 2(c_{n-1} - c_{n-2}) = 4c_{n-1} - 2c_{n-2}$$
+
+        <div class="answer-box">
+          $$c_n = 4c_{n-1} - 2c_{n-2}$$
+        </div>
+
+        <p><strong>検算：</strong> $c_2 = 2$, $c_3 = 6$（$n = 3$ は全通り成功）, $c_4 = 4 \cdot 6 - 2 \cdot 2 = 20$, $c_5 = 4 \cdot
+          20 - 2 \cdot 6 = 68$。
+          $n = 4$ の失敗は $(3,4,1,2)$, $(3,4,2,1)$, $(4,3,1,2)$, $(4,3,2,1)$ の4つ → $24 - 4 = 20$ ✓</p>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第5問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>バブルソートの右パス+左パスで整列する初期配列を数える問題。</li>
+      <li>$n$ が小さい（$n = 2, 3$）と全通り成功してしまうので、$n = 4$ 以上で実験する必要がある。</li>
+      <li>$n = 4$ の実験で「$A_1 \ge 3$ かつ $A_2 \ge 3$ のとき失敗する」という構造が見える。</li>
+      <li>(1) はこの観察の証明であり、(2) の場合分け（$A_1$ or $A_2$ が $1$ / $2$）の土台になる。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「場合の数の問題はどんな時も書き出しなどの実験からスタートする」（定石集FGverより）</li>
+      <li>「漸化式の立式はまずはすべての状態を把握し遷移図を書く」（定石集FGverより）</li>
+      <li>「複数設問 → すべて誘導だと思え」（定石集FGverより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 6 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>複素数平面上の点 $\dfrac{1}{2}$ を中心とする半径 $\dfrac{1}{2}$ の円の周から原点を除いた曲線を $C$ とする。</p>
+    <p><strong>(1)</strong> 曲線 $C$ 上の複素数 $z$ に対し、$\dfrac{1}{z}$ の実部は $1$ であることを示せ。</p>
+    <p><strong>(2)</strong> $\alpha$, $\beta$ を曲線 $C$ 上の相異なる複素数とするとき、$\dfrac{1}{\alpha^2} + \dfrac{1}{\beta^2}$
+      がとりうる範囲を複素数平面上に図示せよ。</p>
+    <p><strong>(3)</strong> $\gamma$ を (2) で求めた範囲に属さない複素数とするとき、$\dfrac{1}{\gamma}$ の実部がとりうる値の最大値と最小値を求めよ。</p>
+  </div>
+
+  <h3>初見での方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>状況理解</h4>
+    <p>$C$ は $|z - 1/2| = 1/2$ から $z = 0$ を除いた曲線。$z \in C$ を $z = \frac{1}{2} + \frac{1}{2}(\cos\theta +
+      i\sin\theta)$（$\theta \neq
+      \pi$）とパラメータ表示できる。</p>
+
+    <div class="joseki">
+      「複素数 → ④図形的考察」（定石集FGverより）
+    </div>
+    <p>(1) は $1/z$ の実部を直接計算すればよい。(2) は $1/\alpha^2 + 1/\beta^2$ の範囲 → まず $1/z$ の像を調べてから2乗して足す。</p>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>$z \in C$ なので $|z - 1/2| = 1/2$。$z = x + yi$ とおくと $(x - 1/2)^2 + y^2 = 1/4$、すなわち：</p>
+    $$x^2 + y^2 = x \quad \cdots (\ast)$$
+    <p>$\dfrac{1}{z} = \dfrac{\bar{z}}{|z|^2} = \dfrac{x - yi}{x^2 + y^2}$。$(\ast)$ より $x^2 + y^2 = x$ なので：</p>
+    $$\text{Re}\!\left(\frac{1}{z}\right) = \frac{x}{x^2+y^2} = \frac{x}{x} = 1$$
+    <p>（$z \neq 0$ なので $x \neq 0$ … 実は $x = 0$ かつ $y \neq 0$ の場合：$(\ast)$ より $y^2 = 0$ → $y = 0$ で $z = 0$、除外済み。よって $x
+      \neq 0$。）</p>
+
+    <div class="answer-box">
+      $$\text{Re}\!\left(\frac{1}{z}\right) = 1 \qquad \square$$
+    </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p><strong>【Step 1. $1/z$ の像が直線 $\text{Re}(w) = 1$ 全体であることの証明】</strong></p>
+
+    <p><em>（$\subseteq$）$z \in C$ ならば $1/z$ は直線上：</em></p>
+    <p>(1) より $\text{Re}(1/z) = 1$ なので、$1/z = 1 + si$（ある $s \in \mathbb{R}$）と書ける。</p>
+
+    <p><em>（$\supseteq$）直線上の任意の点が実現される：</em></p>
+    <p>任意の実数 $s$ に対して $z = \dfrac{1}{1+si} = \dfrac{1-si}{1+s^2}$ とおくと、$1/z = 1 + si$ であり、
+      この $z$ が実際に $C$ 上にあることを確認する：</p>
+    $$\left|z - \frac{1}{2}\right|^2 = \left(\frac{1}{1+s^2} - \frac{1}{2}\right)^2 + \left(\frac{s}{1+s^2}\right)^2
+    = \frac{(1-s^2)^2 + 4s^2}{4(1+s^2)^2} = \frac{(1+s^2)^2}{4(1+s^2)^2} = \frac{1}{4}$$
+    <p>よって $|z - 1/2| = 1/2$ なので $z$ は円上。$z \neq 0$ も $1+si \neq 0$ から明らか。よって $z \in C$。</p>
+
+    <p>以上の $\subseteq$ と $\supseteq$ により、<strong>$z$ が $C$ 上を動くとき $1/z$ は直線 $\text{Re}(w) = 1$ 全体をちょうど動く</strong>。</p>
+
+    <p><strong>【Step 2. $1/\alpha^2 + 1/\beta^2$ を $s$, $t$ で表す】</strong></p>
+    <p>Step 1 より $1/\alpha = 1 + si$, $1/\beta = 1 + ti$（$s, t \in \mathbb{R}$, $\alpha \neq \beta$ なので $s \neq
+      t$）。直接計算すると：</p>
+    $$\frac{1}{\alpha^2} + \frac{1}{\beta^2} = (1+si)^2 + (1+ti)^2 = \bigl(2 - s^2 - t^2\bigr) + 2(s+t)\,i$$
+
+    <div class="joseki">
+      「対称式 → $s+t$, $st$ とおく」（定石集FGver「§式の形で注意すべきもの」④より）
+    </div>
+
+    <p><strong>【Step 3. 対称式で整理して範囲を求める】</strong></p>
+    <p>$p = s + t$, $q = st$ とおく。$s^2 + t^2 = p^2 - 2q$ なので：</p>
+    $$\frac{1}{\alpha^2} + \frac{1}{\beta^2} = (2 - p^2 + 2q) + 2p\,i$$
+    <p>実部 $X = 2 - p^2 + 2q$、虚部 $Y = 2p$ とおくと<strong>(ここからは逆像法)</strong> $p = Y/2$ で：</p>
+    $$q = \frac{X - 2 + Y^2/4}{2}$$
+
+    <p><strong>$s \neq t$ な実数 $s$, $t$ が存在する条件</strong>は、$s$, $t$ を2解とする $t^2 - pt + q = 0$ の判別式が正であること：</p>
+    $$p^2 - 4q > 0$$
+    <p>$p = Y/2$ と $q$ の式を代入すると：</p>
+    $$\frac{Y^2}{4} - 4 \cdot \frac{X - 2 + Y^2/4}{2} > 0$$
+    $$\frac{Y^2}{4} - 2X + 4 - \frac{Y^2}{2} > 0$$
+    $$4 - 2X - \frac{Y^2}{4} > 0$$
+    $$Y^2 < -8(X - 2)$$ <p>逆に $Y^2 < -8(X-2)$ を満たす任意の $(X, Y)$ に対して、上の手順で $p$, $q$ を定めれば $s \neq t$ な実数解が存在する。</p>
+
+        <div class="answer-box">
+          $\dfrac{1}{\alpha^2}+\dfrac{1}{\beta^2}$ の範囲は放物線 $Y^2 = -8(X-2)$ の<strong>内部</strong>（境界を含まない）。<br>
+          すなわち頂点 $(2, 0)$、焦点 $(0, 0)$ の放物線の内側。
+        </div>
+  </div>
+
+  <h3>(3) の解法</h3>
+  <div class="kaitou">
+    <p>$\gamma = X + Yi$ は (2) の範囲に属さない（放物線の境界上または外側）ので $Y^2 \ge 16 - 8X$。</p>
+    <p>$\text{Re}(1/\gamma) = \frac{X}{X^2+Y^2}$ の最大値・最小値を求める。</p>
+
+    <div class="joseki">
+      「2変数関数の最大最小」→ ④文字固定（予選決勝法）（定石集FGverより）
+    </div>
+
+    <p><strong>【Step 1. $X$ を固定して $Y$ について最適化】</strong></p>
+    <p>$R = \frac{X}{X^2+Y^2}$ は $X$ を固定すると $Y^2$ の関数。</p>
+    <ul>
+      <li>$X > 0$ のとき：$Y^2$ が小さいほど $R$ は大きい → <strong>$Y^2$ を最小にする境界で最大</strong></li>
+      <li>$X < 0$ のとき：$Y^2$ が小さいほど $|R|$ は大きく、$R$ はより負 → <strong>$Y^2$ を最小にする境界で最小</strong></li>
+      <li>$X = 0$ のとき：$R = 0$（$Y^2 \ge 16$ で実現可能）</li>
+    </ul>
+    <p>いずれの場合も、最大・最小は <strong>$Y^2 = 16 - 8X$（放物線上）または $Y = 0$</strong> で達成される。</p>
+
+    <p><strong>【Step 2. 放物線上（$Y^2 = 16 - 8X$, $X \le 2$）での1変数最適化】</strong></p>
+    <p>$Y^2 = 16 - 8X$ を代入：</p>
+    $$R = \frac{X}{X^2 + 16 - 8X} = \frac{X}{(X-4)^2}$$
+    <p>$f(X) = \frac{X}{(X-4)^2}$（$X \le 2$）の増減を調べる。商の微分：</p>
+    $$f'(X) = \frac{(X-4)^2 - X \cdot 2(X-4)}{(X-4)^4} = \frac{-X-4}{(X-4)^3}$$
+    <p>$X < 2$ のとき $(X-4)^3 < 0$ なので：</p>
+        <ul>
+          <li>$X < -4$：$-(X+4)> 0$ → $f'(X) < 0$（減少）</li>
+          <li>$X = -4$：$f'(X) = 0$（極小）</li>
+          <li>$-4 < X < 2$：$-(X+4) < 0$ → $f'(X)> 0$（増加）</li>
+        </ul>
+        <p>よって $f$ は $X = -4$ で<strong>最小値</strong> $f(-4) = \frac{-4}{(-8)^2} = -\frac{1}{16}$。</p>
+        <p>$X \to 2^-$ のとき $f(X) \to \frac{2}{4} = \frac{1}{2}$（ただし $X = 2$ では $Y^2 = 0$ なので別扱い）。</p>
+
+        <p><strong>【Step 3. $Y = 0$（$X \ge 2$）での確認】</strong></p>
+        <p>$Y = 0$, $X \ge 2$ のとき $R = \frac{X}{X^2} = \frac{1}{X} \le \frac{1}{2}$（等号は $X = 2$）。</p>
+        <p>$\gamma = 2$（放物線の頂点）で $R = 1/2$ が実現される。$X \to \infty$ で $R \to 0^+$。</p>
+
+        <p><strong>【まとめ】</strong></p>
+        <p>Step 2 と Step 3 を合わせると、$R$ の範囲は $[-1/16,\; 1/2]$。</p>
+
+        <div class="answer-box">
+          $$\text{最大値} = \frac{1}{2} \quad (\gamma = 2), \qquad \text{最小値} = -\frac{1}{16} \quad (\gamma = -4 \pm
+          4\sqrt{3}\,i)$$
+        </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第6問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$C$ は $|z - 1/2| = 1/2$（原点を除く）。$z = x+yi$ のとき $x^2+y^2 = x$ なので $\text{Re}(1/z) = x/(x^2+y^2) = 1$。</li>
+      <li>(1) の結果から $1/z = 1 + si$ と書け、逆に任意の $s$ で $z \in C$ が構成できる → $1/z$ は直線 $\text{Re}(w) = 1$ 全体を動く。</li>
+      <li>(2) $1/\alpha^2 + 1/\beta^2 = (1+si)^2 + (1+ti)^2$ を対称式で整理 → 判別式条件で範囲確定。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「複素数 → ④図形的考察」（定石集FGverより）…(1) で $\bar{z}/|z|^2$ を用いた直接計算</li>
+      <li>「対称式 → $s+t$, $st$ とおく」（定石集FGver「§式の形で注意すべきもの」④より）…(2) で使用</li>
+      <li>「2変数関数の最大最小 → ④文字固定（予選決勝法）」（定石集FGverより）…(3) で使用</li>
+    </ul>
+  </div>
+
+</body>
+
+</html>

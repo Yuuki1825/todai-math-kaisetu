@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>東大2026 前期 理系数学 全問解説</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <style>
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.9;
+      color: #1a1a1a;
+      background: #fafafa;
+    }
+
+    h1 {
+      text-align: center;
+      border-bottom: 3px solid #2c3e50;
+      padding-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 5px solid #3498db;
+      padding-left: 12px;
+      margin-top: 50px;
+    }
+
+    h3 {
+      color: #2980b9;
+      margin-top: 30px;
+    }
+
+    h4 {
+      color: #27ae60;
+    }
+
+    .mondai {
+      background: #eaf2f8;
+      border: 1px solid #aed6f1;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .houshin {
+      background: #fef9e7;
+      border: 1px solid #f9e79f;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .houshin h3 {
+      color: #d4ac0d;
+      margin-top: 0;
+    }
+
+    .kaitou {
+      background: #f0faf0;
+      border: 1px solid #a9dfbf;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .joseki {
+      background: #fdedec;
+      border: 1px solid #f5b7b1;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 15px 0;
+      font-size: 0.95em;
+    }
+
+    .joseki::before {
+      content: "📖 教材の定石：";
+      font-weight: bold;
+      color: #c0392b;
+    }
+
+    .matome {
+      background: #f4ecf7;
+      border: 2px solid #bb8fce;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 25px 0;
+    }
+
+    .matome h3 {
+      color: #8e44ad;
+      margin-top: 0;
+    }
+
+    .answer-box {
+      background: #fff;
+      border: 2px solid #e74c3c;
+      border-radius: 6px;
+      padding: 12px 18px;
+      margin: 15px 0;
+      text-align: center;
+      font-size: 1.1em;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #bbb;
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    th {
+      background: #2c3e50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+
+    .intro {
+      background: #ebedef;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>東大2026 前期 理系数学 全問解説</h1>
+  <p style="text-align:center; color:#666;">～ 初見からどう方針を立てるか、教材の定石を軸に ～</p>
+
+  <div class="intro">
+    <h2 style="border:none; margin-top:0;">教材の核心的な考え方（解説の前提）</h2>
+    <p><strong>教材「状況理解とは」の核心：</strong><br>
+      「<strong>どれが自由に決まり、それにより他がどう一意に定まるのか</strong>」を把握すること。つまり<strong>自由度を見極める</strong>ことが、方針立ての出発点になる。</p>
+    <p><strong>定石集の核心：</strong><br>
+      初見の問題でも、<strong>状況理解 → 定石の照合 → 方針決定</strong> という流れで解法選択ができるようになること。</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 1 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p><strong>(1)</strong> 関数 $f(\theta) = \sin\theta - \theta + \dfrac{\theta^3}{6}$ の区間 $-1 \le \theta \le 1$ における最大値
+      $M$ および最小値 $m$ を求めよ。</p>
+    <p><strong>(2)</strong> (1)で定めた $M$ に対し、次の不等式を示せ。</p>
+    $$\frac{7}{8}\pi \;\le\; \int_0^{2\pi} \sin(\cos x - x)\,dx \;\le\; \frac{7}{8}\pi + 4M$$
+  </div>
+
+  <!-- (1) -->
+  <h3>(1) の方針の立て方</h3>
+
+  <div class="houshin">
+    <h3>初見での思考プロセス</h3>
+    <p><strong>状況理解：</strong>1変数関数の最大最小問題。自由度は1（$\theta$のみ）。</p>
+
+    <div class="joseki">
+      「1変数関数の最大最小」→ 順像法（微分して増減表）（定石集FGverより）
+    </div>
+
+    <p><strong>ここでのポイント：</strong> $f(\theta) = \sin\theta - \theta + \frac{\theta^3}{6}$ という形を見たとき、
+      「なぜ $\sin\theta$ と $\theta - \frac{\theta^3}{6}$ の差なのか？」と考える。</p>
+
+    <p>$\sin\theta$ のマクローリン展開は</p>
+    $$\sin\theta = \theta - \frac{\theta^3}{6} + \frac{\theta^5}{120} - \cdots$$
+    <p>なので、$f(\theta) = \sin\theta - \theta + \frac{\theta^3}{6}$ は<strong>展開の第3項以降</strong>に相当する。
+      つまり $f(\theta)$ は $\theta=0$ の近くで非常に小さいはず。この感覚があると(2)への繋がりも見える。</p>
+
+    <div style="background:#e8f0fe; border:1px solid #90caf9; border-radius:8px; padding:16px 20px; margin:18px 0;">
+      <h4 style="color:#1565c0; margin-top:0;">補足：マクローリン展開とは？（高校生向け）</h4>
+      <p>マクローリン展開とは、<strong>$\sin\theta$ のような複雑な関数を、$\theta$
+          の多項式（足し算・掛け算だけの式）で近似する方法</strong>です。大学で学ぶ内容ですが、考え方自体はシンプルです。</p>
+
+      <p>たとえば $\sin\theta$ を $\theta = 0$ の周りで近似すると：</p>
+      <ul>
+        <li><strong>1次近似：</strong>$\sin\theta \approx \theta$（$\theta$ が小さいとき $\sin\theta \approx \theta$ という、おなじみの近似）
+        </li>
+        <li><strong>3次近似：</strong>$\sin\theta \approx \theta - \dfrac{\theta^3}{6}$（もう少し精度を上げた近似）</li>
+        <li><strong>5次近似：</strong>$\sin\theta \approx \theta - \dfrac{\theta^3}{6} + \dfrac{\theta^5}{120}$（さらに精密）</li>
+      </ul>
+      <p>項を増やすほど、より広い範囲で正確に近似できます。</p>
+
+      <p>この問題の $f(\theta) = \sin\theta - \theta + \dfrac{\theta^3}{6}$ は、
+        $\sin\theta$ から3次近似 $\theta - \dfrac{\theta^3}{6}$ を引いたもの、
+        つまり<strong>「3次近似の誤差」そのもの</strong>です。
+        誤差なので $\theta = 0$ 付近では非常に小さく、$\theta^5$ のオーダーになります。</p>
+
+      <p><strong>高校数学との接点：</strong> $\theta$ が小さいとき $\sin\theta \approx \theta$ という近似は、極限 $\displaystyle\lim_{\theta \to
+        0}\frac{\sin\theta}{\theta}=1$ から来ています。マクローリン展開はこれをさらに精密にしたものと考えられます。</p>
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>微分する：</p>
+    $$f'(\theta) = \cos\theta - 1 + \frac{\theta^2}{2}$$
+
+    <p>ここで $\cos\theta \ge 1 - \frac{\theta^2}{2}$ を示す。
+      $h(\theta) = \cos\theta - 1 + \frac{\theta^2}{2}$ とおくと $h(0) = 0$ であり、</p>
+    $$h'(\theta) = -\sin\theta + \theta$$
+    <p>$\theta \ge 0$ のとき $\sin\theta \le \theta$ より $h'(\theta) \ge 0$。
+      $h$ は偶関数なので、すべての $\theta$ で $h(\theta) \ge 0$。</p>
+
+    <p>よって $f'(\theta) \ge 0$（等号は $\theta = 0$ のみ）。</p>
+    <p><strong>$f(\theta)$ は $[-1,1]$ で単調増加。</strong></p>
+
+    <p>また $f$ は奇関数（$f(-\theta) = -f(\theta)$）なので $m = -M$。</p>
+
+    <div class="answer-box">
+      $$M = f(1) = \sin 1 - \frac{5}{6}, \qquad m = -\sin 1 + \frac{5}{6}$$
+    </div>
+  </div>
+
+  <!-- (2) -->
+  <h3>(2) の方針の立て方</h3>
+
+  <div class="houshin">
+    <h3>初見での思考プロセス</h3>
+
+    <div class="joseki">
+      「複数設問 → すべて誘導だと思え」（定石集FGver「誘導利用」より）
+    </div>
+
+    <p><strong>Step A. 誘導の読み取り：</strong>
+      $(1)$ の結果は $\sin\theta - \theta + \frac{\theta^3}{6}$ の評価。つまり<strong>$\sin\theta$ を $\theta - \frac{\theta^3}{6}$
+        で近似でき、その誤差が $[-M, M]$ に収まる</strong>ということ。</p>
+
+    <div class="joseki">
+      「適用条件がヒントになる」（定石集FGver「誘導利用」より）
+    </div>
+
+    <p>$\cos x \in [-1,1]$ なので $\theta = \cos x$ と置けば $(1)$ が使える！</p>
+
+    <div class="joseki">
+      「定積分の評価方法」→ 結論から予想、一部を定数化、三角不等式など（定石集FGverより）
+    </div>
+
+    <p><strong>Step B. なぜ加法定理を使おうと思うのか？</strong></p>
+
+    <p>(1) の結果を使うには、被積分関数の中に「$\sin(\cos x)$」を<strong>単独で</strong>取り出す必要がある。
+      ところが今の被積分関数は $\sin(\cos x - x)$ であり、$\sin$ の中に $\cos x$ と $x$ が<strong>混在</strong>している。</p>
+
+    <p>この「$\sin$ の中身を分離したい」という動機から、<strong>$\sin(A-B)$ の加法定理</strong>で展開して $\sin(\cos x)$ と $\cos(\cos x)$ に分けるのが自然な一手。
+    </p>
+
+    <p><strong>Step C. 第2項がゼロになりそうだと、どうすれば気づけるか？</strong></p>
+
+    <p>加法定理で展開すると2つの項が出る：</p>
+    $$\underbrace{\sin(\cos x)\cos x}_{\text{第1項}} - \underbrace{\cos(\cos x)\sin x}_{\text{第2項}}$$
+
+    <p>第1項には $\sin(\cos x)$ が入っていて $(1)$ の誘導が活きる。
+      一方、第2項は $(1)$ の結果と関係がなさそう。</p>
+
+    <p>誘導が使えないので計算するしかないが、形を見るとこれは特殊基本関数（微分接触形）なので計算できることが分かる。</p>
+
+    <p>また式を観察すると、$\cos x$ は $[0,\pi]$ と $[\pi,2\pi]$ で同じ値域 $[-1,1]$ を逆向きに動く一方、
+      $\sin x$ の符号が反転するので、<strong>2つの区間の積分が打ち消し合って 0</strong> になることが計算せずともわかる。</p>
+
+    <p style="color:#666; font-size:0.9em;">（一般に $\displaystyle\int_0^{2\pi}h(\cos x)\sin x\,dx = 0$ が成り立つ。
+      $h(\cos x)\sin x$ は $x = \pi$ に関して反対称だから。これを知っていると一瞬で見抜ける。）</p>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p><strong>Step 1.</strong> 加法定理で展開する：</p>
+    $$\int_0^{2\pi} \sin(\cos x - x)\,dx = \int_0^{2\pi}\bigl[\sin(\cos x)\cos x - \cos(\cos x)\sin x\bigr]\,dx$$
+
+    <p><strong>Step 2.</strong> 第2項の積分が $0$ になることを示す。</p>
+    <p>$t = \cos x$, $dt = -\sin x\,dx$ と置換する。</p>
+    <p>$[0, \pi]$ で $\sin x \ge 0$ なので：</p>
+    $$\int_0^{\pi}\cos(\cos x)\sin x\,dx = \int_1^{-1}\cos t\cdot(-dt) = \int_{-1}^{1}\cos t\,dt = 2\sin 1$$
+    <p>$[\pi, 2\pi]$ で $\sin x \le 0$ なので：</p>
+    $$\int_{\pi}^{2\pi}\cos(\cos x)\sin x\,dx = -\int_{-1}^{1}\cos t\,dt = -2\sin 1$$
+    <p>合計 $= 0$。よって：</p>
+    $$\int_0^{2\pi}\sin(\cos x - x)\,dx = \int_0^{2\pi}\sin(\cos x)\cos x\,dx \quad\cdots\; I$$
+
+    <p><strong>Step 3.</strong> (1)の結果を適用する。$|\cos x| \le 1$ なので：</p>
+    $$\sin(\cos x) = \cos x - \frac{\cos^3 x}{6} + f(\cos x)$$
+    <p>ここで $|f(\cos x)| \le M$。さらに重要なのは：</p>
+    <ul>
+      <li>$\cos x \ge 0$ のとき $f(\cos x) \ge 0$（$f$ は単調増加で $f(0)=0$）</li>
+      <li>$\cos x \le 0$ のとき $f(\cos x) \le 0$</li>
+    </ul>
+    <p>つまり<strong>いずれの場合も $f(\cos x)\cdot\cos x \ge 0$</strong>。</p>
+
+    <p><strong>Step 4.</strong> 基本積分を計算する：</p>
+    $$\int_0^{2\pi}\cos^2 x\,dx = \pi, \qquad \int_0^{2\pi}\cos^4 x\,dx = \frac{3\pi}{4}$$
+    $$\int_0^{2\pi}\left(\cos x - \frac{\cos^3 x}{6}\right)\cos x\,dx = \pi - \frac{1}{6}\cdot\frac{3\pi}{4} =
+    \frac{7\pi}{8}$$
+
+    <p><strong>Step 5.</strong> 評価を完成させる：</p>
+    $$I = \frac{7\pi}{8} + \underbrace{\int_0^{2\pi}f(\cos x)\cos x\,dx}_{\ge\, 0}$$
+    <p>よって $I \ge \dfrac{7\pi}{8}$（左側の不等式）。</p>
+
+    <p>上からの評価は $|f(\cos x)| \le M$ と $\displaystyle\int_0^{2\pi}|\cos x|\,dx = 4$ から：</p>
+    $$\int_0^{2\pi}f(\cos x)\cos x\,dx \;\le\; \int_0^{2\pi}M|\cos x|\,dx = 4M$$
+
+    <div class="answer-box">
+      $$\frac{7}{8}\pi \;\le\; \int_0^{2\pi}\sin(\cos x - x)\,dx \;\le\; \frac{7}{8}\pi + 4M \qquad \square$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第1問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>(1)：$f(\theta)$ は1変数関数で、$[-1,1]$ 上の最大最小を求める問題。自由度1。</li>
+      <li>(1)：マクローリン展開を知っていれば $f(\theta)$ が「3次近似の誤差」であると分かり、(2) への繋がりが見える。</li>
+      <li>(2)：(1) の結果は「$\sin\theta \approx \theta - \theta^3/6$ の誤差評価」。$\cos x \in [-1,1]$ なので $\theta = \cos x$ とおけば
+        (1) が適用できる。</li>
+      <li>(2)：被積分関数 $\sin(\cos x - x)$ の中身が混在 → 加法定理で $\sin(\cos x)$ を単独に分離する動機がある。</li>
+      <li>(2)：第2項 $\cos(\cos x)\sin x$ は $x = \pi$ に関する反対称性から積分が 0 になる。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「1変数関数の最大最小 → 順像法（微分して増減表）」（定石集FGverより）</li>
+      <li>「複数設問 → すべて誘導だと思え」「適用条件がヒントになる」（定石集FGver「誘導利用」より）</li>
+      <li>「定積分の評価方法」→ 結論から予想、一部を定数化（定石集FGverより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 2 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>$n$ を正の整数とする。座標平面上の $3n$ 個の点からなす集合</p>
+    $$\{(x,y) \mid x,y \text{ は } 1 \le x \le 3,\; 1 \le y \le n \text{ を満たす整数}\}$$
+    <p>から相異なる3点を選ぶ。選んだ3点が三角形の3頂点となる確率を $p_n$ とする。</p>
+    <p><strong>(1)</strong> $p_5$ を求めよ。</p>
+    <p><strong>(2)</strong> $m$ を2以上の整数とする。$p_{2m}$ を求めよ。</p>
+  </div>
+
+  <h3>初見での方針の立て方</h3>
+
+  <div class="houshin">
+    <h3>初見での思考プロセス</h3>
+    <p><strong>状況理解：</strong>格子点の集合は<strong>3列 × n行</strong>の長方形格子。
+      三角形にならないのは「3点が一直線上にある場合」のみ。</p>
+
+    <div class="joseki">
+      「場合の数の問題はどんな時も書き出しなどの実験からスタートする」（定石集FGverより）
+    </div>
+
+    <p><strong>余事象の発想：</strong>三角形にならない場合（＝3点が同一直線上）を数えて全体から引く方が楽。</p>
+  </div>
+
+  <h3>(1) の解法（$n=5$、点は15個）</h3>
+  <div class="kaitou">
+    <p>全選び方：$\dbinom{15}{3} = 455$</p>
+    <p><strong>3点が同一直線上にある場合を分類して数える：</strong></p>
+
+    <h4>縦の直線上</h4>
+    <p>$x=1,2,3$ のそれぞれに5点ずつ。各列から3点選ぶ：$\dbinom{5}{3}=10$。
+      3列あるので $30$ 通り。</p>
+
+    <h4>横の直線上</h4>
+    <p>$y=1,2,3,4,5$ のそれぞれに3点。各行から3点選ぶ：$\dbinom{3}{3}=1$。
+      5行あるので $5$ 通り。</p>
+
+    <h4>斜めの直線上</h4>
+    <ul>
+      <li>傾き $+1$：$(1,1),(2,2),(3,3)$；$(1,2),(2,3),(3,4)$；$(1,3),(2,4),(3,5)$ → 3通り</li>
+      <li>傾き $-1$：$(1,3),(2,2),(3,1)$；$(1,4),(2,3),(3,2)$；$(1,5),(2,4),(3,3)$ → 3通り</li>
+      <li>傾き $+2$：$(1,1),(2,3),(3,5)$ → 1通り</li>
+      <li>傾き $-2$：$(1,5),(2,3),(3,1)$ → 1通り</li>
+      <li>傾き $\pm\frac{1}{2}$：$x=2$ で $y$ が整数にならないので不可 → 0通り</li>
+    </ul>
+    <p>同一直線上の合計：$30+5+3+3+1+1 = 43$</p>
+
+    <div class="answer-box">
+      $$p_5 = 1 - \frac{43}{455} = \frac{412}{455}$$
+    </div>
+  </div>
+
+  <h3>(2) の解法（$n=2m$、$m \ge 2$）</h3>
+  <div class="kaitou">
+    <p>全選び方：$\dbinom{6m}{3} = m(6m-1)(6m-2)$</p>
+    <p><strong>同一直線上の3点を系統的に数える：</strong></p>
+
+    <h4>縦線</h4>
+    <p>3列、各列 $2m$ 点。</p>
+    $$3\binom{2m}{3} = m(2m-1)(2m-2)$$
+
+    <h4>横線</h4>
+    <p>$2m$ 行、各行3点。$2m \cdot \dbinom{3}{3} = 2m$</p>
+
+    <h4>斜め線（$x=1,2,3$ を1つずつ使う場合）</h4>
+    <p>3点 $(1,a),\;(2,b),\;(3,c)$ が一直線上
+      $\iff$ $2b = a + c$（等差条件）。</p>
+    <p>横線（$a=b=c$）を除いた $a \neq c$ のものを数える。</p>
+    <p>$a+c$ が偶数で $a \neq c$：</p>
+    <ul>
+      <li>$a,c$ 共に奇数：$m$ 個から異なる2つ選ぶ → $\dbinom{m}{2}$ 通り</li>
+      <li>$a,c$ 共に偶数：同様に $\dbinom{m}{2}$ 通り</li>
+    </ul>
+    <p>斜めの合計：$2\dbinom{m}{2} = m(m-1)$</p>
+
+    <h4>合計</h4>
+    $$m(2m-1)(2m-2) + 2m + m(m-1) = m(4m^2 - 5m + 3)$$
+
+    <div class="answer-box">
+      $$p_{2m} = 1 - \frac{4m^2 - 5m + 3}{(6m-1)(6m-2)} = \frac{32m^2 - 13m - 1}{(6m-1)(6m-2)}$$
+    </div>
+
+    <p><strong>検算（$m=2$, $n=4$）：</strong>
+      分子 $128-26-1=101$、分母 $11 \times 10 = 110$。
+      $p_4 = 101/110$。直接計算とも一致。</p>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第2問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>格子点の集合は 3列 × $n$ 行の長方形格子。</li>
+      <li>三角形にならないのは「3点が一直線上にある場合」のみ → 余事象で数える方が楽。</li>
+      <li>3列しかないので、斜めの直線上の3点は必ず $x=1,2,3$ を1つずつ使う → 等差条件 $2b = a+c$ に帰着。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「場合の数の問題はどんな時も書き出しなどの実験からスタートする」（定石集FGverより）</li>
+      <li>余事象の利用（三角形にならない場合を数えて全体から引く）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 3 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>座標空間内の原点を中心とする半径5の球面を $S$ とする。$S$ 上の相異なる3点 P, Q, R が次の条件を満たすように動く。</p>
+    <p><strong>条件：</strong>P, Q は $xy$ 平面上にあり、三角形 PQR の重心は $\text{G}(2,0,1)$ である。</p>
+    <p><strong>(1)</strong> 線分 PQ の中点 M の軌跡を $xy$ 平面上に図示せよ。</p>
+    <p><strong>(2)</strong> 線分 PQ が通過する範囲を $xy$ 平面上に図示せよ。</p>
+  </div>
+
+  <h3>初見での方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>状況理解</h4>
+
+    <div class="joseki">
+      「円上の点」→ $\sin$, $\cos$ で表す（IA定石リストより）
+    </div>
+
+    <p>P, Q は $xy$ 平面上（$z=0$）かつ球面 $x^2+y^2+z^2=25$ 上 → $z=0$ を代入すると $x^2+y^2=25$。
+      つまり P, Q は<strong>半径5の円上の点</strong>なので：</p>
+    $$\text{P} = (5\cos\alpha,\, 5\sin\alpha,\, 0), \quad \text{Q} = (5\cos\beta,\, 5\sin\beta,\, 0)$$
+    <p>R は球面上の点 $\text{R} = (x_R,\, y_R,\, z_R)$（$x_R^2 + y_R^2 + z_R^2 = 25$）。</p>
+
+    <p>重心 $\text{G}(2,0,1)$ の条件を書き下すと：</p>
+    $$x_R = 6 - (5\cos\alpha+5\cos\beta), \quad y_R = -(5\sin\alpha+5\sin\beta), \quad z_R = 3$$
+    <p>つまり<strong>P, Q の位置（$\alpha, \beta$）を決めれば R は自動的に1点に定まる</strong>。
+      さらに中点 $M = \left(\frac{5\cos\alpha+5\cos\beta}{2},\; \frac{5\sin\alpha+5\sin\beta}{2}\right)$ を $(X,Y)$ とおくと：</p>
+    $$x_R = 6-2X, \quad y_R = -2Y, \quad z_R = 3$$
+    <p>こうして <strong>M の座標 $(X,Y)$ だけで R の座標が完全に決まる</strong>。
+      あとは R が球面上にあるかどうか（$x_R^2+y_R^2+z_R^2 = 25$）だけが問題。</p>
+
+    <h4>逆像法の実験</h4>
+
+    <div class="joseki">
+      軌跡・通過範囲の問題 → 逆像法（定石集FGverより）
+    </div>
+
+    <p><strong>$(X,Y) = (1,2)$ は M の軌跡に含まれるか？</strong></p>
+    <p>$M = (1,2)$ と<strong>固定</strong>すると $x_R = 6-2 = 4$, $y_R = -4$, $z_R = 3$。球面条件を確認：</p>
+    $$x_R^2 + y_R^2 + z_R^2 = 16 + 16 + 9 = 41 \neq 25$$
+    <p>球面に乗らない → <strong>$(1,2)$ は軌跡に含まれない</strong>。</p>
+
+    <p><strong>ポイント：</strong>M を固定すると R が自動的に決まり、「R が球面上にあるか？」の一発判定で済む。
+      これを一般の定数 $(X,Y)$ に対して行えば M の軌跡が求まる。</p>
+  </div>
+
+  <h3>(1) の解法（逆像法）</h3>
+  <div class="kaitou">
+
+    <p><strong>【一般化：定数 $(X,Y)$ に対して同じことを行う】</strong></p>
+    <p>$(X,Y)$ を定数として固定する。状況理解より $x_R = 6-2X$, $y_R = -2Y$, $z_R = 3$。
+      R が球面上にある条件は：</p>
+    $$(6-2X)^2 + (-2Y)^2 + 9 = 25$$
+    $$4(X-3)^2 + 4Y^2 = 16$$
+    $$(X-3)^2 + Y^2 = 4$$
+    <p>これを満たす $(X,Y)$ が M の軌跡。ただし $(X,Y) = (5,0)$ のとき P = Q となるので除外。</p>
+
+    <div class="answer-box">
+      M の軌跡は<strong>中心 $(3,0)$、半径 $2$ の円</strong>（ただし点 $(5,0)$ を除く）
+    </div>
+  </div>
+
+  <h3>(2) の方針の立て方</h3>
+
+  <div class="houshin">
+
+    <div class="joseki">
+      「円上の点」→ $\sin$, $\cos$ で表す（IA定石リストより）
+    </div>
+
+    <p><strong>見通し：</strong>P, Q の2動点が動くが、(1) の結果から中点 M を固定すれば弦 PQ は1本に定まる。
+      M は円 $(X-3)^2+Y^2=4$ 上の点なので $\sin$, $\cos$ で1パラメータ $\phi$ に表示できる。
+      すると弦の方程式は $\phi$ だけの式になるから、
+      「$(x,y)$ が通過範囲にある $\Longleftrightarrow$ ある $\phi \in (0,2\pi)$ が存在して弦の方程式が成立」
+      と読み替えられ、$A\cos\phi + B\sin\phi = C$ の存在条件に帰着する見込み。</p>
+
+    <p><strong>この見通しのもとで、以下の順に計算する：</strong></p>
+    <ol>
+      <li>M を $\phi$ でパラメータ表示する</li>
+      <li>弦の方程式を導出し、$\phi$ で表す</li>
+      <li>具体点で実験 → 一般化</li>
+    </ol>
+  </div>
+
+  <h3>(2) の解法（逆像法）</h3>
+  <div class="kaitou">
+    <p><strong>【Step 1. M のパラメータ表示】</strong></p>
+    <p>M は円 $(X-3)^2+Y^2=4$（中心 $(3,0)$, 半径 $2$）上の点なので：</p>
+    $$(X,\,Y) = (3+2\cos\phi,\; 2\sin\phi)$$
+    <p>ただし $\phi = 0$ のとき $(X,Y) = (5,0)$ で P = Q となり弦が存在しないので除外。よって $\phi \in (0,\, 2\pi)$。</p>
+
+    <p><strong>【Step 2. 弦の方程式の導出】</strong></p>
+    <p>円 $x^2+y^2=25$ の弦 PQ の中点が $M=(X,Y)$ であるとき、弦の方程式を求める。</p>
+    <p>円の中心は原点 O。<strong>「円の中心から弦の中点へ向かうベクトルは弦に垂直」</strong>なので、
+      直線 PQ は、ベクトル $\overrightarrow{OM} = (X,Y)$ に垂直で点 $M$ を通る。</p>
+    <p>点 $(x,y)$ が PQ 上にある条件は、$(x-X,\, y-Y)$ が $(X,Y)$ に垂直であること：</p>
+    $$X(x-X) + Y(y-Y) = 0$$
+    $$Xx + Yy = X^2 + Y^2$$
+    <p>ここで $(X-3)^2+Y^2=4$ を展開すると $X^2+Y^2 = 6X-5$ なので：</p>
+    $$Xx + Yy = 6X - 5$$
+    $$X(x-6) + Yy = -5$$
+
+    <p><strong>【Step 3. $\phi$ で表す】</strong></p>
+    <p>$(X,Y) = (3+2\cos\phi,\; 2\sin\phi)$ を代入：</p>
+    $$(3+2\cos\phi)(x-6) + 2\sin\phi \cdot y = -5$$
+    $$3(x-6) + 2(x-6)\cos\phi + 2y\sin\phi = -5$$
+    $$2(x-6)\cos\phi + 2y\sin\phi = -5 - 3(x-6) = 13 - 3x$$
+    <p>整理すると：</p>
+    $$2(x-6)\cos\phi + 2y\sin\phi = 13 - 3x \quad \cdots (\ast)$$
+
+    <p>以下、この直線がとある点を通るための条件を考えることになる（→逆像法）が、
+      その前に、この形の式が解を持つための条件を確認しておく。</p>
+    <p><strong>【$A\cos\phi + B\sin\phi = C$ の解の存在条件】</strong></p>
+    <div class="joseki">
+      「$\sin$, $\cos$ の式 → 単位円上の点 $(u,v) = (\cos\phi,\, \sin\phi)$ とみる」（定石集FGver §三角関数より）
+    </div>
+
+    <p>$(\ast)$ は $A\cos\phi + B\sin\phi = C$ の形をしている。
+      $u = \cos\phi$, $v = \sin\phi$ とおくと、これは：</p>
+    $$Au + Bv = C \quad \text{（直線）}$$
+    <p>一方、$(u,v)$ は単位円 $u^2+v^2=1$ 上の点。
+      よって「$\phi$ が存在する $\Longleftrightarrow$ 直線 $Au+Bv=C$ が単位円と共有点を持つ」。</p>
+    <p>原点から直線 $Au+Bv=C$ への距離は $\dfrac{|C|}{\sqrt{A^2+B^2}}$ なので、共有点を持つ条件は：</p>
+    $$\frac{|C|}{\sqrt{A^2+B^2}} \le 1 \quad \Longleftrightarrow \quad A^2 + B^2 \ge C^2$$
+
+    <p><strong>【ポイント：具体的な点で試す】</strong></p>
+    <p>$(x,y) = (3,1)$ は通過範囲に含まれるか？　$(x,y) = (3,1)$ を $(\ast)$ に<strong>固定して</strong>代入：</p>
+    $$2(3-6)\cos\phi + 2 \cdot 1 \cdot \sin\phi = 13 - 9$$
+    $$-6\cos\phi + 2\sin\phi = 4$$
+    <p>$A = -6$, $B = 2$, $C = 4$ として $A^2+B^2 \ge C^2$ を確認：</p>
+    $$(-6)^2 + 2^2 = 40 \ge 16 = 4^2 \quad \checkmark$$
+    <p>成り立つので、$(3,1)$ は<strong>通過範囲に含まれる</strong>。</p>
+
+    <p><strong>【一般化：定数 $(x,y)$ に対して同じことを行う】</strong></p>
+    <p>$(x,y)$ を定数として固定する。$(\ast)$ が $\phi$ について解を持つ条件は $A^2 + B^2 \ge C^2$：</p>
+    $$4(x-6)^2 + 4y^2 \ge (13-3x)^2$$
+
+    <p>整理すると：</p>
+    $$5(x-1)(x-5) \le 4y^2$$
+    $$\text{すなわち} \quad \frac{(x-3)^2}{4} - \frac{y^2}{5} \le 1$$
+
+    <p>さらに PQ は円 $x^2+y^2 = 25$ の弦なので $x^2+y^2 \le 25$。</p>
+
+    <div class="answer-box">
+      通過範囲は、円 $x^2+y^2 \le 25$ の内部で、
+      双曲線 $\dfrac{(x-3)^2}{4} - \dfrac{y^2}{5} = 1$ の2頂点 $(1,0)$, $(5,0)$ の間の領域
+    </div>
+    <div style="background:#e8f0fe; border:1px solid #90caf9; border-radius:8px; padding:16px 20px; margin:18px 0;">
+      <h4 style="color:#1565c0; margin-top:0;">補足：弦の方程式について</h4>
+      <p>いざ、中点の座標が分かる弦の方程式を求めるとなると少しわからないかもしれないが、そもそも直線の方程式を求める方法は3パターンあり</p>
+      <ul>
+        <li>「通る点」と「傾き」により決定</li>
+        <li>「通る2点」により決定</li>
+        <li>「点と法線」により決定</li>
+      </ul>
+      <p>これらを踏まえると、3番目の方法が今回は一番適していると判断できる</p>
+    </div>
+
+    <div class="matome">
+      <h3>方針の立て方のまとめ（第3問）</h3>
+      <h4>① 状況理解で分かること</h4>
+      <ul>
+        <li>P, Q は $xy$ 平面と球面の交わり → 半径5の円上の点。$\sin$, $\cos$ で表示。</li>
+        <li>重心条件から R の座標は M の座標 $(X,Y)$ だけで完全に決まる（$x_R=6-2X$, $y_R=-2Y$, $z_R=3$）。</li>
+        <li>(1)：M を固定 → R が自動的に定まる → 「R が球面上にあるか？」の一発判定。</li>
+        <li>(2)：M を固定 → 弦 PQ は1本に定まる。M は円上の点なので $\phi$ で1パラメータ化できる。</li>
+      </ul>
+      <h4>② 用いた定石</h4>
+      <ul>
+        <li>「円上の点 → $\sin$, $\cos$ で表す」（IA定石リストより）</li>
+        <li>「軌跡・通過範囲の問題 → 逆像法」（定石集FGverより）…(1)(2)ともに使用</li>
+        <li>「円の中心から弦の中点へのベクトルは弦に垂直」→ 弦の方程式の導出に使用</li>
+        <li>「$\sin$, $\cos$ の式 → 単位円上の点とみる」（定石集FGver「§三角関数」より）…(2)の$\phi$の存在条件</li>
+        <li>「線分の長さ → 傾きを用いて表す」（IA定石リストより）</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>第 4 問</h2>
+    <!-- ============================================================ -->
+
+    <div class="mondai">
+      <p>$k$ を実数とし、座標平面上の曲線 $C: y = x^3 - kx$ を定める。$C$ 上の2点 P, Q に対する以下の条件 $(*)$ を考える。</p>
+      <p><strong>条件 $(*)$：</strong>原点 O, 点 P, 点 Q は相異なり、$C$ の O, P, Q における接線のうち、どの2本も交わり、そのなす角はすべて $\dfrac{\pi}{3}$ となる。
+      </p>
+      <p><strong>(1)</strong> 条件 $(*)$ を満たす P, Q が存在するような $k$ の範囲を求めよ。</p>
+      <p><strong>(2)</strong> $k$ が (1) で定まる範囲にあるとする。P, Q が条件 $(*)$ を満たすように動くとき、$C$ の O, P, Q における接線によって囲まれる三角形の面積 $S$
+        の最大値を $M$、最小値を $m$ とおく。ただし、3本の接線が1点で交わるときは $S=0$ とする。$M=4m$ となる $k$ の値を求めよ。</p>
+    </div>
+
+    <h3>初見での方針の立て方</h3>
+
+    <div class="houshin">
+      <h4>状況理解</h4>
+
+      <p>$y' = 3x^2 - k$ なので、各点の接線の傾きは：</p>
+      <ul>
+        <li>O における接線の傾き：$-k$</li>
+        <li>P $= (p,\, p^3-kp)$ における接線の傾き：$3p^2 - k$</li>
+        <li>Q $= (q,\, q^3-kq)$ における接線の傾き：$3q^2 - k$</li>
+      </ul>
+
+      <div class="joseki">
+        「なす角の扱い」→ $\tan\theta = \left|\dfrac{m_1-m_2}{1+m_1m_2}\right|$ （IIB定石リストより）
+      </div>
+
+      <p>3本の直線が互いに $\frac{\pi}{3}$ のなす角 → <strong>正三角形的な配置</strong>。</p>
+      <p>O の接線の傾きが $-k$ なので、$\tan\alpha = -k$ となる $\alpha$ をとると、
+        他の2本の傾きは $\tan(\alpha+\frac{\pi}{3})$, $\tan(\alpha-\frac{\pi}{3})$。</p>
+
+      <h4>$3p^2$, $3q^2$ を $k$ で表す</h4>
+
+      <p>$\tan\alpha = -k$ として加法定理より：</p>
+      $$\tan\!\left(\alpha+\frac{\pi}{3}\right) = \frac{-k+\sqrt{3}}{1+\sqrt{3}\,k}, \qquad
+      \tan\!\left(\alpha-\frac{\pi}{3}\right) = \frac{-k-\sqrt{3}}{1-\sqrt{3}\,k}$$
+
+      <p>$3p^2 - k$, $3q^2 - k$ がこの2つの値（順不同）なので、$3p^2$, $3q^2$ はそれぞれに $k$ を足した値：</p>
+      $$3p^2 = \frac{-k+\sqrt{3}}{1+\sqrt{3}\,k} + k = \frac{-k+\sqrt{3}+k+\sqrt{3}\,k^2}{1+\sqrt{3}\,k} =
+      \frac{\sqrt{3}(1+k^2)}{1+\sqrt{3}\,k} \quad \cdots (\text{A})$$
+      $$3q^2 = \frac{-k-\sqrt{3}}{1-\sqrt{3}\,k} + k = \frac{-k-\sqrt{3}+k-\sqrt{3}\,k^2}{1-\sqrt{3}\,k} =
+      \frac{-\sqrt{3}(1+k^2)}{1-\sqrt{3}\,k} \quad \cdots (\text{B})$$
+      <p>（$p$, $q$ の対応は入れ替えてもよい。）</p>
+
+      <div class="joseki">
+        「1変数関数の最大最小（値域を求める問題）」→ 逆像法（定石集FGverより）
+      </div>
+
+      <h4>逆像法の実験</h4>
+
+      <p><strong>$k = 1$ は答えに含まれるか？</strong>　(A)(B) に $k = 1$ を代入：</p>
+      $$3p^2 = \frac{\sqrt{3}(1+1)}{1+\sqrt{3}} = \frac{2\sqrt{3}}{1+\sqrt{3}} > 0 \quad \checkmark$$
+      $$3q^2 = \frac{-\sqrt{3}(1+1)}{1-\sqrt{3}} = \frac{-2\sqrt{3}}{1-\sqrt{3}} = \frac{2\sqrt{3}}{\sqrt{3}-1} > 0
+      \quad \checkmark$$
+      <p><strong>相異なる$p$と$q$が存在</strong> → $k = 1$ は答えに含まれる。</p>
+
+      <p><strong>$k = 0$ は答えに含まれるか？</strong>　(A)(B) に $k = 0$ を代入：</p>
+      $$3p^2 = \frac{\sqrt{3} \cdot 1}{1} = \sqrt{3} > 0 \quad \checkmark$$
+      $$3q^2 = \frac{-\sqrt{3} \cdot 1}{1} = -\sqrt{3} < 0 \quad \times$$ <p>$q^2 < 0$ は不可能 → <strong>$k = 0$
+          は答えに含まれない</strong>。</p>
+
+          <p><strong>ポイント：</strong>$k$ を固定して (A)(B) に代入し、ともに正かどうかで判定できる。
+            これを一般の $k$ に対して行えば答えが出る。</p>
+    </div>
+
+    <h3>(1) の解法（逆像法）</h3>
+    <div class="kaitou">
+
+      <p><strong>【一般化：定数 $k$ に対して同じことを行う】</strong></p>
+      <p>$k$ を定数として固定する。(A)(B) がともに正となる条件を求める。</p>
+
+      <p><strong>(A) について：</strong>分子 $\sqrt{3}(1+k^2) > 0$（常に正）。よって (A) $> 0 \Longleftrightarrow$ 分母 $1+\sqrt{3}\,k >
+        0$、すなわち $k > -\dfrac{1}{\sqrt{3}}$。</p>
+
+      <p><strong>(B) について：</strong>分子 $-\sqrt{3}(1+k^2) < 0$（常に負）。よって (B) $> 0 \Longleftrightarrow$ 分母 $1-\sqrt{3}\,k <
+            0$、すなわち $k> \dfrac{1}{\sqrt{3}}$。</p>
+
+      <p>(A)(B) を合わせると：</p>
+
+      <div class="answer-box">
+        $$k > \frac{1}{\sqrt{3}} = \frac{\sqrt{3}}{3}$$
+      </div>
+
+      <p>（このとき $3p^2 \neq 3q^2$ も確認でき、P $\neq$ Q は常に保証される。）</p>
+    </div>
+
+    <h3>(2) の方針の立て方</h3>
+    <div class="houshin">
+      <p>(2)の文脈では $k$ は定数なので $p^2$, $q^2$ は一意に決まることが分かる。
+        しかし $p$, $q$ 自体は<strong>符号の自由度</strong>が残る（$+p$ でも $-p$ でもよい）。</p>
+      <p>接線の傾き $3p^2 - k$ は $p$ の符号によらないが、$y$ 切片 $-2p^3$ は $p$ の符号で変わる。
+        つまり<strong>符号の選び方で三角形の形が変わり、面積も変わる</strong>。</p>
+      <p>$p, q$ の符号パターンは4通りあるが、$y = x^3 - kx$ は奇関数なので
+        $(p, q) \to (-p, -q)$ は原点対称の配置になり面積は同じ。よって<strong>本質的に2通り</strong>：</p>
+      <ul>
+        <li><strong>同符号</strong>（$p > 0, q > 0$ と $p < 0, q < 0$）→ 面積 $S_1$</li>
+        <li><strong>異符号</strong>（$p > 0, q < 0$ と $p < 0, q> 0$）→ 面積 $S_2$</li>
+      </ul>
+      <p>$S_1$ と $S_2$ を $k$ の式で表し、$M = \max(S_1, S_2)$, $m = \min(S_1, S_2)$ として $M = 4m$ を解く。</p>
+    </div>
+
+    <h3>(2) の解法</h3>
+    <div class="kaitou">
+
+      <p><strong>【Step 1. 接線の方程式】</strong></p>
+      <p>点 $(t,\, t^3-kt)$ における接線は $y = (3t^2-k)x - 2t^3$（導出は省略）。</p>
+      <ul>
+        <li>$\ell_O$（O での接線）：$y = -kx$</li>
+        <li>$\ell_P$（P での接線）：$y = (3p^2-k)x - 2p^3$</li>
+        <li>$\ell_Q$（Q での接線）：$y = (3q^2-k)x - 2q^3$</li>
+      </ul>
+
+      <p><strong>【Step 2. 三角形の頂点を求める】</strong></p>
+
+      <p><em>$\ell_O$ と $\ell_P$ の交点 A：</em></p>
+      $$-kx = (3p^2-k)x - 2p^3$$
+      $$-3p^2 x = -2p^3 \qquad (p \neq 0 \text{ で割れる})$$
+      $$x = \frac{2p}{3}, \quad y = -k \cdot \frac{2p}{3} = \frac{-2kp}{3}$$
+      $$A = \left(\frac{2p}{3},\; \frac{-2kp}{3}\right)$$
+
+      <p><em>$\ell_O$ と $\ell_Q$ の交点 B：</em>（同様にして）</p>
+      $$B = \left(\frac{2q}{3},\; \frac{-2kq}{3}\right)$$
+
+      <p><em>$\ell_P$ と $\ell_Q$ の交点 C：</em>（x座標だけ）</p>
+      $$(3p^2-k)x - 2p^3 = (3q^2-k)x - 2q^3$$
+      $$3(p^2-q^2)x = 2(p^3-q^3) = 2(p-q)(p^2+pq+q^2)$$
+      $$x = \frac{2(p^2+pq+q^2)}{3(p+q)}$$
+
+      <p><strong>【Step 3. 面積の計算】</strong></p>
+      <p>A, B はともに $\ell_O$ 上にあるので、三角形 ABC の面積は：</p>
+      $$S = \frac{1}{2} \cdot |AB| \cdot d(C,\, \ell_O)$$
+
+      <div class="joseki">
+        「線分の長さの表し方」→ 傾きを用いて表す（三平方の定理を使って）（IA定石リストより）
+      </div>
+
+      <p><em>底辺 $|AB|$：</em>A, B は傾き $-k$ の直線 $\ell_O$ 上にあり、$x$ 座標の差は $\dfrac{2p}{3} - \dfrac{2q}{3} =
+        \dfrac{2(p-q)}{3}$。</p>
+      <p>傾き $m$ の直線上の2点間の距離は「水平距離 $\times \sqrt{1+m^2}$」なので：</p>
+      $$|AB| = \frac{2|p-q|}{3}\sqrt{1+(-k)^2} = \frac{2|p-q|}{3}\sqrt{1+k^2}$$
+
+      <p><em>高さ $d(C, \ell_O)$：</em>直線 $\ell_O: kx+y=0$ と点 C の距離。</p>
+      <p>$kx_C + y_C$ を計算する。$y_C = (3p^2-k)x_C - 2p^3$ なので：</p>
+      $$kx_C + y_C = kx_C + (3p^2-k)x_C - 2p^3 = 3p^2 x_C - 2p^3$$
+      $$= 3p^2 \cdot \frac{2(p^2+pq+q^2)}{3(p+q)} - 2p^3 = \frac{2p^2(p^2+pq+q^2) - 2p^3(p+q)}{p+q}$$
+      $$= \frac{2p^2 q^2}{p+q}$$
+      <p>よって：</p>
+      $$d(C,\, \ell_O) = \frac{|kx_C+y_C|}{\sqrt{1+k^2}} = \frac{2p^2 q^2}{|p+q|\sqrt{1+k^2}}$$
+
+      <p><em>面積：</em></p>
+      $$S = \frac{1}{2} \cdot \frac{2|p-q|}{3}\sqrt{1+k^2} \cdot \frac{2p^2 q^2}{|p+q|\sqrt{1+k^2}} = \frac{2p^2 q^2
+      |p-q|}{3|p+q|}$$
+
+      <p><strong>【Step 4. 符号の場合分け】</strong></p>
+      <p>$P = |p|,\; Q = |q|$ とおく。(1) より $Q > P > 0$。</p>
+
+      <p><em>同符号（$p, q$ が同じ符号）：</em></p>
+      $$|p-q| = Q-P, \quad |p+q| = P+Q$$
+      $$S_1 = \frac{2P^2 Q^2 (Q-P)}{3(P+Q)}$$
+
+      <p><em>異符号（$p, q$ が異なる符号）：</em></p>
+      $$|p-q| = P+Q, \quad |p+q| = Q-P$$
+      $$S_2 = \frac{2P^2 Q^2 (P+Q)}{3(Q-P)}$$
+
+      <p>$S_2 / S_1$ を計算すると：</p>
+      $$\frac{S_2}{S_1} = \frac{(P+Q)^2}{(Q-P)^2} > 1 \qquad (\text{∵ } P+Q > Q-P > 0)$$
+      <p>よって $M = S_2$, $m = S_1$。</p>
+
+      <p><strong>【Step 5. $M = 4m$ を解く】</strong></p>
+      $$\frac{(P+Q)^2}{(Q-P)^2} = 4$$
+      $$P+Q = 2(Q-P)$$
+      $$3P = Q$$
+      <p>すなわち $Q^2 = 9P^2$、つまり $q^2 / p^2 = 9$。</p>
+
+      <p>(1) の結果 (A)(B) より：</p>
+      $$\frac{q^2}{p^2} = \frac{3q^2}{3p^2} =
+      \frac{\dfrac{\sqrt{3}(1+k^2)}{\sqrt{3}\,k-1}}{\dfrac{\sqrt{3}(1+k^2)}{1+\sqrt{3}\,k}} =
+      \frac{1+\sqrt{3}\,k}{\sqrt{3}\,k-1}$$
+
+      <p>これが $9$ に等しいので：</p>
+      $$1 + \sqrt{3}\,k = 9(\sqrt{3}\,k - 1)$$
+      $$1 + \sqrt{3}\,k = 9\sqrt{3}\,k - 9$$
+      $$10 = 8\sqrt{3}\,k$$
+      $$k = \frac{10}{8\sqrt{3}} = \frac{5}{4\sqrt{3}} = \frac{5\sqrt{3}}{12}$$
+
+      <p>$k = \dfrac{5\sqrt{3}}{12} > \dfrac{1}{\sqrt{3}} = \dfrac{4\sqrt{3}}{12}$ なので (1) の範囲内。 ✓</p>
+
+      <div class="answer-box">
+        $$k = \frac{5\sqrt{3}}{12}$$
+      </div>
+    </div>
+
+    <div class="matome">
+      <h3>方針の立て方のまとめ（第4問）</h3>
+      <h4>① 状況理解で分かること</h4>
+      <ul>
+        <li>3本の接線の傾きは $-k$, $3p^2-k$, $3q^2-k$。互いに $\frac{\pi}{3}$ → 正三角形的配置。</li>
+        <li>(1)：O の傾き $-k = \tan\alpha$ とおけば、他の2本は $\tan(\alpha\pm\frac{\pi}{3})$ → $3p^2$, $3q^2$ が $k$ の式で表せる。</li>
+        <li>(2)：$k$ 固定で $p^2$, $q^2$ は確定するが、$p$, $q$ の符号の自由度が残る。傾きは不変だが $y$ 切片 $-2p^3$ が符号で変わる → 三角形の形が変わる。</li>
+        <li>(2)：$y = x^3 - kx$ は奇関数 → $(p,q) \to (-p,-q)$ で面積不変。本質的に2通り（同符号・異符号）。</li>
+      </ul>
+      <h4>② 用いた定石</h4>
+      <ul>
+        <li>「なす角の扱い」→ $\tan\theta = \left|\frac{m_1-m_2}{1+m_1m_2}\right|$（定石集FGverより）</li>
+        <li>「接線の問題 → 接点をおく → 接線の式が立つ」（IIB定石リストより）</li>
+        <li>「1変数関数の最大最小（値域を求める問題）→ 逆像法」（定石集FGverより）</li>
+        <li>「線分の長さ → 傾きを用いて表す」（IA定石リストより）</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>第 5 問</h2>
+    <!-- ============================================================ -->
+
+    <div class="mondai">
+      <p>複素数平面上の原点を中心とする半径1の円を $C$ とする。複素数 $\alpha$ と $C$ 上の点 $\text{P}(z)$ に対し、$w=(z-\alpha)^3$ とおく。P が $C$ 上を動くときの点
+        $\text{Q}(w)$ の軌跡を $D$ とする。</p>
+      <p><strong>(1)</strong> $\alpha = -3$ とし、$w$ の偏角を $\theta$ とおく。P が $C$ 上を動くとき、$\sin\theta$ がとりうる値の範囲を求めよ。</p>
+      <p><strong>(2)</strong> $\alpha$ が次の条件を満たすように動く。</p>
+      <p>　条件：$D$ は実軸の正の部分および負の部分の両方と共有点を持つ。</p>
+      <p>複素数平面上の点 $\text{R}(\alpha)$ が動きうる範囲の面積を求めよ。</p>
+    </div>
+
+    <h3>(1) の方針の立て方</h3>
+
+    <div class="houshin">
+      <div class="joseki">
+        「複素数 → ④図形的考察」（定石集FGverより）
+      </div>
+      <p><strong>状況整理：</strong>$\alpha = -3$ のとき $Z = z - \alpha = z + 3$。</p>
+      <p>$z = \cos\phi + i\sin\phi$（単位円上）なので：</p>
+      $$Z = (3 + \cos\phi) + i\sin\phi$$
+      <p>$Z$ は<strong>中心 $(3, 0)$、半径 $1$ の円</strong>上を動く。この円は原点を含まない（中心までの距離 $3 >$ 半径 $1$）ので $Z \neq 0$。</p>
+
+      <p>$Z$ の偏角を $\psi$ とおく。ド・モアブルの定理より：</p>
+      $$w = Z^3 = |Z|^3 (\cos 3\psi + i\sin 3\psi)$$
+      <p>したがって $w$ の偏角は $\theta = 3\psi$。$\sin\theta = \sin 3\psi$ の範囲を求めればよい。</p>
+
+      <p><strong>見通し：</strong>$\psi$ の範囲を求める → 3倍角の公式で $\sin 3\psi$ を $\sin\psi$ の式に → 1変数関数の最大最小（→微分）。</p>
+    </div>
+
+    <h3>(1) の解法</h3>
+    <div class="kaitou">
+      <p><strong>【Step 1. $\psi$ の範囲を求める】</strong></p>
+      <p>$Z$ は中心 $(3, 0)$、半径 $1$ の円上の点。原点からこの円への接線を引くと、
+        原点から中心までの距離 $= 3$、半径 $= 1$ なので：</p>
+      $$\sin\psi_{\max} = \frac{\text{半径}}{\text{中心までの距離}} = \frac{1}{3}$$
+
+      <p><strong>【Step 2. 3倍角の公式で変換】</strong></p>
+      <p>$u = \sin\psi$ とおくと $u \in \left[-\dfrac{1}{3},\;\dfrac{1}{3}\right]$。3倍角の公式（$\sin 3\psi = 3\sin\psi -
+        4\sin^3\psi$）より：</p>
+      $$\sin\theta = \sin 3\psi = 3u - 4u^3 =: f(u)$$
+
+      <p><strong>【Step 3. $f(u)$ の最大最小】</strong></p>
+      <p>$f'(u) = 3 - 12u^2$。$|u| \le \dfrac{1}{3}$ のとき $12u^2 \le \dfrac{4}{3} < 3$ なので $f'(u)> 0$（単調増加）。よって：</p>
+      $$f\!\left(\frac{1}{3}\right) = 1 - \frac{4}{27} = \frac{23}{27}, \qquad f\!\left(-\frac{1}{3}\right) =
+      -\frac{23}{27}$$
+
+      <div class="answer-box">
+        $$\sin\theta \in \left[-\frac{23}{27},\;\frac{23}{27}\right]$$
+      </div>
+    </div>
+
+    <h3>(2) の方針の立て方</h3>
+
+    <div class="houshin">
+      <p><strong>【$w$ が正の実数・負の実数になる条件】</strong></p>
+      <p>$Z \neq 0$ として $Z = r(\cos\psi + i\sin\psi)$ とおく。ド・モアブルの定理より
+        $w = Z^3 = r^3(\cos 3\psi + i\sin 3\psi)$。</p>
+      <ul>
+        <li>$w > 0$（正の実数）$\iff$ $3\psi = 2n\pi$（$n$ は整数）$\iff$ $\psi = 0,\;\dfrac{2\pi}{3},\;\dfrac{4\pi}{3}$</li>
+        <li>$w < 0$（負の実数）$\iff$ $3\psi=(2n+1)\pi$ $\iff$ $\psi=\dfrac{\pi}{3},\;\pi,\;\dfrac{5\pi}{3}$</li>
+      </ul>
+      <p><strong>$r$は関係なく、３乗する前の$Z$の偏角に着目すればいいことが分かる</strong></p>
+
+      <p><strong>【$Z$ の軌跡円】</strong></p>
+      <p>$Z = z - \alpha$ で $z$ が単位円上を動くので、$Z$ は<strong>中心 $-\alpha$、半径 $1$</strong> の円上を動く。</p>
+
+      <p><strong>【条件の言い換え】</strong></p>
+      <p>$\beta = -\alpha$ とおくと、条件は以下の二つを満たすこと：</p>
+      <ul>
+        <li>条件(A)：中心 $\beta$、半径 $1$ の円が「正の3本」（$\psi = 0,\, \frac{2\pi}{3},\, \frac{4\pi}{3}$）のうち少なくとも1本と交わる</li>
+        <li>条件(B)：同じ円が「負の3本」（$\psi = \frac{\pi}{3},\, \pi,\, \frac{5\pi}{3}$）のうち少なくとも1本と交わる</li>
+      </ul>
+      <p>これら6本の半直線は $\dfrac{\pi}{3}$ ごとに正・負が交互に並ぶ。$\dfrac{2\pi}{3}$ 回転で正の3本どうし・負の3本どうしが入れ替わるので、
+        条件(A)(B)は $\dfrac{2\pi}{3}$ 回転で不変。さらに実軸に関する対称性もあるので、<strong>6回対称</strong>。</p>
+
+      <p><strong>見通し：</strong>基本領域 $\arg\beta \in [0, \frac{\pi}{3}]$ で条件を解析し、6倍すれば全体の面積が出る。</p>
+
+      <!-- 6本の半直線の配置図 -->
+      <svg viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg"
+        style="max-width:420px; margin:20px auto; display:block; background:#fff; border:1px solid #ddd; border-radius:8px;">
+
+        <!-- 正の半直線（赤）ψ=0 -->
+        <line x1="230" y1="220" x2="450" y2="220" stroke="#e74c3c" stroke-width="2" />
+        <polygon points="450,220 440,215 440,225" fill="#e74c3c" />
+        <!-- 正の半直線 ψ=2π/3 -->
+        <line x1="230" y1="220" x2="120" y2="30" stroke="#e74c3c" stroke-width="2" />
+        <polygon points="120,30 130,28 126,38" fill="#e74c3c" />
+        <!-- 正の半直線 ψ=4π/3 -->
+        <line x1="230" y1="220" x2="120" y2="410" stroke="#e74c3c" stroke-width="2" />
+        <polygon points="120,410 126,402 130,412" fill="#e74c3c" />
+
+        <!-- 負の半直線（青）ψ=π/3 -->
+        <line x1="230" y1="220" x2="340" y2="30" stroke="#3498db" stroke-width="2" />
+        <polygon points="340,30 334,38 330,28" fill="#3498db" />
+        <!-- 負の半直線 ψ=π -->
+        <line x1="230" y1="220" x2="10" y2="220" stroke="#3498db" stroke-width="2" />
+        <polygon points="10,220 20,215 20,225" fill="#3498db" />
+        <!-- 負の半直線 ψ=5π/3 -->
+        <line x1="230" y1="220" x2="340" y2="410" stroke="#3498db" stroke-width="2" />
+        <polygon points="340,410 330,412 334,402" fill="#3498db" />
+
+        <!-- 条件を満たす例：βの円が赤と青の両方にかかる -->
+        <circle cx="350" cy="155" r="70" fill="rgba(46,204,113,0.12)" stroke="#27ae60" stroke-width="2" />
+        <circle cx="350" cy="155" r="3" fill="#27ae60" />
+        <text x="360" y="152" font-size="13" fill="#27ae60" font-weight="bold">β₁</text>
+        <text x="308" y="110" font-size="11" fill="#27ae60">✓ 赤にも青にも交わる</text>
+
+        <!-- 条件を満たさない例：βの円が赤のみ -->
+        <circle cx="380" cy="260" r="70" fill="rgba(231,76,60,0.08)" stroke="#e74c3c" stroke-width="1.5"
+          stroke-dasharray="5,4" />
+        <circle cx="380" cy="260" r="3" fill="#999" />
+        <text x="390" y="258" font-size="13" fill="#999" font-weight="bold">β₂</text>
+        <text x="400" y="310" font-size="11" fill="#e74c3c">✗ 赤のみ</text>
+
+        <!-- 原点 -->
+        <circle cx="230" cy="220" r="4" fill="black" />
+        <text x="236" y="238" font-size="14" fill="#333" font-weight="bold">O</text>
+
+        <!-- 角度ラベル -->
+        <text x="430" y="210" font-size="13" fill="#e74c3c" font-weight="bold">正</text>
+        <text x="342" y="24" font-size="13" fill="#3498db" font-weight="bold">負</text>
+        <text x="72" y="24" font-size="13" fill="#e74c3c" font-weight="bold">正</text>
+        <text x="4" y="210" font-size="13" fill="#3498db" font-weight="bold">負</text>
+        <text x="72" y="428" font-size="13" fill="#e74c3c" font-weight="bold">正</text>
+        <text x="342" y="428" font-size="13" fill="#3498db" font-weight="bold">負</text>
+
+        <!-- 凡例 -->
+        <line x1="20" y1="448" x2="40" y2="448" stroke="#e74c3c" stroke-width="2" />
+        <text x="44" y="452" font-size="11" fill="#333">正の半直線（w&gt;0）</text>
+        <line x1="220" y1="448" x2="240" y2="448" stroke="#3498db" stroke-width="2" />
+        <text x="244" y="452" font-size="11" fill="#333">負の半直線（w&lt;0）</text>
+      </svg>
+      <p style="text-align:center; font-size:0.9em; color:#666;">
+        6本の半直線は $\frac{\pi}{3}$ ごとに正・負が交互。中心 $\beta$・半径 $1$ の円が<br>
+        赤（正）と青（負）の<strong>両方</strong>に交われば条件成立（β₁）。片方だけでは不可（β₂）。
+      </p>
+    </div>
+
+    <h3>(2) の解法</h3>
+    <div class="kaitou">
+
+      <p><strong>【Step 1. 円が半直線と交わる条件（図形的議論）】</strong></p>
+      <p>中心 $\beta$、半径 $1$ の円が、原点から角度 $\theta_0$ の方向に伸びる半直線と交わる条件を考える。</p>
+      <p>$\beta = R(\cos\phi + i\sin\phi)$ とおく。</p>
+
+      <p><em>$R \le 1$ の場合：</em>原点が円の内部にあるので、どの半直線とも交わる。
+        したがって条件(A)(B)ともに成立。</p>
+
+      <p><em>$R > 1$ の場合：</em>原点は円の外部にある。このとき円が半直線 $\theta_0$ と交わるための条件は、
+        次の2つを同時に満たすことである：</p>
+      <ol>
+        <li>$\beta$ から半直線を含む直線への垂線の足の距離が $1$ 以下：$R|\sin(\phi - \theta_0)| \le 1$</li>
+        <li>$\beta$ から半直線への正射影が正（$\beta$ が半直線と同じ側にある）：$\cos(\phi - \theta_0) \ge 0$</li>
+      </ol>
+
+      <p><strong>【Step 2. 基本領域 $\phi \in [0, \pi/3]$ での条件】</strong></p>
+      <p>$R > 1$、$\phi \in [0, \pi/3]$ のとき、各条件に寄与する最も近い半直線を調べる。</p>
+
+      <p><em>条件(A)（正の半直線と交わる）：</em>最も近い正の半直線は $\theta_0 = 0$（正の実軸）。</p>
+      <ul>
+        <li>距離条件：$R\sin\phi \le 1$（$\sin\phi = |\sin(\phi - 0)|$）</li>
+        <li>正射影条件：$\cos\phi \ge 0$（$\phi \le \pi/3 < \pi/2$ なので常に成立 ✓）</li>
+      </ul>
+
+      <p><em>条件(B)（負の半直線と交わる）：</em>最も近い負の半直線は $\theta_0 = \pi/3$。</p>
+      <ul>
+        <li>距離条件：$R\sin(\pi/3 - \phi) \le 1$</li>
+        <li>正射影条件：$\cos(\phi - \pi/3) \ge 0$（$|\phi - \pi/3| \le \pi/3 < \pi/2$ なので成立 ✓）</li>
+      </ul>
+
+      <p>したがって、$R > 1$ のとき条件(A)かつ(B)は：</p>
+      $$R\sin\phi \le 1 \quad \text{かつ} \quad R\sin\!\left(\frac{\pi}{3} - \phi\right) \le 1$$
+      <p>すなわち：</p>
+      $$R \le R_{\max}(\phi) := \min\!\left(\frac{1}{\sin\phi},\;\frac{1}{\sin(\pi/3-\phi)}\right)$$
+
+      <p><strong>【Step 3. 面積の計算】</strong></p>
+      <p>基本領域での面積は（$R \le 1$ の部分と $R > 1$ の部分を合わせて）：</p>
+      $$S_0 = \int_0^{\pi/3} \frac{1}{2}\,R_{\max}(\phi)^2\;d\phi$$
+
+      <p>$\phi = \pi/6$ で $\sin\phi = \sin(\pi/3 - \phi)$ となるので、$R_{\max}$ は $\phi = \pi/6$ を境に切り替わる：</p>
+      <ul>
+        <li>$\phi \in [0, \pi/6]$：$\sin\phi \le \sin(\pi/3-\phi)$ なので $R_{\max} = \dfrac{1}{\sin(\pi/3-\phi)}$</li>
+        <li>$\phi \in [\pi/6, \pi/3]$：$R_{\max} = \dfrac{1}{\sin\phi}$</li>
+      </ul>
+
+      <p>対称性（$\phi \to \pi/3 - \phi$ で2つの積分が一致）から：</p>
+      $$S_0 = 2 \times \int_{\pi/6}^{\pi/3} \frac{1}{2\sin^2\phi}\;d\phi = \int_{\pi/6}^{\pi/3} \csc^2\phi\;d\phi$$
+      $$= \big[-\cot\phi\big]_{\pi/6}^{\pi/3} = -\frac{1}{\sqrt{3}} + \sqrt{3} = \frac{2\sqrt{3}}{3}$$
+
+      <p>全体の面積は 6 倍：</p>
+      $$\text{面積} = 6 \times \frac{2\sqrt{3}}{3} = 4\sqrt{3}$$
+
+      <p>最後に $\alpha$ の領域は $\beta = -\alpha$ の領域を原点に関して対称移動したものなので、面積は同じ。</p>
+
+      <div class="answer-box">
+        $$\text{面積} = 4\sqrt{3}$$
+      </div>
+    </div>
+
+    <div class="matome">
+      <h3>方針の立て方のまとめ（第5問）</h3>
+      <h4>① 状況理解で分かること</h4>
+      <ul>
+        <li>$Z = z - \alpha$ とおけば $w = Z^3$。$z$ が単位円上 → $Z$ は中心 $-\alpha$、半径1の円上。</li>
+        <li>ド・モアブルの定理より $w$ の偏角は $Z$ の偏角の3倍、$|w| = |Z|^3$。</li>
+        <li>(1)：$\alpha = -3$ のとき $Z$ は中心 $(3,0)$、半径1の円上。偏角 $\psi$ の範囲は原点からこの円への接線で決まる。</li>
+        <li>(2)：$w > 0 \iff \arg Z \in \{0,\, \frac{2\pi}{3},\, \frac{4\pi}{3}\}$、$w < 0 \iff \arg Z \in
+            \{\frac{\pi}{3},\, \pi,\, \frac{5\pi}{3}\}$。6本の半直線が $\frac{\pi}{3}$ ごとに正・負交互に並ぶ。</li>
+        <li>(2)：条件は「$Z$ の円（中心 $\beta = -\alpha$、半径1）が正・負両方の半直線と交わる」こと。6回対称性がある。</li>
+      </ul>
+      <h4>② 用いた定石</h4>
+      <ul>
+        <li>「複素数 → ④図形的考察」（定石集FGverより）</li>
+        <li>「円上の点 → $\sin$, $\cos$ で表す」（IA定石リストより）</li>
+        <li>「円と直線が接する → 中心と直線の距離が半径」（IA定石リストより）</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>第 6 問</h2>
+    <!-- ============================================================ -->
+
+    <div class="mondai">
+      <p>$n$ を正の整数とする。$n$ の正の約数のうち、3で割って1余るものの個数を $f(n)$、3で割って2余るものの個数を $g(n)$ とする。</p>
+      <p><strong>(1)</strong> $f(2800),\; g(2800)$ を求めよ。</p>
+      <p><strong>(2)</strong> $f(n) \ge g(n)$ を示せ。</p>
+      <p><strong>(3)</strong> $g(n) = 15$ であるとき、$f(n)$ がとりうる値を求めよ。</p>
+    </div>
+
+    <h3>初見での思考プロセス</h3>
+
+    <div class="houshin">
+      <div class="joseki">
+        「整数 基本方針…まずは実験から」「余り(mod)に着目」（IA定石リストより）
+      </div>
+
+      <p><strong>【実験1：$2800$ の約数を書き出してみる】</strong></p>
+      <p>$2800 = 2^4 \times 5^2 \times 7$ なので、約数は $2^a \cdot 5^b \cdot 7^c$（$0 \le a \le 4,\;0 \le b \le 2,\;0 \le c \le
+        1$）。
+        全部で $5 \times 3 \times 2 = 30$ 個。3の倍数は一つもない（素因数に3がないから）。</p>
+      <p>30個を一つずつ mod 3 で調べるのは大変なので、何か規則性がないか実験する。</p>
+
+      <p><strong>【実験2：各素因数を mod 3 で調べる】</strong></p>
+      <ul>
+        <li>$2 \equiv 2 \pmod{3}$</li>
+        <li>$5 \equiv 2 \pmod{3}$</li>
+        <li>$7 \equiv 1 \pmod{3}$</li>
+      </ul>
+      <p>ここで「mod 3 での掛け算」を考えると：</p>
+      <ul>
+        <li>$2 \times 2 = 4 \equiv 1$、$2 \times 2 \times 2 = 8 \equiv 2$、$2^4 = 16 \equiv 1$、…</li>
+        <li>$\equiv 2$ のものを掛けるたびに $1 \leftrightarrow 2$ が切り替わる！</li>
+        <li>$7 \equiv 1$ なので $7^c$ を掛けても mod 3 は変わらない</li>
+      </ul>
+
+      <p><strong>【規則性の発見】</strong></p>
+      <p>$2^a \cdot 5^b \cdot 7^c \pmod{3}$ は $2^a \cdot 2^b = 2^{a+b} \pmod{3}$ で決まる。</p>
+      <ul>
+        <li>$a+b$ が偶数 → $2^{a+b} \equiv 1 \pmod{3}$ → $f$ に寄与</li>
+        <li>$a+b$ が奇数 → $2^{a+b} \equiv 2 \pmod{3}$ → $g$ に寄与</li>
+      </ul>
+      <p>$c$ の値（$0$ か $1$）は結果に影響しない。あとは「$a+b$ が偶数/奇数の $(a,b)$ の組の数」を数えれば終わり。</p>
+    </div>
+
+    <h3>(1) の解法</h3>
+    <div class="kaitou">
+      <p>$2800 = 2^4 \times 5^2 \times 7$</p>
+      <p>約数は $2^a \cdot 5^b \cdot 7^c$（$0 \le a \le 4,\;0 \le b \le 2,\;0 \le c \le 1$）。</p>
+
+      <p><strong>mod 3 の計算：</strong>
+        $2 \equiv 2$, $5 \equiv 2$, $7 \equiv 1 \pmod{3}$ なので：</p>
+      $$2^a \cdot 5^b \cdot 7^c \equiv 2^{a+b} \cdot 1 = 2^{a+b} \pmod{3}$$
+
+      <ul>
+        <li>$a+b$ 偶数 → $2^{a+b} \equiv 1 \pmod{3}$ → $f$ に寄与</li>
+        <li>$a+b$ 奇数 → $2^{a+b} \equiv 2 \pmod{3}$ → $g$ に寄与</li>
+      </ul>
+
+      <p><strong>$a+b$ 偶数の $(a,b)$ の個数：</strong></p>
+      <ul>
+        <li>$a$ 偶 $(0,2,4)$ かつ $b$ 偶 $(0,2)$：$3 \times 2 = 6$</li>
+        <li>$a$ 奇 $(1,3)$ かつ $b$ 奇 $(1)$：$2 \times 1 = 2$</li>
+      </ul>
+      <p>合計 8 個。$c$ は 2 通りなので $f(2800) = 16$。</p>
+
+      <p><strong>$a+b$ 奇数の個数：</strong></p>
+      <ul>
+        <li>$a$ 偶 $(0,2,4)$ かつ $b$ 奇 $(1)$：$3$</li>
+        <li>$a$ 奇 $(1,3)$ かつ $b$ 偶 $(0,2)$：$4$</li>
+      </ul>
+      <p>合計 7 個。$g(2800) = 14$。</p>
+
+      <p>検算：$f+g = 30$ = 約数の総数（3の倍数の約数は存在しないので正しい）。</p>
+
+      <div class="answer-box">
+        $$f(2800) = 16, \qquad g(2800) = 14$$
+      </div>
+    </div>
+
+    <h3>(2)(3) について</h3>
+
+    <div class="houshin" style="background-color: #fff3cd; border-left: 4px solid #d4ac0d;">
+      <p><strong>⚠ 定石だけでは解けない問題</strong></p>
+      <p>(1) までは「実験から」「mod に着目」という定石で方針が立ちました。
+        しかし (2)(3) では、<strong>「$f - g$ が素因数ごとの積に分解できる」という問題固有の構造</strong>を
+        自力で発見する必要があります。これは4つの教材のどの定石にも直接対応しません。</p>
+      <p>このような問題では、(1) の誘導を「なぜこの計算がうまくいったのか」と振り返り、
+        背後にある構造を見抜くことが求められます。以下ではその思考過程を丁寧に追います。</p>
+    </div>
+
+    <h3>(2) の方針の立て方</h3>
+
+    <div class="houshin">
+      <p><strong>【(1) の解法を振り返る：なぜうまくいったのか？】</strong></p>
+      <p>(1) では $2800 = 2^4 \times 5^2 \times 7$ の約数 $2^a \cdot 5^b \cdot 7^c$ の mod 3 が $a + b$ の偶奇だけで決まることを利用した。
+        これがうまくいった理由は、<strong>mod 3 での掛け算が「余りどうしの掛け算」に分解できる</strong>からである。</p>
+
+      <p><strong>【鍵となる観察：mod 3 の掛け算ルール】</strong></p>
+      <p>2つの数の積の mod 3 は、それぞれの mod 3 だけで決まる：</p>
+      <ul>
+        <li>$(\equiv\!1) \times (\equiv\!1) \equiv 1$、$(\equiv\!2) \times (\equiv\!2) \equiv 1$　→ <strong>同じ余りどうし →
+            $\equiv 1$</strong></li>
+        <li>$(\equiv\!1) \times (\equiv\!2) \equiv 2$、$(\equiv\!2) \times (\equiv\!1) \equiv 2$　→ <strong>異なる余りどうし →
+            $\equiv 2$</strong></li>
+      </ul>
+      <p>このルールのおかげで、互いに素な $A \cdot B$ の約数を「$A$ の約数」と「$B$ の約数」に分けて
+        mod 3 を独立に管理できる。これを利用して $f - g$ を素因数ごとの積に分解するのが (2) の方針。</p>
+    </div>
+
+    <h3>(2) の解法</h3>
+    <div class="kaitou">
+
+      <p><strong>【Step 1. 素因数ごとの $f$, $g$ を定義する】</strong></p>
+      <p>$n = p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$ と素因数分解する。各素数 $p_i$ に対して：</p>
+      <ul>
+        <li>$f_{p_i}$ = 「$p_i^0,\, p_i^1,\, \ldots,\, p_i^{e_i}$ のうち $\equiv 1 \pmod{3}$ であるものの個数」</li>
+        <li>$g_{p_i}$ = 「$p_i^0,\, p_i^1,\, \ldots,\, p_i^{e_i}$ のうち $\equiv 2 \pmod{3}$ であるものの個数」</li>
+      </ul>
+
+      <p><strong>【Step 2. 2つのグループを合わせたときの $f-g$ の公式】</strong></p>
+      <p>$n = A \cdot B$（$A$, $B$ は互いに素）のとき、$n$ の約数は「$A$ の約数 $\times$ $B$ の約数」と一対一に対応する。
+        各約数の mod 3 は掛け算ルールにより：</p>
+      <ul>
+        <li>$f(AB) = f_A \cdot f_B + g_A \cdot g_B$　（同じ余りどうしの積 → $\equiv 1$）</li>
+        <li>$g(AB) = f_A \cdot g_B + g_A \cdot f_B$　（異なる余りの積 → $\equiv 2$）</li>
+      </ul>
+      <p>差をとると：</p>
+      $$f(AB) - g(AB) = (f_A f_B + g_A g_B) - (f_A g_B + g_A f_B) = (f_A - g_A)(f_B - g_B)$$
+      <p><strong>$f - g$ は「素因数ごとの $f_p - g_p$ の積」で表せる！</strong></p>
+
+      <p><strong>【Step 3. 各素数について $f_p - g_p$ を計算する】</strong></p>
+      <p>素数 $p$ の累乗 $p^0,\, p^1,\, \ldots,\, p^e$ について：</p>
+
+      <p><em>場合1：$p = 3$ のとき</em></p>
+      <p>$3^0 = 1 \equiv 1$、$3^j \equiv 0 \pmod{3}$（$j \ge 1$）。$\equiv 2$ のものは存在しない。</p>
+      $$f_p - g_p = 1 - 0 = 1$$
+
+      <p><em>場合2：$p \equiv 1 \pmod{3}$ のとき（例：$p = 7, 13, 19, \ldots$）</em></p>
+      <p>$p^j \equiv 1^j = 1$ なので、すべて $\equiv 1$。</p>
+      $$f_p - g_p = (e+1) - 0 = e + 1 \ge 1$$
+
+      <p><em>場合3：$p \equiv 2 \pmod{3}$ のとき（例：$p = 2, 5, 11, \ldots$）</em></p>
+      <p>$p^j \equiv 2^j \pmod{3}$ なので、$j$ 偶数 → $\equiv 1$、$j$ 奇数 → $\equiv 2$。</p>
+      <ul>
+        <li>$e$ が偶数：$f_p = \frac{e}{2}+1$、$g_p = \frac{e}{2}$　→　$f_p - g_p = 1$</li>
+        <li>$e$ が奇数：$f_p = \frac{e+1}{2}$、$g_p = \frac{e+1}{2}$　→　$f_p - g_p = 0$</li>
+      </ul>
+
+      <p><strong>【Step 4. 結論】</strong></p>
+      <p>Step 2 を繰り返し適用すると：</p>
+      $$f(n) - g(n) = \prod_{i=1}^{k} (f_{p_i} - g_{p_i})$$
+      <p>Step 3 より各因子は $\ge 0$ なので、積全体も $\ge 0$。</p>
+
+      <div class="answer-box">
+        $$f(n) - g(n) = \prod_{p^e \,\|\, n} (f_p - g_p) \ge 0 \qquad \therefore\; f(n) \ge g(n) \qquad \square$$
+      </div>
+    </div>
+
+    <div style="background:#eef6ff; border:1px solid #b0d0f0; border-radius:8px; padding:16px; margin:16px 0;">
+      <h4 style="margin-top:0;">補足：背景にある大学数学（ディリクレ指標）</h4>
+
+      <p>上の解法で行ったことは、大学の整数論では<strong>ディリクレ指標（Dirichlet character）</strong>の理論として体系化されている。</p>
+
+      <p>mod 3 のディリクレ指標 $\chi$ を次のように定義する：</p>
+      $$\chi(m) = \begin{cases}1 & (m \equiv 1 \pmod{3})\\-1 & (m \equiv 2 \pmod{3})\\0 & (m \equiv 0
+      \pmod{3})\end{cases}$$
+
+      <p>この $\chi$ は<strong>完全乗法的</strong>、つまり任意の正の整数 $a, b$ に対して $\chi(ab) = \chi(a)\chi(b)$ を満たす。
+        （これは上の「掛け算ルール」そのものである。）</p>
+
+      <p>すると $f(n) - g(n)$ は次のように書ける：</p>
+      $$f(n) - g(n) = \sum_{d \mid n} \chi(d)$$
+
+      <p>$\chi$ が完全乗法的であることと、$n$ の約数が素因数の累乗の積で尽くされることから：</p>
+      $$\sum_{d \mid n} \chi(d) = \prod_{p^e \,\|\, n} \left(\sum_{j=0}^{e} \chi(p)^j\right)$$
+
+      <p>各因子 $\sum_{j=0}^{e} \chi(p)^j$ は、Step 3 の $f_p - g_p$ と一致する（$\chi(p) = 1$ なら等比数列の和 $= e+1$、
+        $\chi(p) = -1$ なら交代和 $= 0$ or $1$、$\chi(p) = 0$ なら $= 1$）。</p>
+
+      <p>つまり上の解法は、ディリクレ指標の理論を<strong>知らなくても再発見できる</strong>形で書き下したものと言える。
+        大学数学を学ぶと、この種の「mod $m$ での約数の数え上げ」が統一的に扱えるようになる。</p>
+    </div>
+
+    <h3>(3) の解法</h3>
+    <div class="kaitou">
+      <p>(2)の議論を発展させる。$A = f+g$, $B = f-g$ とおく。</p>
+
+      <p><strong>$A$ の計算：</strong>3で割り切れない約数の個数。$n = 3^{e_0}\prod p_i^{e_i}$（$p_i \neq 3$）のとき</p>
+      $$A = \prod_{p_i \neq 3}(e_i+1)$$
+
+      <p><strong>$B$ の計算：</strong></p>
+      $$B = \prod_{p \equiv 1\,(3)}(e_p+1)\;\times\;\prod_{p \equiv 2\,(3)}h(e_p)$$
+      <p>ここで $h(e) = 1$（$e$ 偶数）, $h(e) = 0$（$e$ 奇数）。</p>
+
+      <p>$g = \frac{A-B}{2} = 15$ なので $A - B = 30$。</p>
+
+      <p><strong>鍵となる制約：</strong>$p \equiv 2 \pmod{3}$ の素因子が偶数乗のとき $(e_p+1)$ は奇数。
+        したがって $B > 0$ のとき $A/B$ は奇数でなければならない。</p>
+
+      $$\frac{A}{B} = \frac{B+30}{B} = 1+\frac{30}{B}$$
+
+      <p>これが奇数 $\iff$ $\frac{30}{B}$ が偶数 $\iff$ $B \mid 15$。</p>
+
+      <p>可能な $B$：$0,\;1,\;3,\;5,\;15$</p>
+
+      <table>
+        <tr>
+          <th>$B = f-g$</th>
+          <th>$f = 15+B$</th>
+          <th>$A = 30+B$</th>
+          <th>実現例</th>
+        </tr>
+        <tr>
+          <td>$0$</td>
+          <td>$15$</td>
+          <td>$30$</td>
+          <td>$n = 2 \cdot 7^{14}$</td>
+        </tr>
+        <tr>
+          <td>$1$</td>
+          <td>$16$</td>
+          <td>$31$</td>
+          <td>$n = 2^{30}$</td>
+        </tr>
+        <tr>
+          <td>$3$</td>
+          <td>$18$</td>
+          <td>$33$</td>
+          <td>$n = 7^2 \cdot 5^{10}$</td>
+        </tr>
+        <tr>
+          <td>$5$</td>
+          <td>$20$</td>
+          <td>$35$</td>
+          <td>$n = 7^4 \cdot 2^6$</td>
+        </tr>
+        <tr>
+          <td>$15$</td>
+          <td>$30$</td>
+          <td>$45$</td>
+          <td>$n = 7^{14} \cdot 2^2$</td>
+        </tr>
+      </table>
+
+      <div class="answer-box">
+        $$f(n) \in \{15,\;16,\;18,\;20,\;30\}$$
+      </div>
+    </div>
+
+    <div class="matome">
+      <h3>方針の立て方のまとめ（第6問）</h3>
+      <h4>① 状況理解で分かること</h4>
+      <ul>
+        <li>(1)：$2800 = 2^3 \cdot 5^2 \cdot 7$ を素因数分解し、各約数 $d = 2^a 5^b 7^c$ の mod 3 を調べる。$2 \equiv 5 \equiv 2$, $7
+          \equiv 1 \pmod{3}$ なので $d \bmod 3$ は $a+b$ の偶奇だけで決まる。</li>
+        <li>(2)：(1) の方法を一般化すると、mod 3 の掛け算ルール（同じ組 → $\equiv 1$、異なる組 → $\equiv 2$）により、$f-g$ が素因数ごとの積に分解できる。</li>
+        <li>(2) は「状況理解 → 定石」の枠組みだけでは厳しく、問題固有の構造発見（$f-g$ の積への分解）が必要。</li>
+      </ul>
+      <h4>② 用いた定石</h4>
+      <ul>
+        <li>「整数は実験からスタート」（IA定石リストより）</li>
+        <li>「余り（mod）や倍数に着目」（IA定石リストより）</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>全体のまとめ</h2>
+    <!-- ============================================================ -->
+
+    <table>
+      <tr>
+        <th>問題</th>
+        <th>使った定石（教材より）</th>
+        <th>初見での着眼点</th>
+      </tr>
+      <tr>
+        <td>第1問</td>
+        <td>不等式の証明、定積分の評価、誘導利用</td>
+        <td>マクローリン展開との関連。「すべて誘導だと思え」</td>
+      </tr>
+      <tr>
+        <td>第2問</td>
+        <td>場合の数は実験から、余事象</td>
+        <td>3列構造を活かして縦・横・斜めに分類</td>
+      </tr>
+      <tr>
+        <td>第3問</td>
+        <td>状況理解（自由度）、2動点→片方固定、軌跡領域</td>
+        <td>$z_R=3$ の発見、$A\cos\phi+B\sin\phi=C$ の存在条件</td>
+      </tr>
+      <tr>
+        <td>第4問</td>
+        <td>なす角の扱い、接線は接点をおく</td>
+        <td>正三角形的配置 → 傾きの $\tan(\alpha\pm\pi/3)$ 表現</td>
+      </tr>
+      <tr>
+        <td>第5問</td>
+        <td>複素数は偏角・絶対値で考える</td>
+        <td>$Z^3$ が実数 → $\arg Z = k\pi/3$ の半直線と円の交わり</td>
+      </tr>
+      <tr>
+        <td>第6問</td>
+        <td>整数は実験から、mod・因数分解で積の形に</td>
+        <td>乗法的関数の構造 → 素因数ごとの非負性</td>
+      </tr>
+    </table>
+
+</body>
+
+</html>
