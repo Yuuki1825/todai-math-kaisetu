@@ -8,7 +8,10 @@
     body { font-family: 'Meiryo', sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
     h1 { text-align: center; color: #002060; border-bottom: 3px solid #002060; padding-bottom: 10px; }
     .year-section { background: white; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow: hidden; }
-    .year-header { background: #002060; color: white; padding: 12px 20px; font-size: 1.4em; font-weight: bold; }
+    .year-header { background: #002060; color: white; padding: 12px 20px; font-size: 1.4em; font-weight: bold; cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+    .year-header::-webkit-details-marker { display: none; }
+    .year-header::after { content: '▶'; font-size: 0.7em; transition: transform 0.2s; }
+    details[open] > .year-header::after { transform: rotate(90deg); }
     .category-header { background: #4472c4; color: white; padding: 8px 20px; font-size: 1.1em; }
     .problems-grid { display: flex; flex-wrap: wrap; padding: 15px; gap: 15px; }
     .problem-card { border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: #fafafa; }
@@ -57,14 +60,13 @@
     <a href='#1998'>1998</a>
     <a href='#1997'>1997</a>
     <a href='#1996'>1996</a>
-  </div>
-  <div class='year-section' id='2026'>
-    <div class='year-header'>2026年 <a class='kaisetu-link' href='2026/kaisetu.html'>📝 理系前期 全問解説</a></div>
-    <p style='padding: 15px; color: #666;'>※問題画像は未掲載です。解説のみ閲覧できます。</p>
-  </div>
+  </details>
 
-  <div class='year-section' id='2025'>
-    <div class='year-header'>2025年 <a class='kaisetu-link' href='2025/kaisetu.html'>📝 理系前期 全問解説</a></div>
+  <details class='year-section' id='2026'><summary class='year-header'>2026年 <a class='kaisetu-link' href='2026/kaisetu.html'>📝 理系前期 全問解説</a></summary>
+    <p style='padding: 15px; color: #666;'>※問題画像は未掲載です。解説のみ閲覧できます。</p>
+  </details>
+
+  <details class='year-section' id='2025'><summary class='year-header'>2025年 <a class='kaisetu-link' href='2025/kaisetu.html'>📝 理系前期 全問解説</a></summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -111,9 +113,9 @@
         <img src='2025/理科前期/2025_6.jpg' alt='2025年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2024'>
-    <div class='year-header'>2024年</div>
+  </details>
+
+  <details class='year-section' id='2024'><summary class='year-header'>2024年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -160,9 +162,9 @@
         <img src='2024/理科前期/2024_6.jpg' alt='2024年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2023'>
-    <div class='year-header'>2023年</div>
+  </details>
+
+  <details class='year-section' id='2023'><summary class='year-header'>2023年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -209,9 +211,9 @@
         <img src='2023/理科前期/2023_6.jpg' alt='2023年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2022'>
-    <div class='year-header'>2022年</div>
+  </details>
+
+  <details class='year-section' id='2022'><summary class='year-header'>2022年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -258,9 +260,9 @@
         <img src='2022/理科前期/2022_6.jpg' alt='2022年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2021'>
-    <div class='year-header'>2021年</div>
+  </details>
+
+  <details class='year-section' id='2021'><summary class='year-header'>2021年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -307,9 +309,9 @@
         <img src='2021/理科前期/2021_6.jpg' alt='2021年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2020'>
-    <div class='year-header'>2020年</div>
+  </details>
+
+  <details class='year-section' id='2020'><summary class='year-header'>2020年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -356,9 +358,9 @@
         <img src='2020/理科前期/2020_6.jpg' alt='2020年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2019'>
-    <div class='year-header'>2019年</div>
+  </details>
+
+  <details class='year-section' id='2019'><summary class='year-header'>2019年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -405,9 +407,9 @@
         <img src='2019/理科前期/2019_6.jpg' alt='2019年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2018'>
-    <div class='year-header'>2018年</div>
+  </details>
+
+  <details class='year-section' id='2018'><summary class='year-header'>2018年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -454,9 +456,9 @@
         <img src='2018/理科前期/2018_6.jpg' alt='2018年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2017'>
-    <div class='year-header'>2017年</div>
+  </details>
+
+  <details class='year-section' id='2017'><summary class='year-header'>2017年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -503,9 +505,9 @@
         <img src='2017/理科前期/2017_6.jpg' alt='2017年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2016'>
-    <div class='year-header'>2016年</div>
+  </details>
+
+  <details class='year-section' id='2016'><summary class='year-header'>2016年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -552,9 +554,9 @@
         <img src='2016/理科前期/2016_6.jpg' alt='2016年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2015'>
-    <div class='year-header'>2015年</div>
+  </details>
+
+  <details class='year-section' id='2015'><summary class='year-header'>2015年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -601,9 +603,9 @@
         <img src='2015/理科前期/2015_6.jpg' alt='2015年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2014'>
-    <div class='year-header'>2014年</div>
+  </details>
+
+  <details class='year-section' id='2014'><summary class='year-header'>2014年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -650,9 +652,9 @@
         <img src='2014/理科前期/2014_6.jpg' alt='2014年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2013'>
-    <div class='year-header'>2013年</div>
+  </details>
+
+  <details class='year-section' id='2013'><summary class='year-header'>2013年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -699,9 +701,9 @@
         <img src='2013/理科前期/2013_6.jpg' alt='2013年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2012'>
-    <div class='year-header'>2012年</div>
+  </details>
+
+  <details class='year-section' id='2012'><summary class='year-header'>2012年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -748,9 +750,9 @@
         <img src='2012/理科前期/2012_6.jpg' alt='2012年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2011'>
-    <div class='year-header'>2011年</div>
+  </details>
+
+  <details class='year-section' id='2011'><summary class='year-header'>2011年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -797,9 +799,9 @@
         <img src='2011/理科前期/2011_6.jpg' alt='2011年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2010'>
-    <div class='year-header'>2010年</div>
+  </details>
+
+  <details class='year-section' id='2010'><summary class='year-header'>2010年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -846,9 +848,9 @@
         <img src='2010/理科前期/2010_6.jpg' alt='2010年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2009'>
-    <div class='year-header'>2009年</div>
+  </details>
+
+  <details class='year-section' id='2009'><summary class='year-header'>2009年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -895,9 +897,9 @@
         <img src='2009/理科前期/2009_6.jpg' alt='2009年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2008'>
-    <div class='year-header'>2008年</div>
+  </details>
+
+  <details class='year-section' id='2008'><summary class='year-header'>2008年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -944,9 +946,9 @@
         <img src='2008/理科前期/2008_6.jpg' alt='2008年理科前期第6問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2007'>
-    <div class='year-header'>2007年</div>
+  </details>
+
+  <details class='year-section' id='2007'><summary class='year-header'>2007年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1008,9 +1010,9 @@
         <img src='2007/理科後期/2007_9.jpg' alt='2007年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2006'>
-    <div class='year-header'>2006年</div>
+  </details>
+
+  <details class='year-section' id='2006'><summary class='year-header'>2006年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1072,9 +1074,9 @@
         <img src='2006/理科後期/2006_9.jpg' alt='2006年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2005'>
-    <div class='year-header'>2005年</div>
+  </details>
+
+  <details class='year-section' id='2005'><summary class='year-header'>2005年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1136,9 +1138,9 @@
         <img src='2005/理科後期/2005_9.jpg' alt='2005年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2004'>
-    <div class='year-header'>2004年</div>
+  </details>
+
+  <details class='year-section' id='2004'><summary class='year-header'>2004年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1200,9 +1202,9 @@
         <img src='2004/理科後期/2004_9.jpg' alt='2004年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2003'>
-    <div class='year-header'>2003年</div>
+  </details>
+
+  <details class='year-section' id='2003'><summary class='year-header'>2003年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1264,9 +1266,9 @@
         <img src='2003/理科後期/2003_9.jpg' alt='2003年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2002'>
-    <div class='year-header'>2002年</div>
+  </details>
+
+  <details class='year-section' id='2002'><summary class='year-header'>2002年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1328,9 +1330,9 @@
         <img src='2002/理科後期/2002_9.jpg' alt='2002年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2001'>
-    <div class='year-header'>2001年</div>
+  </details>
+
+  <details class='year-section' id='2001'><summary class='year-header'>2001年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1392,9 +1394,9 @@
         <img src='2001/理科後期/2001_9.jpg' alt='2001年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='2000'>
-    <div class='year-header'>2000年</div>
+  </details>
+
+  <details class='year-section' id='2000'><summary class='year-header'>2000年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1456,9 +1458,9 @@
         <img src='2000/理科後期/2000_9.jpg' alt='2000年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='1999'>
-    <div class='year-header'>1999年</div>
+  </details>
+
+  <details class='year-section' id='1999'><summary class='year-header'>1999年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1520,9 +1522,9 @@
         <img src='1999/理科後期/1999_9.jpg' alt='1999年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='1998'>
-    <div class='year-header'>1998年</div>
+  </details>
+
+  <details class='year-section' id='1998'><summary class='year-header'>1998年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1584,9 +1586,9 @@
         <img src='1998/理科後期/1998_9.jpg' alt='1998年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='1997'>
-    <div class='year-header'>1997年</div>
+  </details>
+
+  <details class='year-section' id='1997'><summary class='year-header'>1997年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1648,9 +1650,9 @@
         <img src='1997/理科後期/1997_9.jpg' alt='1997年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
-  <div class='year-section' id='1996'>
-    <div class='year-header'>1996年</div>
+  </details>
+
+  <details class='year-section' id='1996'><summary class='year-header'>1996年</summary>
     <div class='category-header'>文科前期</div>
     <div class='problems-grid'>
       <div class='problem-card'>
@@ -1712,6 +1714,7 @@
         <img src='1996/理科後期/1996_9.jpg' alt='1996年理科後期第3問' loading='lazy'>
       </div>
     </div>
-  </div>
+  </details>
+
 </body>
 </html>
