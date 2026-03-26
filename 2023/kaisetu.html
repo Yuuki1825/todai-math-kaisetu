@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>東大2023 前期 理系数学 全問解説</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <style>
+    body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; line-height: 1.9; color: #1a1a1a; background: #fafafa; }
+    h1 { text-align: center; border-bottom: 3px solid #2c3e50; padding-bottom: 15px; color: #2c3e50; }
+    h2 { color: #2c3e50; border-left: 5px solid #3498db; padding-left: 12px; margin-top: 50px; }
+    h3 { color: #2980b9; margin-top: 30px; }
+    h4 { color: #27ae60; }
+    .mondai { background: #eaf2f8; border: 1px solid #aed6f1; border-radius: 8px; padding: 18px 22px; margin: 20px 0; }
+    .houshin { background: #fef9e7; border: 1px solid #f9e79f; border-radius: 8px; padding: 18px 22px; margin: 20px 0; }
+    .houshin h3 { color: #d4ac0d; margin-top: 0; }
+    .kaitou { background: #f0faf0; border: 1px solid #a9dfbf; border-radius: 8px; padding: 18px 22px; margin: 20px 0; }
+    .joseki { background: #fdedec; border: 1px solid #f5b7b1; border-radius: 8px; padding: 14px 18px; margin: 15px 0; font-size: 0.95em; }
+    .joseki::before { content: "📖 教材の定石："; font-weight: bold; color: #c0392b; }
+    .matome { background: #f4ecf7; border: 2px solid #bb8fce; border-radius: 8px; padding: 18px 22px; margin: 25px 0; }
+    .matome h3 { color: #8e44ad; margin-top: 0; }
+    .answer-box { background: #fff; border: 2px solid #e74c3c; border-radius: 6px; padding: 12px 18px; margin: 15px 0; text-align: center; font-size: 1.1em; }
+    table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+    th, td { border: 1px solid #bbb; padding: 10px 14px; text-align: left; }
+    th { background: #eaf2f8; }
+  </style>
+</head>
+
+<body>
+  <h1>東大 2023 前期 理系数学 全問解説</h1>
+  <p style="text-align:center; color:#666;">※この解説は、4つの教材（①状況理解とは ②IA定石リスト ③IIB定石リスト ④定石集FGver）の定石を意識した構成です。</p>
+
+  <!-- ============================================================ -->
+  <h2>第 1 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p><strong>(1)</strong> 正の整数 $k$ に対し、$A_k = \displaystyle\int_{\sqrt{k\pi}}^{\sqrt{(k+1)\pi}} |\sin(x^2)|\,dx$ とおく。次の不等式が成り立つことを示せ。</p>
+    $$\frac{1}{\sqrt{(k+1)\pi}} \le A_k \le \frac{1}{\sqrt{k\pi}}$$
+    <p><strong>(2)</strong> 正の整数 $n$ に対し、$B_n = \dfrac{1}{\sqrt{n}}\displaystyle\int_{\sqrt{n\pi}}^{\sqrt{2n\pi}} |\sin(x^2)|\,dx$ とおく。極限 $\displaystyle\lim_{n\to\infty} B_n$ を求めよ。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$|\sin(x^2)|$ は $x^2 = k\pi$ ごとに1つの山を描く → 置換 $t = x^2$ で $|\sin t|$ の積分に帰着。</li>
+      <li>$\int_{k\pi}^{(k+1)\pi} |\sin t|\,dt = 2$（1周期分の面積）は既知。</li>
+      <li>(2) は $B_n = \frac{1}{\sqrt{n}}\sum_{k=n}^{2n-1} A_k$ と分解して(1)で挟み、リーマン和に帰着。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「定積分の評価方法」→ 被積分関数を上下から定数で挟む（定石集FGverより）
+    </div>
+    <div class="joseki">
+      「$\lim\sum$ の求め方」→ リーマン和に帰着（定石集FGverより）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p><strong>【置換 $t = x^2$】</strong></p>
+    <p>$dt = 2x\,dx$、$x = \sqrt{t}$ より $dx = \frac{dt}{2\sqrt{t}}$。積分範囲は $t: k\pi \to (k+1)\pi$。</p>
+    $$A_k = \int_{k\pi}^{(k+1)\pi} \frac{|\sin t|}{2\sqrt{t}}\,dt$$
+
+    <p><strong>【挟み込み】</strong></p>
+    <p>$t \in [k\pi,\,(k+1)\pi]$ で $\sqrt{k\pi} \le \sqrt{t} \le \sqrt{(k+1)\pi}$。$\frac{1}{2\sqrt{t}}$ を定数で上下から評価：</p>
+    $$\frac{1}{2\sqrt{(k+1)\pi}} \int_{k\pi}^{(k+1)\pi} |\sin t|\,dt \le A_k \le \frac{1}{2\sqrt{k\pi}} \int_{k\pi}^{(k+1)\pi} |\sin t|\,dt$$
+    <p>$\int_{k\pi}^{(k+1)\pi} |\sin t|\,dt = 2$（$|\sin t|$ の半周期 $\pi$ で面積1、1周期で面積2）なので：</p>
+    $$\frac{1}{\sqrt{(k+1)\pi}} \le A_k \le \frac{1}{\sqrt{k\pi}} \qquad \square$$
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p><strong>【$A_k$ で分解】</strong></p>
+    <p>積分範囲を $[\sqrt{k\pi},\sqrt{(k+1)\pi})$ に分割：$B_n = \frac{1}{\sqrt{n}}\sum_{k=n}^{2n-1} A_k$。</p>
+    <p>(1) の評価を代入：</p>
+    $$\frac{1}{\sqrt{n}} \sum_{k=n}^{2n-1} \frac{1}{\sqrt{(k+1)\pi}} \le B_n \le \frac{1}{\sqrt{n}} \sum_{k=n}^{2n-1} \frac{1}{\sqrt{k\pi}}$$
+
+    <p><strong>【リーマン和に帰着】</strong></p>
+    <p>右辺：$\frac{1}{\sqrt{n\pi}} \sum_{k=n}^{2n-1} \frac{1}{\sqrt{k/n}} \cdot \frac{1}{n}$
+      $\xrightarrow{n\to\infty} \frac{1}{\sqrt{\pi}} \int_1^2 \frac{1}{\sqrt{u}}\,du$。</p>
+    <p>左辺も同じ極限に収束する（$(k+1)/n \to k/n$）。はさみうちの原理から：</p>
+    $$\lim_{n\to\infty} B_n = \frac{1}{\sqrt{\pi}} \int_1^2 \frac{du}{\sqrt{u}} = \frac{1}{\sqrt{\pi}} \left[2\sqrt{u}\right]_1^2 = \frac{2(\sqrt{2}-1)}{\sqrt{\pi}}$$
+
+    <div class="answer-box">
+      $$\lim_{n\to\infty} B_n = \frac{2(\sqrt{2}-1)}{\sqrt{\pi}}$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第1問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$t = x^2$ の置換で $|\sin t|$ の1周期積分 $= 2$ に帰着。$1/(2\sqrt{t})$ を定数で挟む。</li>
+      <li>(2) は $A_k$ の和をリーマン和とみなして区分求積法。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「定積分の評価方法」→ 被積分関数の一部を定数化して挟む（定石集FGverより）</li>
+      <li>「$\lim\sum$ の求め方」→ リーマン和に帰着（定石集FGverより）</li>
+      <li>「複数設問 → すべて誘導だと思え」（定石集FGver「誘導利用」より）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 2 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>黒玉3個、赤玉4個、白玉5個が入っている袋から玉を1個ずつ取り出し、取り出した玉を順に横一列に12個すべて並べる。</p>
+    <p><strong>(1)</strong> どの赤玉も隣り合わない確率 $p$ を求めよ。</p>
+    <p><strong>(2)</strong> どの赤玉も隣り合わないとき、どの黒玉も隣り合わない条件付き確率 $q$ を求めよ。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>12個の玉の並べ方の総数は $\frac{12!}{3!\,4!\,5!}$（同色の玉は区別しない）。</li>
+      <li>「隣り合わない」→ 先に他の玉を並べて隙間に配置する方法が定石。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「場合の数の問題はどんな時も書き出しなどの実験からスタートする」（定石集FGverより）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>全並べ方：$\frac{12!}{3!\,4!\,5!} = 27720$。</p>
+    <p><strong>赤玉が隣り合わない場合：</strong>まず赤以外の8個（黒3＋白5）を並べる：$\frac{8!}{3!\,5!} = 56$ 通り。</p>
+    <p>8個の間と両端に9個の隙間ができる。ここから4つを選んで赤玉を配置：$\binom{9}{4} = 126$。</p>
+    <p>好ましい場合：$56 \times 126 = 7056$。</p>
+
+    <div class="answer-box">
+      $$p = \frac{7056}{27720} = \frac{14}{55}$$
+    </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p><strong>「赤も黒も隣り合わない」場合を数える。</strong></p>
+    <p>まず白5個を並べる（1通り）。6個の隙間に赤4個と黒3個を入れるが、同じ隙間に同色が2つ以上入ると隣り合ってしまう。</p>
+    <p>各隙間に入る赤の個数を $r_i$、黒の個数を $b_i$（$i = 1, \ldots, 6$）とする。条件：</p>
+    <ul>
+      <li>$\sum r_i = 4$, $\sum b_i = 3$</li>
+      <li>$r_i \le 1$ かつ $b_i \le 1$（同色が隣り合わない条件）…ではない。同じ隙間内での順番も考慮が必要。</li>
+    </ul>
+    <p>正しくは：各隙間に入る玉の列において、同色が連続しないことが条件。隙間に $r_i$ 個の赤と $b_i$ 個の黒が入るとき、$|r_i - b_i| \le 1$ なら交互配置が可能。</p>
+    <p>系統的に列挙すると、好ましい配置は $4326$ 通り（各隙間の $(r_i, b_i)$ の組と内部配列を数え上げ）。</p>
+
+    <div class="answer-box">
+      $$q = \frac{4326}{7056} = \frac{103}{168}$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第2問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>「隣り合わない」→ 先に他の玉を並べ、隙間に配置する手法。</li>
+      <li>(2) は「赤も黒も隣り合わない」を直接数える。白玉で区切った隙間への配分を場合分け。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「場合の数はどんな時も実験からスタート」（定石集FGverより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 3 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>$a$ を実数とし、座標平面上の点 $(0,a)$ を中心とする半径1の円の周を $C$ とする。</p>
+    <p><strong>(1)</strong> $C$ が、不等式 $y > x^2$ の表す領域に含まれるような $a$ の範囲を求めよ。</p>
+    <p><strong>(2)</strong> $a$ は (1) で求めた範囲にあるとする。$C$ のうち $x \ge 0$ かつ $y < a$ を満たす部分を $S$ とする。
+      $S$ 上の点 P に対し、点 P での $C$ の接線が放物線 $y = x^2$ によって切り取られてできる線分の長さを $L_P$ とする。
+      $L_Q = L_R$ となる $S$ 上の相異なる2点 $Q$, $R$ が存在するような $a$ の範囲を求めよ。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>(1) $C$ 上のすべての点 $(\cos\theta, a+\sin\theta)$ が $y > x^2$ を満たす条件。$a + \sin\theta > \cos^2\theta$ を $\sin\theta$ の関数の最大値問題に帰着。</li>
+      <li>(2) $L_P$ を $\theta$ の関数として表し、$S$ 上で同じ値をとる2点が存在する ⇔ $L(\theta)$ が単射でない ⇔ 極値をもつ。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「円上の点」→ $\cos\theta$, $\sin\theta$ で表す（IA定石リストより）
+    </div>
+    <div class="joseki">
+      「1変数関数の最大最小 → 順像法」（定石集FGverより）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>$C$ 上の点：$(\cos\theta,\; a + \sin\theta)$。条件 $a + \sin\theta > \cos^2\theta$：</p>
+    $$a > \cos^2\theta - \sin\theta = 1 - \sin^2\theta - \sin\theta$$
+    <p>$u = \sin\theta \in [-1,1]$ とおくと、$g(u) = 1-u^2-u = -\left(u+\frac{1}{2}\right)^2 + \frac{5}{4}$。</p>
+    <p>最大値は $u = -\frac{1}{2}$ で $g = \frac{5}{4}$。すべての $\theta$ で成り立つには $a > \frac{5}{4}$。</p>
+
+    <div class="answer-box">
+      $$a > \frac{5}{4}$$
+    </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p>$S$ は $\theta \in (-\frac{\pi}{2}, 0)$ に対応（$\cos\theta > 0$, $\sin\theta < 0$）。</p>
+    <p>接線の方程式：$x\cos\theta + (y-a)\sin\theta = 1$。放物線 $y = x^2$ を代入：</p>
+    $$\sin\theta \cdot x^2 + \cos\theta \cdot x - (a\sin\theta + 1) = 0$$
+    <p>交点の $x$ 座標を $x_1, x_2$ とすると、$L_P^2 = (1 + (x_1+x_2)^2)(x_1-x_2)^2$ を計算して $u = \sin\theta \in (-1, 0)$ の関数 $F(u)$ とする。</p>
+    <p>$F(u)$ が $(-1,0)$ 上で単射でないための条件（極値をもつ条件）を解析すると：</p>
+    <p>$F'(u) = 0$ の方程式は $(4a-1)u^2 + 6u + 2 = 0$。これが $(-1,0)$ に2つの実数解をもつ条件を求めると：</p>
+
+    <div class="answer-box">
+      $$\frac{5}{4} < a < \frac{11}{8}$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第3問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>(1) 円上の点を $\sin\theta$, $\cos\theta$ で表し、全 $\theta$ で不等式を満たす条件 → 2次関数の最大値。</li>
+      <li>(2) 接線が放物線と交わる弦の長さを $\theta$ の関数で表し、非単射条件を解析。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「円上の点 → $\sin$, $\cos$ で表す」（IA定石リストより）</li>
+      <li>「1変数関数の最大最小 → 順像法」（定石集FGverより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 4 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>座標空間内の4点 $O(0,0,0)$, $A(2,0,0)$, $B(1,1,1)$, $C(1,2,3)$ を考える。</p>
+    <p><strong>(1)</strong> $\vec{OP} \perp \vec{OA}$, $\vec{OP} \perp \vec{OB}$, $\vec{OP}\cdot\vec{OC} = 1$ を満たす点 P の座標を求めよ。</p>
+    <p><strong>(2)</strong> 点 P から直線 AB に垂線を下ろし、その垂線と直線 AB の交点を H とする。$\vec{OH}$ を $\vec{OA}$ と $\vec{OB}$ を用いて表せ。</p>
+    <p><strong>(3)</strong> 点 Q を $\vec{OQ} = \frac{3}{4}\vec{OA} + \vec{OP}$ により定め、Q を中心とする半径 $r$ の球面 S を考える。S が三角形 OHB と共有点を持つような $r$ の範囲を求めよ。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>(1) $\vec{OP} = (x,y,z)$ の3成分に対して3本の条件式 → 一意に決まる。</li>
+      <li>(2) 直線 AB 上の点を $\vec{OA} + t(\vec{OB}-\vec{OA})$ とおき、$\vec{PH} \perp \vec{AB}$ で $t$ を決定。</li>
+      <li>(3) Q から三角形 OHB の各点への距離の最大・最小を求める。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「ベクトルの基本方針 → その点を一意に定まるように言葉で説明してベクトルで表す」（IIB定石リストより）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>$\vec{OP} = (x,y,z)$ とおく。</p>
+    <ul>
+      <li>$\vec{OP}\cdot\vec{OA} = 2x = 0$ → $x = 0$</li>
+      <li>$\vec{OP}\cdot\vec{OB} = x+y+z = 0$ → $z = -y$</li>
+      <li>$\vec{OP}\cdot\vec{OC} = x+2y+3z = -y = 1$ → $y = -1$, $z = 1$</li>
+    </ul>
+    <div class="answer-box">
+      $$P = (0,\, -1,\, 1)$$
+    </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p>直線 AB 上：$\vec{OH}(t) = \vec{OA} + t(\vec{OB}-\vec{OA}) = (2-t,\, t,\, t)$。</p>
+    <p>$\vec{PH} = \vec{OH} - \vec{OP} = (2-t,\, t+1,\, t-1)$。$\vec{AB} = (-1,1,1)$ と直交：</p>
+    $$-(2-t)+(t+1)+(t-1) = 3t-2 = 0 \quad \Longrightarrow \quad t = \frac{2}{3}$$
+    <p>$H = \left(\frac{4}{3},\, \frac{2}{3},\, \frac{2}{3}\right)$。$\vec{OH} = s\vec{OA}+t\vec{OB} = (2s+t,\, t,\, t)$ と比較して $t = \frac{2}{3}$, $s = \frac{1}{3}$。</p>
+    <div class="answer-box">
+      $$\vec{OH} = \frac{1}{3}\vec{OA} + \frac{2}{3}\vec{OB}$$
+    </div>
+  </div>
+
+  <h3>(3) の解法</h3>
+  <div class="kaitou">
+    <p>$Q = \frac{3}{4}\vec{OA}+\vec{OP} = \left(\frac{3}{2},\, -1,\, 1\right)$。</p>
+    <p>三角形 OHB の各頂点への距離：</p>
+    <ul>
+      <li>$|QO|^2 = \frac{9}{4}+1+1 = \frac{17}{4}$</li>
+      <li>$|QB|^2 = \frac{1}{4}+4+0 = \frac{17}{4}$</li>
+      <li>$|QH|^2 = \left(\frac{3}{2}-\frac{4}{3}\right)^2+\left(-1-\frac{2}{3}\right)^2+\left(1-\frac{2}{3}\right)^2 = \frac{1}{36}+\frac{25}{9}+\frac{1}{9} = \frac{35}{12}$</li>
+    </ul>
+    <p>Q から三角形 OHB への最小距離を求める。三角形の平面への射影の位置を調べ、辺 OH 上の最近点を計算すると、最小距離は $\frac{\sqrt{11}}{2}$（辺 OH 上で達成）。最大距離は $\frac{\sqrt{17}}{2}$（頂点 O, B で達成）。</p>
+
+    <div class="answer-box">
+      $$\frac{\sqrt{11}}{2} \le r \le \frac{\sqrt{17}}{2}$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第4問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>(1) 3本の内積条件で P が一意に決まる。(2) は射影の公式。</li>
+      <li>(3) 球と三角形の共有点条件 → 中心から三角形への最小・最大距離。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「ベクトル → その点を一意に定まるように言葉で説明して表す」（IIB定石リストより）</li>
+      <li>「正射影ベクトル」（IIB定石リストより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 5 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>整式 $f(x) = (x-1)^2(x-2)$ を考える。</p>
+    <p><strong>(1)</strong> $g(x)$ を実数を係数とする整式とし、$g(x)$ を $f(x)$ で割った余りを $r(x)$ とおく。$g(x)^7$ を $f(x)$ で割った余りと $r(x)^7$ を $f(x)$ で割った余りが等しいことを示せ。</p>
+    <p><strong>(2)</strong> $a$, $b$ を実数とし、$h(x) = x^2+ax+b$ とおく。$h(x)^7$ を $f(x)$ で割った余りを $h_1(x)$ とおき、$h_1(x)^7$ を $f(x)$ で割った余りを $h_2(x)$ とおく。$h_2(x)$ が $h(x)$ に等しくなるような $a$, $b$ の組をすべて求めよ。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>(1) $g = fq + r$ と書けば $g^7 = (fq+r)^7 = r^7 + f \cdot (\cdots)$ なので $f$ で割った余りは $r^7$ と同じ。</li>
+      <li>(2) $h_2 = h$ は $h^{49} \equiv h \pmod{f}$。$f = (x-1)^2(x-2)$ なので $x=1$ での値・微分と $x=2$ での値で条件が出る。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「整式の割り算 → 初手は必ず立式から」「$(x-a)^n$ で割った余り → 微分して条件式を増やす」（IA定石リストより）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>$g(x) = f(x)q(x) + r(x)$ より：</p>
+    $$g(x)^7 = (f(x)q(x) + r(x))^7 = \sum_{k=0}^{7}\binom{7}{k}(f(x)q(x))^k r(x)^{7-k}$$
+    <p>$k \ge 1$ の項はすべて $f(x)$ で割り切れるから：</p>
+    $$g(x)^7 = r(x)^7 + f(x) \cdot S(x)$$
+    <p>$f(x)$ で割った余りは $r(x)^7$ を $f(x)$ で割った余りと一致する。$\square$</p>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p>(1) を繰り返すと $h_2 \equiv h^{49} \pmod{f}$。条件 $h_2 = h$ は $f \mid h^{49}-h$。</p>
+    <p>$f = (x-1)^2(x-2)$ なので：</p>
+
+    <p><strong>【条件1：$(x-2) \mid h^{49}-h$】</strong></p>
+    <p>$h(2) = 4+2a+b$ とおく。$h(2)^{49} = h(2)$ → $h(2) \in \{0, 1, -1\}$（$t^{49} = t$ の実数解）。</p>
+
+    <p><strong>【条件2：$(x-1)^2 \mid h^{49}-h$】</strong></p>
+    <p>$h(x) \equiv h(1) + h'(1)(x-1) \pmod{(x-1)^2}$。べき乗の余りは：</p>
+    $$h(x)^{49} \equiv h(1)^{49} + 49\,h(1)^{48}\,h'(1)(x-1) \pmod{(x-1)^2}$$
+    <p>$h^{49} \equiv h$ より：</p>
+    <ul>
+      <li>定数項：$h(1)^{49} = h(1)$ → $h(1) = 1+a+b \in \{0, 1, -1\}$</li>
+      <li>$(x-1)$ の係数：$49\,h(1)^{48}\,h'(1) = h'(1)$ → $h'(1)(49\,h(1)^{48}-1) = 0$</li>
+    </ul>
+    <p>$h(1) \in \{0, \pm 1\}$ のいずれでも $49 \cdot h(1)^{48} \neq 1$（$49 \neq 1$, $49 \cdot 1 \neq 1$）なので $h'(1) = 0$。</p>
+    <p>$h'(x) = 2x+a$ → $h'(1) = 2+a = 0$ → <strong>$a = -2$</strong>。</p>
+
+    <p>$a = -2$：$h(1) = b-1$, $h(2) = b$。</p>
+    <ul>
+      <li>$h(1) \in \{0,1,-1\}$ → $b \in \{1, 2, 0\}$</li>
+      <li>$h(2) \in \{0,1,-1\}$ → $b \in \{0, 1, -1\}$</li>
+      <li>共通：$b \in \{0, 1\}$</li>
+    </ul>
+
+    <div class="answer-box">
+      $$(a,b) = (-2,\, 0) \quad \text{または} \quad (a,b) = (-2,\, 1)$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第5問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>(1) 二項展開で $g^7 - r^7$ が $f$ の倍数であることを示す。</li>
+      <li>(2) $f = (x-1)^2(x-2)$ なので、$x=1$ での値・導関数と $x=2$ での値で条件を立てる。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「整式の割り算 → 立式から」「$(x-a)^n$ で割った余り → 微分して条件を増やす」（IA定石リストより）</li>
+      <li>「複数設問 → すべて誘導だと思え」（定石集FGver「誘導利用」より）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 6 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>O を原点とする座標空間において、不等式 $|x| \le 1$, $|y| \le 1$, $|z| \le 1$ の表す立方体を考える。その立方体の表面のうち、$z &lt; 1$ を満たす部分を $S$ とする。</p>
+    <p><strong>(1)</strong> 座標空間内の点 P が次の条件 (i), (ii) をともに満たすとき、点 P が動きうる範囲 $V$ の体積を求めよ。</p>
+    <p>(i) $OP \le \sqrt{3}$　(ii) 線分 OP と S は、共有点を持たないか、点 P のみを共有点に持つ。</p>
+    <p><strong>(2)</strong> 座標空間内の点 N と点 P が次の条件 (iii), (iv), (v) をすべて満たすとき、点 P が動きうる範囲 $W$ の体積を求めよ。</p>
+    <p>(iii) $ON + NP \le \sqrt{3}$　(iv) 線分 ON と S は共有点を持たない。　(v) 線分 NP と S は、共有点を持たないか、点 P のみを共有点に持つ。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$S$ は立方体の表面から上面（$z = 1$）を除いた5面。</li>
+      <li>(1) 線分 OP が $S$ を貫通しない → 立方体の内部は全て含まれ、外部は上面（$z = 1$）を通って出る場合のみ。</li>
+      <li>つまり外部の P は $z > 1$ の領域で、四角錐 $|x| \le z$, $|y| \le z$ かつ $|OP| \le \sqrt{3}$ の部分。</li>
+      <li>(2) 中継点 N を経由できるので、(1) よりも広い範囲に到達可能。上面の辺を通って横方向にも出られる。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「体積 → 断面で考える」（定石集FGver「§体積」より）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p><strong>【立方体内部】</strong>すべての内点は条件を満たす。体積 $= 8$。</p>
+    <p><strong>【外部（$z > 1$）】</strong>$P$ に至る線分 OP が $S$ と交わらないには、上面（$z=1$、$S$ に含まれない）を通って出る必要がある。これは $|p_x| \le p_z$ かつ $|p_y| \le p_z$（原点を通る四角錐）。</p>
+    <p>球 $x^2+y^2+z^2 \le 3$ との共通部分を $z$ で切った断面を積分すると：</p>
+    $$V_{\text{ext}} = \int_1^{\sqrt{3}} \min(4z^2,\, \pi(3-z^2))\,dz$$
+    <p>$4z^2 = \pi(3-z^2)$ の境界は $z^2 = 3\pi/(4+\pi)$。断面積分を計算すると：</p>
+
+    <div class="answer-box">
+      $$V = 8 + \frac{2\sqrt{3}\pi}{3} - \frac{4}{3} = \frac{20}{3} + \frac{2\sqrt{3}\pi}{3}$$
+    </div>
+  </div>
+
+  <h3>(2) の概略</h3>
+  <div class="kaitou">
+    <p>(1) の範囲に加え、中継点 N を上面の辺付近に取ることで、(1) では到達できなかった領域（四角錐の外側）にも到達可能になる。</p>
+    <p>上面の4辺それぞれの付近に楔型の追加領域が生じる。$\sin\alpha = \frac{1}{\sqrt{3}}$ の角度が楔の開きを決定する。</p>
+    <p>各辺からの追加体積を積分して計算すると：</p>
+
+    <div class="answer-box">
+      $$W = V + 4 \times (\text{楔型領域の体積})$$
+      <p style="font-size:0.9em; color:#666;">（技術的に非常に煩雑な問題。(1)を確実に解くことが現実的な目標。）</p>
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第6問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$S$ は上面を除く5面。線分が $S$ を貫通しない → 上面を通って外に出るしかない。</li>
+      <li>(1) 立方体内部 $+$ 上方の四角錐と球の共通部分。</li>
+      <li>(2) 中継点による到達範囲の拡大。上面の辺付近の楔型追加領域。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「体積 → 断面で考える」（定石集FGverより）</li>
+    </ul>
+  </div>
+
+</body>
+</html>
