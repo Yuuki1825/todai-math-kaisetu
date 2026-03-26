@@ -535,21 +535,45 @@
 
   <h3>(2) の解法</h3>
   <div class="kaitou">
+    <p><strong>【方程式の立式】</strong></p>
     <p>円 $C_t$ が $(3,a)$ を通る条件：$(3-c(t))^2 + a^2 = r(t)^2$。</p>
-    <p>$c(t)$ と $r(t)^2$ を代入して整理すると、$t$ についての方程式が得られる。$t = 3$ を代入すると：</p>
-    $$(3-c(3))^2 + a^2 = r(3)^2 \quad \Longrightarrow \quad a^2 = r(3)^2 - (3-c(3))^2 = \frac{49 \cdot 11}{16} -
-    \frac{441}{16} = \frac{98}{16}$$
-    <p>$a = \frac{7\sqrt{2}}{4} = f(3)$（上限値）。$a$ が $f(3)$ に近づくほど $t = 3$ 付近に解が集中する。</p>
+    <p>これを<strong>「$a^2 = (\cdots)$」の形に整理して、右辺を $t$ の関数とみる</strong>のが見通しのよい方針。</p>
+    $$a^2 = r(t)^2 - (3-c(t))^2 =: F(t)$$
+    <p>$0 < a < f(3) = \frac{7\sqrt{2}}{4}$ のもとで、$F(t) = a^2$ を満たす $t \in (0,4)$ の個数を調べる。</p>
 
-    <p>方程式を詳しく解析すると（$t$ の4次方程式になり、$0 < t < 4$ での解の個数を調べる）：</p>
+    <p><strong>【$F(t)$ の計算】</strong></p>
+    <p>$3 - c(t) = \frac{-t^3+12t+12}{4}$ なので：</p>
+    $$F(t) = \frac{(16-t^2)^2(t^2+2)}{16} - \frac{(-t^3+12t+12)^2}{16}$$
+    <p>分子を展開・整理すると（4次式に整理される）：</p>
+    $$F(t) = \frac{-3t^4 + 12t^3 + 24t^2 - 144t + 184}{8}$$
 
-        <div class="answer-box">
-          <ul style="text-align:left;">
-            <li>$0 < a < \sqrt{5}$ のとき：<strong>1個</strong></li>
-            <li>$a = \sqrt{5}$ のとき：<strong>2個</strong></li>
-            <li>$\sqrt{5} < a < \frac{7\sqrt{2}}{4}$ のとき：<strong>3個</strong></li>
-          </ul>
-        </div>
+    <p><strong>【$F(t)$ の増減を調べる】</strong></p>
+    $$F'(t) = \frac{-12t^3 + 36t^2 + 48t - 144}{8} = \frac{-12(t-2)(t-3)(t+2)}{8}$$
+    <p>$0 < t < 4$ における符号変化：</p>
+    <table>
+      <tr><th>$t$</th><th>$0$</th><th></th><th>$2$</th><th></th><th>$3$</th><th></th><th>$4$</th></tr>
+      <tr><td>$F'(t)$</td><td></td><td>$-$</td><td>$0$</td><td>$+$</td><td>$0$</td><td>$-$</td><td></td></tr>
+      <tr><td>$F(t)$</td><td>$23$</td><td>$\searrow$</td><td>$5$</td><td>$\nearrow$</td><td>$\frac{49}{8}$</td><td>$\searrow$</td><td>$-1$</td></tr>
+    </table>
+    <p>各値の確認：$F(0) = \frac{184}{8} = 23$、$F(2) = \frac{40}{8} = 5$（極小）、$F(3) = \frac{49}{8}$（極大）、$F(4) = \frac{-8}{8} = -1$。</p>
+
+    <p><strong>【グラフと水平線 $y = a^2$ の交点の個数】</strong></p>
+    <p>$F(t)$ は $t \in (0,4)$ で「$23$ から下がって $5$ → 上がって $\frac{49}{8}$ → 下がって $-1$」の山谷構造。</p>
+    <p>$0 < a < f(3) = \frac{7\sqrt{2}}{4}$ より $0 < a^2 < \frac{49}{8}$。水平線 $y = a^2$ との交点数は：</p>
+
+    <ul>
+      <li><strong>$0 < a^2 < 5$</strong>（$0 < a < \sqrt{5}$）：水平線は極小値 $5$ より下。減少区間 $(0,2)$ と増加区間 $(2,3)$ では $F \ge 5 > a^2$ なので交わらない。減少区間 $(3, 4)$ で $F$ が $\frac{49}{8}$ から $-1$ に下がる途中で<strong>1回</strong>交わる。→ <strong>1個</strong></li>
+      <li><strong>$a^2 = 5$</strong>（$a = \sqrt{5}$）：極小値にちょうど接触して $t = 2$ で1回。$(3,4)$ で1回。→ <strong>2個</strong></li>
+      <li><strong>$5 < a^2 < \frac{49}{8}$</strong>（$\sqrt{5} < a < \frac{7\sqrt{2}}{4}$）：減少区間 $(0,2)$ で1回、増加区間 $(2,3)$ で1回、減少区間 $(3,4)$ で1回。→ <strong>3個</strong></li>
+    </ul>
+
+    <div class="answer-box">
+      <ul style="text-align:left;">
+        <li>$0 < a < \sqrt{5}$ のとき：<strong>1個</strong></li>
+        <li>$a = \sqrt{5}$ のとき：<strong>2個</strong></li>
+        <li>$\sqrt{5} < a < \frac{7\sqrt{2}}{4}$ のとき：<strong>3個</strong></li>
+      </ul>
+    </div>
   </div>
 
   <div class="matome">
