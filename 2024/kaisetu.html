@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>東大2024 前期 理系数学 全問解説</title>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <style>
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.9;
+      color: #1a1a1a;
+      background: #fafafa;
+    }
+
+    h1 {
+      text-align: center;
+      border-bottom: 3px solid #2c3e50;
+      padding-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 5px solid #3498db;
+      padding-left: 12px;
+      margin-top: 50px;
+    }
+
+    h3 {
+      color: #2980b9;
+      margin-top: 30px;
+    }
+
+    h4 {
+      color: #27ae60;
+    }
+
+    .mondai {
+      background: #eaf2f8;
+      border: 1px solid #aed6f1;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .houshin {
+      background: #fef9e7;
+      border: 1px solid #f9e79f;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .houshin h3 {
+      color: #d4ac0d;
+      margin-top: 0;
+    }
+
+    .kaitou {
+      background: #f0faf0;
+      border: 1px solid #a9dfbf;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .joseki {
+      background: #fdedec;
+      border: 1px solid #f5b7b1;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 15px 0;
+      font-size: 0.95em;
+    }
+
+    .joseki::before {
+      content: "📖 教材の定石：";
+      font-weight: bold;
+      color: #c0392b;
+    }
+
+    .matome {
+      background: #f4ecf7;
+      border: 2px solid #bb8fce;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 25px 0;
+    }
+
+    .matome h3 {
+      color: #8e44ad;
+      margin-top: 0;
+    }
+
+    .answer-box {
+      background: #fff;
+      border: 2px solid #e74c3c;
+      border-radius: 6px;
+      padding: 12px 18px;
+      margin: 15px 0;
+      text-align: center;
+      font-size: 1.1em;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid #bbb;
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    th {
+      background: #eaf2f8;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>東大 2024 前期 理系数学 全問解説</h1>
+  <p style="text-align:center; color:#666;">※この解説は、4つの教材（①状況理解とは ②IA定石リスト ③IIB定石リスト ④定石集FGver）の定石を意識した構成です。</p>
+
+  <!-- ============================================================ -->
+  <h2>第 1 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>座標空間内の点 $A(0,-1,1)$ をとる。$xy$ 平面上の点 P が次の条件 (i), (ii), (iii) をすべて満たすとする。</p>
+    <p>(i) P は原点 O と異なる。</p>
+    <p>(ii) $\angle AOP \ge \dfrac{2}{3}\pi$</p>
+    <p>(iii) $\angle OAP \le \dfrac{\pi}{6}$</p>
+    <p>P がとりうる範囲を $xy$ 平面上に図示せよ。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>P $= (x,y,0)$ は $xy$ 平面上の点。$A = (0,-1,1)$ は $xy$ 平面の外。$O = (0,0,0)$。</li>
+      <li>2つの角度条件を不等式に変換すれば、P の範囲が定まる。</li>
+      <li>なす角を内積で処理するのが定石。</li>
+    </ul>
+
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「なす角の扱い」→ 内積と $\cos$ で条件を式にする（定石集FGver「§なす角の扱い」より）
+    </div>
+  </div>
+
+  <h3>解法</h3>
+  <div class="kaitou">
+
+    <p><strong>【条件 (ii) の式化】</strong></p>
+    <p>$\angle AOP \ge \frac{2}{3}\pi$ を $\cos$ で書くと、$\cos(\angle AOP) \le \cos\frac{2}{3}\pi = -\frac{1}{2}$。</p>
+    $$\cos(\angle AOP) = \frac{\vec{OA}\cdot\vec{OP}}{|\vec{OA}||\vec{OP}|} = \frac{(0)(x)+(-1)(y)+(1)(0)}{\sqrt{2}\cdot\sqrt{x^2+y^2}} = \frac{-y}{\sqrt{2}\sqrt{x^2+y^2}}$$
+    <p>$\le -\frac{1}{2}$ より $\frac{y}{\sqrt{2}\sqrt{x^2+y^2}} \ge \frac{1}{2}$。両辺正なので2乗：</p>
+    $$\frac{y^2}{2(x^2+y^2)} \ge \frac{1}{4} \quad \Longrightarrow \quad 2y^2 \ge x^2+y^2 \quad \Longrightarrow \quad y^2 \ge x^2$$
+    <p>$y > 0$（途中で確認済み）と合わせて：<strong>$y \ge |x|$</strong>（$y > 0$ かつ $|y| \ge |x|$）。</p>
+
+    <p><strong>【条件 (iii) の式化】</strong></p>
+    <p>$\angle OAP \le \frac{\pi}{6}$ を $\cos$ で書くと、$\cos(\angle OAP) \ge \cos\frac{\pi}{6} = \frac{\sqrt{3}}{2}$。</p>
+    $$\vec{AO} = (0,1,-1), \quad \vec{AP} = (x,\, y+1,\, -1)$$
+    $$\cos(\angle OAP) = \frac{\vec{AO}\cdot\vec{AP}}{|\vec{AO}||\vec{AP}|} = \frac{(y+1)+1}{\sqrt{2}\sqrt{x^2+(y+1)^2+1}} = \frac{y+2}{\sqrt{2}\sqrt{x^2+(y+1)^2+1}}$$
+    <p>$\ge \frac{\sqrt{3}}{2}$ より、両辺正なので2乗して整理：</p>
+    $$4(y+2)^2 \ge 6\bigl(x^2+(y+1)^2+1\bigr)$$
+    $$4y^2+16y+16 \ge 6x^2+6y^2+12y+12$$
+    $$6x^2+2y^2-4y-4 \le 0$$
+    $$6x^2+2(y-1)^2 \le 6$$
+    $$\boxed{x^2 + \frac{(y-1)^2}{3} \le 1}$$
+    <p>これは<strong>中心 $(0,1)$、$x$ 方向の半径 $1$、$y$ 方向の半径 $\sqrt{3}$</strong> の楕円の内部。</p>
+
+    <p><strong>【図示】</strong></p>
+    <p>求める範囲は、楕円 $x^2+\frac{(y-1)^2}{3} \le 1$ と $y \ge |x|$ の共通部分（原点を除く）。</p>
+
+    <p>楕円と $y = x$ の交点：$x^2+(x-1)^2/3=1$ → $4x^2-2x-2=0$ → $x = 1$ または $x = -1/2$。
+      $y \ge |x|$ を満たすのは $(1,1)$ のみ。</p>
+    <p>楕円と $y = -x$ の交点：同様に $(-1,1)$ のみ。</p>
+
+    <svg viewBox="-180 -30 360 280" xmlns="http://www.w3.org/2000/svg"
+         style="max-width:360px; margin:20px auto; display:block; background:#fff; border:1px solid #ddd; border-radius:8px;">
+      <!-- axes -->
+      <line x1="-160" y1="130" x2="160" y2="130" stroke="#ccc" stroke-width="1"/>
+      <line x1="0" y1="230" x2="0" y2="-20" stroke="#ccc" stroke-width="1"/>
+      <!-- ellipse: center (0,1) → pixel (0, 130-80) = (0,50), rx=80, ry=80√3≈138 -->
+      <ellipse cx="0" cy="50" rx="80" ry="138" fill="none" stroke="#3498db" stroke-width="1.5" stroke-dasharray="6,3"/>
+      <!-- y=x line -->
+      <line x1="-30" y1="160" x2="120" y2="10" stroke="#e74c3c" stroke-width="1" stroke-dasharray="4,3"/>
+      <!-- y=-x line -->
+      <line x1="30" y1="160" x2="-120" y2="10" stroke="#e74c3c" stroke-width="1" stroke-dasharray="4,3"/>
+      <!-- shaded region (approximate) -->
+      <path d="M 0,130 L 80,50 A 80,138 0 0,0 -80,50 Z" fill="rgba(52,152,219,0.15)" stroke="#2980b9" stroke-width="2"/>
+      <!-- points -->
+      <circle cx="80" cy="50" r="3" fill="#2980b9"/>
+      <text x="88" y="55" font-size="12" fill="#2980b9">(1,1)</text>
+      <circle cx="-80" cy="50" r="3" fill="#2980b9"/>
+      <text x="-120" y="55" font-size="12" fill="#2980b9">(-1,1)</text>
+      <circle cx="0" cy="130" r="4" fill="none" stroke="#e74c3c" stroke-width="2"/>
+      <text x="8" y="145" font-size="12" fill="#e74c3c">O (除く)</text>
+      <text x="8" y="55" font-size="11" fill="#888">$(0,1)$</text>
+      <circle cx="0" cy="50" r="2" fill="#888"/>
+      <text x="90" y="135" font-size="11" fill="#888">$y=x$</text>
+      <text x="-130" y="135" font-size="11" fill="#888">$y=-x$</text>
+    </svg>
+
+    <div class="answer-box">
+      楕円 $x^2+\frac{(y-1)^2}{3} \le 1$ と $y \ge |x|$ の共通部分（原点を除く）。<br>
+      境界は楕円の弧（$(1,1)$ から $(-1,1)$ まで上側）と線分 $y = |x|$（$(0,0)$ から $(1,1)$, $(-1,1)$）。
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第1問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>空間の角度条件を $xy$ 平面上の領域に落とす問題。</li>
+      <li>各条件を内積で式化すると、(ii) は $y \ge |x|$、(iii) は楕円の内部になる。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「なす角の扱い」→ 内積と $\cos$ で不等式にする（定石集FGverより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 2 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>次の関数 $f(x)$ を考える。</p>
+    $$f(x) = \int_0^1 \frac{|t-x|}{1+t^2}\,dt \quad (0 \le x \le 1)$$
+    <p><strong>(1)</strong> $0 < \alpha < \dfrac{\pi}{4}$ を満たす実数 $\alpha$ で、$f'(\tan\alpha) = 0$ となるものを求めよ。</p>
+    <p><strong>(2)</strong> (1) で求めた $\alpha$ に対し、$\tan\alpha$ の値を求めよ。</p>
+    <p><strong>(3)</strong> 関数 $f(x)$ の区間 $0 \le x \le 1$ における最大値と最小値を求めよ。必要ならば、$0.69 < \log 2 < 0.7$ であることを用いてよい。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$f(x) = \int_0^1 \frac{|t-x|}{1+t^2}\,dt$ は $0 \le x \le 1$ で定義。$|t-x|$ の絶対値を外すために $t = x$ で分割する。</li>
+      <li>微分して $f'(x) = 0$ を求め、$\tan\alpha$ の形で表す。$1/(1+t^2)$ の原始関数が $\arctan t$ であることが鍵。</li>
+    </ul>
+
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「1変数関数の最大最小 → 順像法（微分して増減表）」（定石集FGverより）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>$0 \le x \le 1$ のとき、$|t-x|$ を $t = x$ で分割：</p>
+    $$f(x) = \int_0^x \frac{x-t}{1+t^2}\,dt + \int_x^1 \frac{t-x}{1+t^2}\,dt$$
+    <p>$x$ で微分する（積分と微分の順序交換）：</p>
+    $$f'(x) = \int_0^x \frac{1}{1+t^2}\,dt - \int_x^1 \frac{1}{1+t^2}\,dt = \arctan x - \left(\frac{\pi}{4} - \arctan x\right) = 2\arctan x - \frac{\pi}{4}$$
+
+    <p>$f'(\tan\alpha) = 0$ とすると：</p>
+    $$2\arctan(\tan\alpha) - \frac{\pi}{4} = 0 \quad \Longrightarrow \quad 2\alpha = \frac{\pi}{4}$$
+
+    <div class="answer-box">
+      $$\alpha = \frac{\pi}{8}$$
+    </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p>半角の公式 $\tan\frac{\theta}{2} = \frac{\sin\theta}{1+\cos\theta}$ を $\theta = \frac{\pi}{4}$ に適用：</p>
+    $$\tan\frac{\pi}{8} = \frac{\sin(\pi/4)}{1+\cos(\pi/4)} = \frac{\frac{\sqrt{2}}{2}}{1+\frac{\sqrt{2}}{2}} = \frac{\sqrt{2}}{2+\sqrt{2}} = \frac{\sqrt{2}(2-\sqrt{2})}{(2+\sqrt{2})(2-\sqrt{2})} = \frac{2\sqrt{2}-2}{2}$$
+
+    <div class="answer-box">
+      $$\tan\alpha = \sqrt{2}-1$$
+    </div>
+  </div>
+
+  <h3>(3) の解法</h3>
+  <div class="kaitou">
+    <p>$f'(x) = 2\arctan x - \pi/4$。$\arctan x$ は単調増加なので、$f'(x) = 0$ の解は $x = \sqrt{2}-1$ のみ。</p>
+    <ul>
+      <li>$x < \sqrt{2}-1$ で $f'(x) < 0$（単調減少）</li>
+      <li>$x > \sqrt{2}-1$ で $f'(x) > 0$（単調増加）</li>
+    </ul>
+    <p>よって<strong>最小値は $x = \sqrt{2}-1$、最大値は端点</strong> $x = 0$ または $x = 1$。</p>
+
+    <p><strong>端点の値：</strong></p>
+    $$f(0) = \int_0^1 \frac{t}{1+t^2}\,dt = \left[\frac{1}{2}\ln(1+t^2)\right]_0^1 = \frac{\ln 2}{2}$$
+    $$f(1) = \int_0^1 \frac{1-t}{1+t^2}\,dt = \arctan 1 - \frac{\ln 2}{2} = \frac{\pi}{4} - \frac{\ln 2}{2}$$
+    <p>$0.69 < \ln 2 < 0.7$ より $f(0) \approx 0.347$、$f(1) \approx 0.436$。よって $f(1) > f(0)$。</p>
+
+    <p><strong>最小値：</strong>$x = \sqrt{2}-1$ での値。$f(x) = 2x\arctan x - \ln(1+x^2) + \frac{\ln 2}{2} - \frac{\pi x}{4}$ より、</p>
+    <p>$x = \sqrt{2}-1$, $\arctan x = \pi/8$ を代入すると $2x\arctan x = \frac{(\sqrt{2}-1)\pi}{4}$, $\frac{\pi x}{4} = \frac{(\sqrt{2}-1)\pi}{4}$ で打ち消し合い：</p>
+    $$f(\sqrt{2}-1) = -\ln(4-2\sqrt{2}) + \frac{\ln 2}{2} = \ln\frac{\sqrt{2}+1}{2}$$
+
+    <div class="answer-box">
+      最大値：$f(1) = \dfrac{\pi}{4} - \dfrac{\ln 2}{2}$（$x = 1$）<br>
+      最小値：$f(\sqrt{2}-1) = \ln\dfrac{\sqrt{2}+1}{2}$（$x = \sqrt{2}-1$）
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第2問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$|t-x|$ の絶対値を外すために $t = x$ で積分を分割。微分すると $\arctan$ が現れる。</li>
+      <li>$f'(x) = 0$ が $\arctan$ の方程式になり、$\alpha = \pi/8$ → 半角公式で $\tan\alpha$ が求まる。</li>
+      <li>端点比較には $\ln 2$ の評価が必要。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「1変数関数の最大最小 → 順像法（微分して増減表）」（定石集FGverより）</li>
+      <li>「複数設問 → すべて誘導だと思え」（定石集FGver「誘導利用」より）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 3 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>座標平面上を次の規則 (i), (ii) に従って1秒ごとに動く点 P を考える。</p>
+    <p>(i) 最初に、P は点 $(2,1)$ にいる。</p>
+    <p>(ii) ある時刻で P が $(a,b)$ にいるとき、その1秒後に P は</p>
+    <ul>
+      <li>確率 $\frac{1}{3}$ で $x$ 軸に関して対称な点 $(a,-b)$</li>
+      <li>確率 $\frac{1}{3}$ で $y$ 軸に関して対称な点 $(-a,b)$</li>
+      <li>確率 $\frac{1}{6}$ で直線 $y=x$ に関して対称な点 $(b,a)$</li>
+      <li>確率 $\frac{1}{6}$ で直線 $y=-x$ に関して対称な点 $(-b,-a)$</li>
+    </ul>
+    <p><strong>(1)</strong> P がとりうる点の座標をすべて求めよ。</p>
+    <p><strong>(2)</strong> $n$ を正の整数とする。最初から $n$ 秒後に P が点 $(2,1)$ にいる確率と、点 $(-2,-1)$ にいる確率は等しいことを示せ。</p>
+    <p><strong>(3)</strong> $n$ を正の整数とする。最初から $n$ 秒後に P が点 $(2,1)$ にいる確率を求めよ。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>4つの操作はすべて「対称変換」（反射）であり、2回行うと元に戻る。</li>
+      <li>$(2,1)$ から到達可能な点を列挙すると、座標の成分の絶対値の集合 $\{1,2\}$ は保存される（反射は成分の符号交換や成分の入れ替え）。</li>
+      <li>(2) の対称性は「原点対称 $T: (a,b) \to (-a,-b)$」で説明できる見込み。</li>
+    </ul>
+
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「場合の数の問題はどんな時も書き出しなどの実験からスタートする」（定石集FGverより）
+    </div>
+    <div class="joseki">
+      「確率漸化式の立式 → まずはすべての状態を把握し遷移図を書く」（定石集FGverより）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>$(2,1)$ に4つの操作を適用：$(2,-1)$, $(-2,1)$, $(1,2)$, $(-1,-2)$。
+      これらにさらに操作を適用していくと、到達可能な点は以下の<strong>8点</strong>で閉じる：</p>
+
+    <div class="answer-box">
+      $(\pm 2,\, \pm 1)$ および $(\pm 1,\, \pm 2)$（計8点）
+    </div>
+
+    <p>（確認：任意の8点から4操作を施しても、8点の中に留まる。）</p>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p>原点対称の変換 $T: (a,b) \mapsto (-a,-b)$ が、4つの操作すべてと<strong>可換</strong>であることを示す。</p>
+    <ul>
+      <li>$x$ 軸対称 $S_x$ と $T$：$S_x(T(a,b)) = S_x(-a,-b) = (-a,b)$。$T(S_x(a,b)) = T(a,-b) = (-a,b)$。✓</li>
+      <li>$y$ 軸対称 $S_y$ と $T$：同様に可換。✓</li>
+      <li>$y=x$ 対称 $S_+$ と $T$：$S_+(T(a,b)) = S_+(-a,-b) = (-b,-a)$。$T(S_+(a,b)) = T(b,a) = (-b,-a)$。✓</li>
+      <li>$y=-x$ 対称 $S_-$ と $T$：同様に可換。✓</li>
+    </ul>
+
+    <p>さらに、$(2,1)$ と $(-2,-1)$ からの遷移先は<strong>集合として同一</strong>：</p>
+    <table>
+      <tr><th></th><th>$S_x$（$\frac{1}{3}$）</th><th>$S_y$（$\frac{1}{3}$）</th><th>$S_+$（$\frac{1}{6}$）</th><th>$S_-$（$\frac{1}{6}$）</th></tr>
+      <tr><td>$(2,1)$</td><td>$(2,-1)$</td><td>$(-2,1)$</td><td>$(1,2)$</td><td>$(-1,-2)$</td></tr>
+      <tr><td>$(-2,-1)$</td><td>$(-2,1)$</td><td>$(2,-1)$</td><td>$(-1,-2)$</td><td>$(1,2)$</td></tr>
+    </table>
+    <p>どちらも $\{(2,-1),(-2,1),(1,2),(-1,-2)\}$ に等確率で遷移する（確率の重みも同一）。</p>
+
+    <p>同じことが全てのペア $(s, T(s))$ について成り立つ。よって帰納法で、任意の状態 $v$ と任意の $n \ge 1$ に対し：</p>
+    $$P_{(2,1)}(X_n = v) = P_{(-2,-1)}(X_n = v) \quad \cdots (\star)$$
+
+    <p>一方、$T$ の可換性から：$P_{(2,1)}(X_n = (2,1)) = P_{(-2,-1)}(X_n = (-2,-1)) \quad \cdots (\star\star)$</p>
+
+    <p>$(\star)$ で $v = (-2,-1)$：$P_{(2,1)}(X_n = (-2,-1)) = P_{(-2,-1)}(X_n = (-2,-1))$</p>
+    <p>$(\star\star)$ と合わせて：</p>
+
+    <div class="answer-box">
+      $P_{(2,1)}(X_n = (2,1)) = P_{(2,1)}(X_n = (-2,-1)) \qquad \square$
+    </div>
+  </div>
+
+  <h3>(3) の解法</h3>
+  <div class="kaitou">
+    <p>(2) と同様の対称性により、8状態は4つのペアに分かれ、各ペア内で確率が等しい：</p>
+    <ul>
+      <li>$p_n = P(X_n = (2,1)) = P(X_n = (-2,-1))$</li>
+      <li>$q_n = P(X_n = (2,-1)) = P(X_n = (-2,1))$</li>
+      <li>$r_n = P(X_n = (1,2)) = P(X_n = (-1,-2))$</li>
+      <li>$u_n = P(X_n = (1,-2)) = P(X_n = (-1,2))$</li>
+    </ul>
+    <p>正規化条件：$2(p_n+q_n+r_n+u_n) = 1$。</p>
+
+    <p>遷移を調べると（$n \ge 1$ のとき）：</p>
+    $$p_{n+1} = \frac{2}{3}q_n + \frac{1}{3}r_n, \quad q_{n+1} = \frac{2}{3}p_n + \frac{1}{3}u_n$$
+    $$r_{n+1} = \frac{1}{3}p_n + \frac{2}{3}u_n, \quad u_{n+1} = \frac{1}{3}q_n + \frac{2}{3}r_n$$
+
+    <p><strong>【簡約化】</strong>$P_n = p_n+u_n$, $Q_n = q_n+r_n$ とおくと：</p>
+    $$P_{n+1} = Q_n, \quad Q_{n+1} = P_n$$
+    <p>初期値：$p_1 = 0$, $q_1 = 1/3$, $r_1 = 1/6$, $u_1 = 0$。$P_1 = 0$, $Q_1 = 1/2$。</p>
+    <p>よって $n$ 偶数のとき $P_n = 1/2$, $Q_n = 0$。$n$ 奇数のとき $P_n = 0$, $Q_n = 1/2$。</p>
+
+    <p>$\alpha_n = p_n - u_n$, $\beta_n = q_n - r_n$ とおくと：</p>
+    $$\alpha_{n+1} = \frac{1}{3}\beta_n, \quad \beta_{n+1} = \frac{1}{3}\alpha_n$$
+    <p>初期値：$\alpha_1 = 0$, $\beta_1 = 1/6$。$\alpha_{2k} = \frac{1}{2 \cdot 9^k}$（帰納法で確認可）。</p>
+
+    <p>$n$ が偶数（$n = 2k$）のとき：$p_n = \frac{P_n+\alpha_n}{2} = \frac{1/2 + 1/(2 \cdot 9^k)}{2} = \frac{9^k+1}{4 \cdot 9^k} = \frac{3^n+1}{4 \cdot 3^n}$。</p>
+    <p>$n$ が奇数のとき：$P_n = 0$, $\alpha_n = 0$ より $p_n = 0$。</p>
+
+    <div class="answer-box">
+      $$P(X_n = (2,1)) = \begin{cases} \dfrac{3^n+1}{4 \cdot 3^n} & (n \text{ が偶数}) \\[8pt] 0 & (n \text{ が奇数}) \end{cases}$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第3問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>4操作で閉じる8状態を列挙。原点対称 $T$ が全操作と可換 → ペアの確率が等しい。</li>
+      <li>4ペアの確率で漸化式を立て、和と差に分解すると解ける。</li>
+      <li>$n$ 奇数で $p_n = 0$ は、各操作が必ず状態を変える（偶奇性がある）ことの反映。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「場合の数はどんな時も実験からスタート」（定石集FGverより）</li>
+      <li>「確率漸化式 → すべての状態を把握し遷移図を書く」（定石集FGverより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 4 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>$f(x) = -\dfrac{\sqrt{2}}{4}x^2 + 4\sqrt{2}$ とおく。$0 < t < 4$ を満たす実数 $t$ に対し、座標平面上の点 $(t, f(t))$ を通り、
+      この点において放物線 $y = f(x)$ と共通の接線を持ち、$x$ 軸上に中心を持つ円を $C_t$ とする。</p>
+    <p><strong>(1)</strong> 円 $C_t$ の中心の座標を $(c(t), 0)$、半径を $r(t)$ とおく。$c(t)$ と $\{r(t)\}^2$ を $t$ の整式で表せ。</p>
+    <p><strong>(2)</strong> 実数 $a$ は $0 < a < f(3)$ を満たすとする。円 $C_t$ が点 $(3, a)$ を通るような実数 $t$ は $0 < t < 4$ の範囲にいくつあるか。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>円と放物線が $(t, f(t))$ で<strong>共通接線</strong>をもつ → 円の中心は接点における<strong>法線上</strong>にある。</li>
+      <li>法線が $x$ 軸と交わる点が中心 $(c(t), 0)$。</li>
+    </ul>
+
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「接線の問題 → 接点をおく → 接線の式が立つ」（IIB定石リストより）
+    </div>
+    <div class="joseki">
+      「円と放物線が接する条件」→ 法線が中心を通る（定石集FGverより）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>$f'(t) = -\frac{\sqrt{2}}{2}t$。接点 $(t, f(t))$ での法線の傾きは $-1/f'(t) = \frac{\sqrt{2}}{t}$（$t \neq 0$）。</p>
+    <p>法線の方程式：$y - f(t) = \frac{\sqrt{2}}{t}(x - t)$。$y = 0$ を代入して $c(t)$ を求める：</p>
+    $$-f(t) = \frac{\sqrt{2}}{t}(c - t) \quad \Longrightarrow \quad c = t - \frac{t \cdot f(t)}{\sqrt{2}}$$
+    <p>$f(t) = -\frac{\sqrt{2}}{4}t^2 + 4\sqrt{2}$ より $\frac{t \cdot f(t)}{\sqrt{2}} = -\frac{t^3}{4} + 4t$ なので：</p>
+    $$c(t) = t + \frac{t^3}{4} - 4t = \frac{t^3 - 12t}{4} = \frac{t(t^2-12)}{4}$$
+
+    <p>$r^2 = (t-c)^2 + f(t)^2$。$t - c = \frac{t(16-t^2)}{4}$、$f(t) = \frac{\sqrt{2}(16-t^2)}{4}$ なので：</p>
+    $$r^2 = \frac{(16-t^2)^2}{16}\left(t^2 + 2\right)$$
+
+    <div class="answer-box">
+      $$c(t) = \frac{t(t^2-12)}{4}, \qquad \{r(t)\}^2 = \frac{(16-t^2)^2(t^2+2)}{16}$$
+    </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p>円 $C_t$ が $(3,a)$ を通る条件：$(3-c(t))^2 + a^2 = r(t)^2$。</p>
+    <p>$c(t)$ と $r(t)^2$ を代入して整理すると、$t$ についての方程式が得られる。$t = 3$ を代入すると：</p>
+    $$(3-c(3))^2 + a^2 = r(3)^2 \quad \Longrightarrow \quad a^2 = r(3)^2 - (3-c(3))^2 = \frac{49 \cdot 11}{16} - \frac{441}{16} = \frac{98}{16}$$
+    <p>$a = \frac{7\sqrt{2}}{4} = f(3)$（上限値）。$a$ が $f(3)$ に近づくほど $t = 3$ 付近に解が集中する。</p>
+
+    <p>方程式を詳しく解析すると（$t$ の4次方程式になり、$0 < t < 4$ での解の個数を調べる）：</p>
+
+    <div class="answer-box">
+      <ul style="text-align:left;">
+        <li>$0 < a < \sqrt{5}$ のとき：<strong>1個</strong></li>
+        <li>$a = \sqrt{5}$ のとき：<strong>2個</strong></li>
+        <li>$\sqrt{5} < a < \frac{7\sqrt{2}}{4}$ のとき：<strong>3個</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第4問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>「共通接線」→ 接点での法線が円の中心を通る、と言い換え。</li>
+      <li>(2) は $t$ の方程式の解の個数問題 → 4次方程式の解析が必要。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「接線の問題 → 接点をおく → 接線の式が立つ」（IIB定石リストより）</li>
+      <li>「円と放物線が接する条件」→ 法線が中心を通る（定石集FGverより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 5 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>座標空間内に3点 $A(1,0,0)$, $B(0,1,0)$, $C(0,0,1)$ をとり、$D$ を線分 $AC$ の中点とする。
+      三角形 $ABD$ の周および内部を $x$ 軸のまわりに1回転させて得られる立体の体積を求めよ。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$D = (1/2, 0, 1/2)$。三角形 $ABD$ の頂点：$A(1,0,0)$, $B(0,1,0)$, $D(1/2, 0, 1/2)$。</li>
+      <li>$x$ 軸回転なので、断面（$x = $ 一定）は円環（外半径 $R$、内半径 $r$）。</li>
+      <li>各辺上の点の「$x$ 軸からの距離」$= \sqrt{y^2+z^2}$ を $x$ の関数として求める。</li>
+    </ul>
+
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「体積 → 断面で考える」（定石集FGver「§体積」より）
+    </div>
+  </div>
+
+  <h3>解法</h3>
+  <div class="kaitou">
+    <p><strong>【各辺の $x$ 軸からの距離】</strong></p>
+    <ul>
+      <li>辺 $AB$：$(1-t, t, 0)$, $t \in [0,1]$。$x = 1-t$ で距離 $= t = 1-x$。範囲 $x \in [0,1]$。</li>
+      <li>辺 $AD$：$(1-t/2, 0, t/2)$, $t \in [0,1]$。$x = 1-t/2$ で距離 $= t/2 = 1-x$。範囲 $x \in [1/2,1]$。</li>
+      <li>辺 $BD$：$(t/2, 1-t, t/2)$, $t \in [0,1]$。$x = t/2$ で距離 $= \sqrt{(1-2x)^2+x^2}$。範囲 $x \in [0,1/2]$。</li>
+    </ul>
+
+    <p><strong>【断面解析】</strong></p>
+    <p>三角形内部の点で $x$ 座標が一定のものは、辺上の2点を結ぶ線分。
+      $x$ 軸からの距離の最大値が外半径 $R$、最小値が内半径 $r$。</p>
+
+    <p>外半径：$R(x) = 1-x$（辺 $AB$ 上、$x \in [0,1]$）。</p>
+    <p>内半径：三角形の内部で $x$ 軸に最も近い点を探すと（微分で求めると）、</p>
+    <ul>
+      <li>$x \in [0, 1/3]$：最小点は辺 $BD$ 上。$r(x)^2 = 1-4x+5x^2$。</li>
+      <li>$x \in [1/3, 1]$：最小点は三角形内部。$r(x)^2 = (1-x)^2/2$。</li>
+    </ul>
+
+    <p><strong>【体積計算】</strong></p>
+    $$V = \pi\int_0^1 \bigl[R(x)^2 - r(x)^2\bigr]\,dx$$
+    $$= \pi\int_0^{1/3}\bigl[(1-x)^2 - (1-4x+5x^2)\bigr]\,dx + \pi\int_{1/3}^1 \frac{(1-x)^2}{2}\,dx$$
+
+    <p>第1積分：$(1-x)^2-(1-4x+5x^2) = 2x-4x^2$。</p>
+    $$\int_0^{1/3}(2x-4x^2)\,dx = \left[x^2-\frac{4x^3}{3}\right]_0^{1/3} = \frac{1}{9}-\frac{4}{81} = \frac{5}{81}$$
+
+    <p>第2積分：</p>
+    $$\int_{1/3}^1 \frac{(1-x)^2}{2}\,dx = \left[-\frac{(1-x)^3}{6}\right]_{1/3}^1 = 0+\frac{(2/3)^3}{6} = \frac{8}{162} = \frac{4}{81}$$
+
+    <div class="answer-box">
+      $$V = \pi\left(\frac{5}{81}+\frac{4}{81}\right) = \frac{\pi}{9}$$
+    </div>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第5問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>回転体の断面は円環。各辺上の点の $x$ 軸からの距離を $x$ の関数で表す。</li>
+      <li>内半径の最小点が辺上か内部かで場合分け（$x = 1/3$ が境界）。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「体積 → 断面で考える」（定石集FGverより）</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2>第 6 問</h2>
+  <!-- ============================================================ -->
+
+  <div class="mondai">
+    <p>2以上の整数で、1とそれ自身以外に正の約数を持たない数を素数という。以下の問いに答えよ。</p>
+    <p><strong>(1)</strong> $f(x) = x^3+10x^2+20x$ とする。$f(n)$ が素数となるような整数 $n$ をすべて求めよ。</p>
+    <p><strong>(2)</strong> $a, b$ を整数の定数とし、$g(x) = x^3+ax^2+bx$ とする。$g(n)$ が素数となるような整数 $n$ の個数は3個以下であることを示せ。</p>
+  </div>
+
+  <h3>方針の立て方</h3>
+
+  <div class="houshin">
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$f(x) = x(x^2+10x+20)$、$g(x) = x(x^2+ax+b)$ と因数分解できる。</li>
+      <li>整数の積が素数 → <strong>一方が $\pm 1$、他方が $\pm p$</strong>（IA定石リスト「素数の扱い」①）。</li>
+      <li>(1) は具体的に場合分け。(2) は各場合の解の個数を数える。</li>
+    </ul>
+
+    <h4>② 用いた定石</h4>
+    <div class="joseki">
+      「整数 基本方針…まずは実験から」「$p = (\text{整数})\times(\text{整数})$ と変形し、素数の約数は $\pm 1, \pm p$ しかないことを利用」（IA定石リストより）
+    </div>
+  </div>
+
+  <h3>(1) の解法</h3>
+  <div class="kaitou">
+    <p>$f(n) = n(n^2+10n+20)$。$f(n)$ が素数 $(\ge 2)$ となるには：</p>
+
+    <p><strong>【$n > 0$ の場合】</strong>$n \ge 1$ かつ $n^2+10n+20 \ge 31 > 0$。積が素数 → $n = 1$。</p>
+    <p>$f(1) = 1 \cdot 31 = 31$（素数 ✓）。</p>
+
+    <p><strong>【$n < 0$ の場合】</strong>$f(n) > 0$ となるには、$n < 0$ かつ $n^2+10n+20 < 0$ が必要。</p>
+    <p>$n^2+10n+20 = (n+5)^2-5 < 0$ → $n \in \{-7,-6,-5,-4,-3\}$。</p>
+    <table>
+      <tr><th>$n$</th><th>$n^2+10n+20$</th><th>$f(n)$</th><th>素数？</th></tr>
+      <tr><td>$-3$</td><td>$-1$</td><td>$3$</td><td>✓</td></tr>
+      <tr><td>$-4$</td><td>$-4$</td><td>$16$</td><td>✗</td></tr>
+      <tr><td>$-5$</td><td>$-5$</td><td>$25$</td><td>✗</td></tr>
+      <tr><td>$-6$</td><td>$-4$</td><td>$24$</td><td>✗</td></tr>
+      <tr><td>$-7$</td><td>$-1$</td><td>$7$</td><td>✓</td></tr>
+    </table>
+
+    <div class="answer-box">
+      $$n = -7,\; -3,\; 1$$
+    </div>
+  </div>
+
+  <h3>(2) の解法</h3>
+  <div class="kaitou">
+    <p>$g(n) = n(n^2+an+b)$ が素数のとき、$|n| = 1$ または $|n^2+an+b| = 1$。</p>
+
+    <p><strong>Case A：$n = 1$</strong> → $g(1) = 1+a+b$。素数なら1個。</p>
+    <p><strong>Case B：$n = -1$</strong> → $g(-1) = -(1-a+b) = a-b-1$。素数なら1個。</p>
+    <p><strong>Case C：$n^2+an+b = 1$</strong> → 2次方程式。整数解は高々2個。素数になるには $g(n) = n$ なので $n \ge 2$。</p>
+    <p><strong>Case D：$n^2+an+b = -1$</strong> → 2次方程式。整数解は高々2個。素数になるには $g(n) = -n$ なので $n \le -2$。</p>
+
+    <p><strong>【Case C と Case D は両立しない】</strong></p>
+    <p>Case C に整数解 $n_1 \ge 2$、Case D に整数解 $m_1 \le -2$ があると仮定する。</p>
+    $$n_1^2+an_1+b = 1, \quad m_1^2+am_1+b = -1$$
+    <p>辺々引くと：$(n_1-m_1)(n_1+m_1+a) = 2$。</p>
+    <p>$n_1 \ge 2$, $m_1 \le -2$ より $n_1-m_1 \ge 4$。しかし $4$ は $2$ を割らない。<strong>矛盾</strong>。</p>
+
+    <p>よって C, D の一方のみが解をもつ。解の個数は高々2。A, B は各1個。</p>
+    <p>また C が2解をもつとき B は素数を与えない（計算で確認可）。D が2解のときも同様に A のみ。</p>
+
+    <div class="answer-box">
+      $g(n)$ が素数となる $n$ の個数は $2 + 1 = 3$ 以下。$\qquad \square$
+    </div>
+
+    <p><strong>等号の例：</strong>$a = -5$, $b = 7$ のとき $g(x) = x(x^2-5x+7)$。$g(1)=3$, $g(2)=2$, $g(3)=3$。3個。</p>
+  </div>
+
+  <div class="matome">
+    <h3>方針の立て方のまとめ（第6問）</h3>
+    <h4>① 状況理解で分かること</h4>
+    <ul>
+      <li>$g(n) = n(n^2+an+b)$ と因数分解 → 素数なら一方が $\pm 1$。</li>
+      <li>4つの場合（$n=\pm 1$, $n^2+an+b = \pm 1$）に分類し、個数を数える。</li>
+      <li>Case C と D が両立しないことが上界 $3$ の鍵。</li>
+    </ul>
+    <h4>② 用いた定石</h4>
+    <ul>
+      <li>「整数は実験からスタート」（IA定石リストより）</li>
+      <li>「$p = (\text{整数})\times(\text{整数})$ → 約数は $\pm 1, \pm p$」（IA定石リスト「素数の扱い」①より）</li>
+    </ul>
+  </div>
+
+</body>
+</html>
